@@ -6,12 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/20 19:50:22 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/09/21 00:48:11 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
-#include "../libft/includes/libft.h"
+#include "../includes/asm.h"
 
 static inline void			print_usage(void)
 {
@@ -45,8 +44,8 @@ int					main(int argc, char **argv)
 		ft_printf("Processing file %s\n", argv[i]);
 		if (!check_format(argv[i]))			//	check if the file ends with .s
 			print_requirements_to_files(argv[i]);
-		else
-			go_to_assembler(argv[i]);		//	assembler itself
+	//	else
+	//		go_to_assembler(argv[i]);		//	assembler itself
 		i++;
 	}
 	return (0);

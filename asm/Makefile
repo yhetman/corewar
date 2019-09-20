@@ -6,32 +6,32 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/20 19:03:20 by yhetman           #+#    #+#              #
-#    Updated: 2019/09/20 19:06:39 by yhetman          ###   ########.fr        #
+#*   Updated: 2019/09/21 01:05:21 by yhetman          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 CC		:=	gcc
 RM		:=	rm -f
-CFLAGS	:=	-Wall -Wextra -Werror
+CFLAGS	:=	#-Wall -Wextra -Werror
 LIBDIR	:=	./libft
 LIBFT	:=	$(LIBDIR)/libft.a
-BFLAGS	:=	-I$(LIBDIR)/ -Iinclude
+BFLAGS	:=	-I$(LIBDIR) -I./includes/
 DEBUG	:=	-g3 -fsanitize=address -fsanitize=undefined
-INCLUDE	:=	-lft -L$(LIBDIR)/
+INCLUDE	:=	-lft -L$(LIBDIR)/ ./includes/asm.h
+
 NAME	:=	asm
 
 SRC_PATH		= 	./sources/
-SRC_NAME :=		op.c main.c
+#SRC_NAME :=		op.c 
 
 SRC					=	$(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ_PATH			:= 	./obj/
 OBJ					=	$(addprefix $(OBJ_PATH),$(OBJ_NAME))
 OBJ_NAME			=	$(SRC_NAME:.c=.o)
-MAIN		=	main.c
+MAIN		=	./source/main.c
 MAINO		=	$(OBJ_PATH)main.o
-H_FILES		:=	includes/op.h
+H_FILES		:=	includes/asm.h includes/op.h
 DEPS		=	$(H_FILES) Makefile
-TOOLDIR		:=	./tools
 
 all: $(NAME)
 
