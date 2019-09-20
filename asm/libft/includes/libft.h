@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:39:33 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/16 16:12:34 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/09/20 23:56:52 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <errno.h>
 # include <string.h>
 # include <time.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include <math.h>
 # include <limits.h>
 # include <sys/types.h>
