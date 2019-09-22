@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/22 23:55:16 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/09/23 01:41:26 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,28 @@ static inline bool	check_format(char *file)
 		return (true);
 }
 
-int					reading(char *file, t_assembler *a, t_reader r, char *s )
+int					reader(char *file, t_reader *reader)
+{
+	char			
+}
+
+int					set_reader(char *file, t_assembler *ass, t_reader r, char *line)
 {
 	int				fd;
 
-	if (fd = open())
+	if ((fd = reader(file, r)) < 0)
+		return (reading_error());
+	if (!(line = ft_strnew(r->c + 1)))
+		return (0);
 }
 
 int					go_to_assembler(char *file)
 {
-	t_assembler		assem;
+	header_t		header;
+	t_assembler		ass;
 	t_reader		reader;
 
-	if (!reading(file, &assem, &reader, NULL))
+	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
 }
 
