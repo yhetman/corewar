@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/21 00:48:11 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/09/22 23:55:16 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ static inline bool	check_format(char *file)
 		return (true);
 }
 
+int					reading(char *file, t_assembler *a, t_reader r, char *s )
+{
+	int				fd;
+
+	if (fd = open())
+}
+
+int					go_to_assembler(char *file)
+{
+	t_assembler		assem;
+	t_reader		reader;
+
+	if (!reading(file, &assem, &reader, NULL))
+		return (0);
+}
+
 int					main(int argc, char **argv)
 {
 	int	i;
@@ -44,7 +60,7 @@ int					main(int argc, char **argv)
 		ft_printf("Processing file %s\n", argv[i]);
 		if (!check_format(argv[i]))			//	check if the file ends with .s
 			print_requirements_to_files(argv[i]);
-	//	else
+		else
 	//		go_to_assembler(argv[i]);		//	assembler itself
 		i++;
 	}
