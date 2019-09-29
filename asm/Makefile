@@ -5,58 +5,48 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/09/20 19:03:20 by yhetman           #+#    #+#              #
-#*   Updated: 2019/09/21 01:05:21 by yhetman          ###   ########.fr       *#
+#    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
+#    Updated: 2019/09/29 15:17:21 by yhetman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		:=	gcc
-RM		:=	rm -f
-CFLAGS	:=	#-Wall -Wextra -Werror
-LIBDIR	:=	./libft
-LIBFT	:=	$(LIBDIR)/libft.a
-BFLAGS	:=	-I$(LIBDIR) -I./includes/
-DEBUG	:=	-g3 -fsanitize=address -fsanitize=undefined
-INCLUDE	:=	-lft -L$(LIBDIR)/ ./includes/asm.h
+SRCS= main.c op.c 
+OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
+OBJDIR=./obj/
+SRCDIR=sources/
+NAME=asm
+FLAGS=-Wall -Wextra -Werror
+DEBUG=-g3 -fsanitize=address
+INCLUDE=-I./includes/
+LIBNAME=libft.a
+LIBPATH=./libft/
+all:$(NAME)
 
-NAME	:=	asm
+$(NAME): $(OBJDIR) $(LIBPATH)$(LIBNAME) $(OBJ)
+	gcc $(FLAGS) $(INCLUDE) $(LIBPATH)$(LIBNAME) -o $(NAME)
 
-SRC_PATH		= 	./sources/
-#SRC_NAME :=		op.c 
+$(OBJDIR):
+	mkdir $(OBJDIR)
 
-SRC					=	$(addprefix $(SRC_PATH),$(SRC_NAME))
-OBJ_PATH			:= 	./obj/
-OBJ					=	$(addprefix $(OBJ_PATH),$(OBJ_NAME))
-OBJ_NAME			=	$(SRC_NAME:.c=.o)
-MAIN		=	./source/main.c
-MAINO		=	$(OBJ_PATH)main.o
-H_FILES		:=	includes/asm.h includes/op.h
-DEPS		=	$(H_FILES) Makefile
+$(OBJDIR)%.o:$(SRCDIR)%.c
+	gcc $(FLAGS) $(INCLUDE) -c $< -o $@
+	ar -rv $(LIBPATH)$(LIBNAME) $@
+	ranlib $(LIBPATH)$(LIBNAME)
 
-all: $(NAME)
+$(LIBPATH)$(LIBNAME):
+	make -C $(LIBPATH)
 
-$(LIBFT): force
-	@$(MAKE) -C $(LIBDIR) 2> /dev/null
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(DEPS)
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CFLAGS) $(BFLAGS) $< -c -o $@ 
-
-$(NAME): $(DEPS) $(LIBFT) $(OBJ) $(MAINO)
-	$(CC) $(CFLAGS) $(BFLAGS) $(INCLUDE) $(OBJ) $(MAINO) -o $@
+makelib:
+	make -C $(LIBPATH)
 
 clean:
-	$(MAKE) clean -C $(LIBDIR)
-	$(RM) $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	make clean -C $(LIBPATH)
+	rm -rf obj/
 
 fclean: clean
-	make fclean -C libft/
-	$(RM) $(NAME)
-	$(RM) tags
+	make fclean -C $(LIBPATH)
+	rm -rvf $(NAME)
 
 re: fclean all
- 
-force:
-	@true
-.PHONY: all, re, clean, fclean
+
+.PHONY: all clean fclean re
