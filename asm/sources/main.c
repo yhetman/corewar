@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/29 14:28:21 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/09/30 17:29:47 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int					set_reader(char *file, t_assembler *ass, t_reader *r, char *line)
 
 	if ((fd = reader(file, r)) < 0)
 		return (0);
+	if (ass)
+		return (1);
 	//	return (reading_error());
 	if (!(line = ft_strnew((r->sign) + 1)))
 		return (0);
@@ -53,7 +55,7 @@ int					set_reader(char *file, t_assembler *ass, t_reader *r, char *line)
 
 int					go_to_assembler(char *file)
 {
-	header_t		header;
+//	header_t		header;
 	t_assembler		ass;
 	t_reader		reader;
 
@@ -72,9 +74,12 @@ int					main(int argc, char **argv)
 	while (i < argc)
 	{
 		ft_printf("Processing file %s\n", argv[i]);
-		if (!check_format(argv[i]))			//	check if the file ends with .s
+		if (!check_format(argv[i]))
+		{
 			print_requirements_to_files(argv[i]);
-		else
+			i++;
+		}
+			else
 	//		go_to_assembler(argv[i]);		//	assembler itself
 		i++;
 	}

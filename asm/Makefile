@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
-#    Updated: 2019/09/29 15:17:21 by yhetman          ###   ########.fr        #
+#    Updated: 2019/09/30 17:26:46 by yhetman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
 NAME=asm
-FLAGS=-Wall -Wextra -Werror
+FLAGS=#-Wall -Wextra -Werror
 DEBUG=-g3 -fsanitize=address
 INCLUDE=-I./includes/
 LIBNAME=libft.a
