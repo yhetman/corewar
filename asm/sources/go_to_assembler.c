@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/04 21:07:38 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/04 21:15:03 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	reading_process(char *file, t_reader *reader)
 	return (fd);
 }
 
-int					set_reader(char *file, t_assembler *ass, t_reader *reader, char *line)
+static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line)
 {
 	int				fd;
 
