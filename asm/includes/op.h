@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/09/30 17:20:45 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/04 19:29:33 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ typedef struct					s_op
 	unsigned int				label_size;
 }								t_op;
                                    	
-typedef struct					header_s
+typedef struct					s_header
 {
   unsigned int					magic;
   char							prog_name[PROG_NAME_LENGTH + 1];
   unsigned int					prog_size;
   char							comment[COMMENT_LENGTH + 1];
-}								header_t;
+}								t_header;
 
 #endif
