@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/04 19:36:05 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/04 20:33:27 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct			s_token
 {
 	char				*name;
 	int					count;
-	t_bytes				bytes;
+	t_bytes				byte;
 }						t_token;
 
 typedef struct			s_assembler
@@ -52,5 +52,7 @@ typedef struct			s_assembler
 	t_token				*tokens;
 	t_op				op_tab[17];
 }						t_assembler;
+
+int					go_to_assembler(char *file);
 
 #endif
