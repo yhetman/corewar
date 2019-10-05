@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/05 21:34:05 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/05 23:45:21 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static int	reading_process(char *file, t_reader *reader)
 static inline  int	error_exit(char *line, char *err_msg)
 {
 	ft_strdel(&line);
-	return (ft_putstr_fd(err_msg, STD_ERR));
+	ft_putstr_fd(err_msg, STD_ERR);
+	return (0);
 }
 	_	
 static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line)
@@ -55,19 +56,19 @@ static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line
 	int				fd;
 
 	if ((fd = reading_process(file, reader)) < 0)
-		return (ft_putstr_fd("ERROR OCCURED!", STD_ERR);
+		return (error_exit(line, "ERROR OCCURED!"));
 	if (!reader->line || !reader->sign)
-		return (ft_putstr_fd("ERROR OCCURED: file is empty", STD_ERR));
+		return (error_exit(line, "ERROR OCCURED: file is empty"));
 	if (!(line = ft_strnew((reader->sign) + 1)))
-		return (error_exit("ERROR OCCURED!");
+		return (error_exit(line, "ERROR OCCURED!");
 	if (read(fd, line, reader->sign) < 0)
 		return (error_exit(line, "ERROR OCCURED: reading failed"));
 	line[reder->sign] = '\0';
 	if (close(fd) < 0)
 		return (error_exit(line, "ERROR OCCURED: closing of fd failed"));
-	if (!great_initialization(ass, reader, line))
+	if (!great_initialization(ass, reader->line, line))
 		return (great_freeing(ass, line));
-	return (0);
+	return (1);
 }
 
 int					go_to_assembler(char *file)
@@ -76,7 +77,7 @@ int					go_to_assembler(char *file)
 	t_assembler		ass;
 	t_reader		reader;
 
-	if (set_reader(file, &ass, &reader, NULL) != 0)
+	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
 	return (0);
 }
