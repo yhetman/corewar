@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/05 23:45:21 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/05 23:58:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int					go_to_assembler(char *file)
 	t_assembler		ass;
 	t_reader		reader;
 
+	ft_bzero(&ass, sizeof(t_assembler*));
 	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
 	return (0);

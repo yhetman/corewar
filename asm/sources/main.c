@@ -6,16 +6,16 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/04 21:54:54 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/06 00:03:05 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static inline void			print_usage(void)
+static inline void	print_usage(void)
 {
-	ft_putstr("Usage: ./asm {champion.s}\n");
-	ft_putstr("\tchampion.s   — from assemble to bytecode\n");
+	ft_putstr_fd("Usage: ./asm {champion.s}\n", STR_OUT);
+	ft_putstr_fd("\t{champion.s}   — from assemble to bytecode\n", STD_OUT);
 }
 
 static inline void	print_requirements_to_files(char *file)
