@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/04 22:14:03 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/05 20:39:17 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ static int	reading_process(char *file, t_reader *reader)
 	return (fd);
 }
 
+static inline  int	error_exit(char *line, char *err_msg)
+{
+	ft_strdel(&line);
+	return (ft_putstr_fd(err_msg, STD_ERR));
+}
+	_	
 static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line)
 {
 	int				fd;
@@ -51,22 +57,26 @@ static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line
 	ass->command = NULL;
 	ass->stored = NULL;
 	if ((fd = reading_process(file, reader)) < 0)
-		return (0);
+		return (ft_putstr_fd("ERROR OCCURED!", STD_ERR);
 	if (!reader->line || !reader->sign)
 		return (ft_putstr_fd("ERROR OCCURED: file is empty", STD_ERR));
 	if (!(line = ft_strnew((reader->sign) + 1)))
-		return (0);
+		return (error_exit("ERROR OCCURED!");
+	if (read(fd, line, reader->sign) < 0)
+		return (error_exit("ERROR OCCURED: reading failed"));
+	line[reder->sign] = '\0';
+	if (close(fd) < 0)
+		return (error_exit("ERROR OCCURED: closing of fd failed"));
 	return (0);
 }
 
 int					go_to_assembler(char *file)
 {
-	char			*line;
 //	t_header		header;
 	t_assembler		ass;
 	t_reader		reader;
 
-	if (!set_reader(file, &ass, &reader, line))
+	if (set_reader(file, &ass, &reader, NULL) != 0)
 		return (0);
 	return (0);
 }
