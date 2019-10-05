@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/05 20:39:17 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/05 20:58:54 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line
 {
 	int				fd;
 
-	ass->command = NULL;
-	ass->stored = NULL;
 	if ((fd = reading_process(file, reader)) < 0)
 		return (ft_putstr_fd("ERROR OCCURED!", STD_ERR);
 	if (!reader->line || !reader->sign)
@@ -63,10 +61,12 @@ static int	set_reader(char *file, t_assembler *ass, t_reader *reader, char *line
 	if (!(line = ft_strnew((reader->sign) + 1)))
 		return (error_exit("ERROR OCCURED!");
 	if (read(fd, line, reader->sign) < 0)
-		return (error_exit("ERROR OCCURED: reading failed"));
+		return (error_exit(line, "ERROR OCCURED: reading failed"));
 	line[reder->sign] = '\0';
 	if (close(fd) < 0)
-		return (error_exit("ERROR OCCURED: closing of fd failed"));
+		return (error_exit(line, "ERROR OCCURED: closing of fd failed"));
+	if (!great_initialization(ass, reader, line))
+		return (great_freeing(ass, line));
 	return (0);
 }
 

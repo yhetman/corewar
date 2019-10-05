@@ -6,11 +6,11 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
-#    Updated: 2019/10/04 20:37:17 by yhetman          ###   ########.fr        #
+#*   Updated: 2019/10/05 20:58:28 by yhetman          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-SRCS= main.c op.c go_to_assembler.c
+SRCS= main.c op.c go_to_assembler.c great_initialization.c
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
