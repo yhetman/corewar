@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/06 23:35:10 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/06 23:58:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	init_command(char **command, int lines, char *file, int i)
 		curr = 0;
 		while (file[curr + i] && file[curr + i] != '\n')
 			curr++;
-		if (!(command = ft_strnew(curr + 1)))
+		if (!(command[str] = ft_strnew(curr + 1)))
 			return (false);
 		curr = 0;
 		while (file[i] && file[i] != '\n')
