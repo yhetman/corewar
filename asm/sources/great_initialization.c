@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/06 00:06:34 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/06 23:35:10 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,27 @@ static bool init_details(char ***grid, char **lines)
 static bool	init_command(char **command, int lines, char *file, int i)
 {
 	int		curr;
+	int		str;
 
-	while (lines-- >= 0 && ++i >= 0)
+	str = 0;
+	while (str < lines && ++i >= 0)
 	{
 		curr = 0;
 		while (file[curr + i] && file[curr + i] != '\n')
 			curr++;
-		if (!(ass->command = ft_strnew(curr + 1)))
+		if (!(command = ft_strnew(curr + 1)))
 			return (false);
 		curr = 0;
 		while (file[i] && file[i] != '\n')
 		{
-			*ass->command[curr] = file[i];
+			command[str][curr] = file[i];
 			curr++;
 			i++;
 		}
-		*ass->command[curr] = '\0';
-		ass->command++;
+		command[str][curr] = '\0';
+		str++;
 	}
-	*ass->command = '\0';
+	command[str] = '\0';
 	return (true)
 }
 
