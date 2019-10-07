@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 17:59:16 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 21:39:11 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,23 @@ static bool init_details(char ***grid, char **lines)
 	int		words;
 	int		i;
 
-	i = 1;
-	while (lines[++i])
+	i = -1;
+	while (++i < 2)
+	{
+		if (!(grid[i] = (char**)malloc(sizeof(char*) * 2)))
+			return (false);
+		if (!(grid[i][0] = ft_strdup(lines[i])))
+			return (false);
+		grid[i][1] = NULL;
+	}
+	while (lines[i])
 	{
 		words = find_words(lines[i]);
-		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words +1))))
+		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words + 1))))
 			return (false);
 		if (!init_each_word(grid[i], lines[i], 0))
 			return (false);
+		i++;
 	}
 	grid[i] = NULL;
 	return (true);

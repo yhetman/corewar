@@ -6,13 +6,22 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 18:47:03 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 21:39:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-int		store_all_token_details(t_assembler		*ass)
+static bool	init_tokens(t_assembler *ass)
+{
+	int		line;
+	int		count;
+
+
+	return (true);
+}
+
+int			store_all_token_details(t_assembler		*ass)
 {
 	int	i;
 
@@ -23,5 +32,9 @@ int		store_all_token_details(t_assembler		*ass)
 	while (ass->stored[++i] != NULL)
 		if (ass->stored[i][0] && validate_token(ass->stored[i][0]))
 			ass->count++;
+	if (!(ass->tokens = (t_token*)malloc(sizeof(t_token) * ass->count)))
+		return (great_freeing(ass, NULL));
+	if (!init_tokens(ass))
+		return (0);
 	return (1);
 }
