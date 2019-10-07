@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 14:57:46 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 17:32:17 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int			ft_putchar_fd(char c, int fd);
 int			ft_putstr_fd(const char *s, int fd);
 void		ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *src);
+char		*ft_strsub(const char *str, unsigned int i, size_t len);
 size_t		ft_strlen(const char *str);
 void		ft_strdel(char **as);
 char		*ft_strnew(size_t size);

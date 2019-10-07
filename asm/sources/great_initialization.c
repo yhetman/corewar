@@ -6,24 +6,61 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 14:48:40 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 17:59:16 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+static int	miss_trash(int *i, char *line)
+{
+	int		j;
+
+	j = 0;
+	while (line[*i] && line[*i] != COMMENT_CHAR
+			&& (IS_TABUL(line[*i])))
+		(*i)++;
+	while (line[*i + j] && line[*i + j] != COMMENT_CHAR
+			&& !(IS_TABUL(line[*i + j])))
+		j++;
+	return (j);
+}
+
+static bool	init_each_word(char **words, char *line, int i)
+{
+	int		w_nb;;
+	int		w_len;
+
+	w_nb = 0;
+	while (line[i])
+	{
+		w_len = miss_trash(&i, line);
+		while (line[i + w_len] && line[i] == COMMENT_CHAR)
+				w_len++;
+		if (w_len > 0)
+		{
+			if (!(words[w_nb] = ft_strsub(line + i, 0, w_len)))
+				return (false);
+			w_nb++;
+		}
+		i += w_len;
+	}
+	words[w_nb] = NULL;
+	return (true);
+}
 
 static bool init_details(char ***grid, char **lines)
 {
 	int		words;
 	int		i;
 
-	i = -1;
+	i = 1;
 	while (lines[++i])
 	{
 		words = find_words(lines[i]);
 		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words +1))))
 			return (false);
-		if (!init_each_word(grid[i], lines[i]))
+		if (!init_each_word(grid[i], lines[i], 0))
 			return (false);
 	}
 	grid[i] = NULL;
