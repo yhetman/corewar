@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/06 00:03:05 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 01:23:48 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	print_usage(void)
 {
-	ft_putstr_fd("Usage: ./asm {champion.s}\n", STR_OUT);
+	ft_putstr_fd("Usage: ./asm {champion.s}\n", STD_OUT);
 	ft_putstr_fd("\t{champion.s}   — from assemble to bytecode\n", STD_OUT);
 }
 

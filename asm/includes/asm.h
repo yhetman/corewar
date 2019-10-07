@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/04 20:33:27 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 02:57:50 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ASM_H
 
 #include "../libft/includes/libft.h"
-#include "op.h"
+#include "../asmlib/includes/asmlib.h"
 
 /*
 typedef struct			s_command
@@ -54,5 +54,7 @@ typedef struct			s_assembler
 }						t_assembler;
 
 int					go_to_assembler(char *file);
+int					great_initialization(t_assembler *a, int lines, char *line);
+int					great_freeing(t_assembler *ass, char *line);
 
 #endif

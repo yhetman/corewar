@@ -6,15 +6,16 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/03 18:43:09 by yhetman           #+#    #+#              #
-#    Updated: 2019/10/03 19:06:52 by yhetman          ###   ########.fr        #
+#*   Updated: 2019/10/07 03:21:13 by yhetman          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME = asmlib.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS =#  -Wno-missing-braces -g0 #-Wall -Wextra -Werror
 
-FUNCTIONS = 	
+FUNCTIONS = count_lines_and_signs	\
+			op
 
 OBJ  = $(addprefix obj/, $(addsuffix .o, $(FUNCTIONS)))
 SRC = $(addprefix src/, $(addsuffix .c, $(FUNCTIONS)))
