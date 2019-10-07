@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 01:23:48 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 04:27:20 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static inline void	print_usage(void)
 
 static inline void	print_requirements_to_files(char *file)
 {
-	ft_printf("File %s must have an extension .s and do not be blanked!\n", file);
+	ft_putstr_fd("File ", STD_OUT);
+	ft_putstr_fd(file, STD_OUT);
+	ft_putstr_fd("must have an extension .s and do not be blanked!\n", STD_OUT);
 }
 
 static inline bool	check_format(char *file)
@@ -41,7 +43,9 @@ int					main(int argc, char **argv)
 		print_usage();	// print usage
 	while (i < argc)
 	{
-		ft_printf("Processing file %s\n", argv[i]);
+		ft_putstr_fd("Processing file ", STD_OUT);
+		ft_putstr_fd(argv[i], STD_OUT);
+		ft_putchar_fd('\n', STD_OUT);
 		if (!check_format(argv[i]))
 		{
 			print_requirements_to_files(argv[i]);

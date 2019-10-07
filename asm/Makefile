@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
-#*   Updated: 2019/10/07 03:00:11 by yhetman          ###   ########.fr       *#
+#*   Updated: 2019/10/07 05:24:55 by yhetman          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,51 +17,54 @@ SRCS= main.c				\
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
-NAME=asm
-FLAGS=-Wall -Wextra -Werror
+NAME=assembler
+FLAGS=#-Wall -Wextra -Werror
 DEBUG=-g3 -fsanitize=address
-INCLUDE=-I./includes/
-LIBNAME=libft.a
+INCLUDE=-I./includes/ -I./asmlib/includes
 ASMLIB=asmlib.a
 ASMLIB_PATH=./asmlib/
-LIBPATH=./libft/
 
 all:$(NAME)
 
-$(NAME): $(OBJDIR) $(LIBPATH)$(LIBNAME) $(ASMLIB_PATH)$(ASMLIB) $(OBJ)
-	gcc $(FLAGS) $(INCLUDE) $(LIBPATH)$(LIBNAME) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
+EOC = \033[0m
+COLOR1= \033[38;5;44m
+COLOR2= \033[38;5;45m
+COLOR3 = \33[38;5;51m
+COLOR4 = \033[38;5;87m
+COLOR5 = \033[38;5;52m
+COLOR6 = \033[38;5;81m
+
+$(NAME): $(OBJDIR) $(ASMLIB_PATH)$(ASMLIB) $(OBJ)
+	@printf "$(COLOR2) >>$(EOC) $(COLOR1)$(NAME) is ready.$(EOC)\n"
+	@gcc $(FLAGS) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
 
 $(OBJDIR):
-	mkdir $(OBJDIR)
+	@printf "$(COLOR4)\t\t|\t\tCONSTRUCTING ASSEMBLER\t\t|$(EOC)\n"
+	@mkdir $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	gcc $(FLAGS) $(INCLUDE) -c $< -o $@
-	ar -rv $(LIBPATH)$(LIBNAME) $@
-	ranlib $(LIBPATH)$(LIBNAME)
-
-$(LIBPATH)$(LIBNAME):
-	make -C $(LIBPATH)
+	@printf "$(COLOR3)||||$(EOC)"
+	@gcc $(FLAGS) $(INCLUDE) -c $< -o $@
+	@ar -r $(ASMLIB_PATH)$(ASMLIB) $@
+	@ranlib $(ASMLIB_PATH)$(ASMLIB)
 
 $(ASMLIB_PATH)$(ASMLIB):
-	make -C $(ASMLIB_PATH)
+	@printf "$(COLOR6)|\tConstructing asmlib:  $(EOC)"
+	@make -C $(ASMLIB_PATH)
 
-makelibft:
-	make -C $(LIBPATH)
-
-makeasmlib:
-	make -C $(ASMLIB)
-
-makelib: makelibft makeasmlib
+lib:
+	@printf "$(COLOR6)|\tRecompiling asmlib:  $(EOC)"
+	@make -C $(ASMLIB_PATH)
 
 clean:
-	make clean -C $(LIBPATH)
-	make clean -C $(ASMLIB_PATH)
-	rm -rf obj/
+	@printf "$(COLOR5)\t\t|\tObject files are deleted!\t\t|\n$(EOC)"
+	@make clean -C $(ASMLIB_PATH)
+	@rm -rf obj/
 
 fclean: clean
-	make fclean -C $(LIBPATH)
-	make fclean -C $(ASMLIB_PATH)
-	rm -rvf $(NAME)
+	@printf "$(COLOR5)\t\t|\tAssembler executable file deleted!\t|\n$(EOC)"
+	@make fclean -C $(ASMLIB_PATH)
+	@rm -rf $(NAME)
 
 re: fclean all
 
