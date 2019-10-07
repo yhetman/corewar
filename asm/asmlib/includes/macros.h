@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 20:20:45 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 04:09:49 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 14:49:40 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@
 */
 
 # define IS_ASCII(c)			(!(c >> 7))
+# define IS_TABUL(c)			(c == ' ' || c == '\t')
 # define IS_BLANK(c)			(c == ' ' || c == '\t' || c == '\n')
 # define IS_WHITE(c)			(c == '\f' || c == '\v' || c == '\r')
 # define IS_DIGIT(c)			((unsigned int)(c - '0') < 10)

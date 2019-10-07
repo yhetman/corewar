@@ -6,20 +6,30 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 03:01:33 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 14:48:40 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
-/*
+
 static bool init_details(char ***grid, char **lines)
 {
 	int		words;
+	int		i;
 
-
+	i = -1;
+	while (lines[++i])
+	{
+		words = find_words(lines[i]);
+		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words +1))))
+			return (false);
+		if (!init_each_word(grid[i], lines[i]))
+			return (false);
+	}
+	grid[i] = NULL;
 	return (true);
 }
-*/
+
 static bool	init_command(char **command, int lines, char *file, int i)
 {
 	int		curr;
@@ -43,7 +53,7 @@ static bool	init_command(char **command, int lines, char *file, int i)
 		command[str][curr] = '\0';
 		str++;
 	}
-	command[str] = '\0';
+	command[str] = NULL;
 	return (true);
 }
 
@@ -55,7 +65,7 @@ int			great_initialization(t_assembler *ass, int lines, char *file)
 		return (great_freeing(ass, file));
 	if (!(ass->stored = (char ***)malloc(sizeof(char**) * (lines+ 1))))
 		return (0);
-//	if (!(init_details(ass->stored, ass->command)))
-//		return (great_freeing(ass, file));
+	if (!(init_details(ass->stored, ass->command)))
+		return (great_freeing(ass, file));
 	return (1);
 }
