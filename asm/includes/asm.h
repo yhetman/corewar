@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 04:23:54 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:44:01 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ typedef struct			s_assembler
 	char				***stored;
 	int					count;
 	t_token				*tokens;
-	t_op				op_tab[17];
+	t_op				options[17];
 }						t_assembler;
 
 int					go_to_assembler(char *file);
 int					great_initialization(t_assembler *a, int lines, char *line);
 int					great_freeing(t_assembler *ass, char *line);
-
+int					store_all_token_details(t_assembler		*ass);
 #endif

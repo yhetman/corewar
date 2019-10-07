@@ -16,7 +16,8 @@ FLAGS =#  -Wno-missing-braces -g0 #-Wall -Wextra -Werror
 
 FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			op ft_bzero ft_putchar_fd ft_putstr_fd		\
-			ft_strnew ft_strlen find_words ft_strsub
+			ft_strnew ft_strlen find_words ft_strsub	\
+			ft_strchr validate_token
 
 OBJ  = $(addprefix obj/, $(addsuffix .o, $(FUNCTIONS)))
 SRC = $(addprefix src/, $(addsuffix .c, $(FUNCTIONS)))

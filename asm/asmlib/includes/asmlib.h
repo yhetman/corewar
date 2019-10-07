@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 17:32:17 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:52:30 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+t_op		g_options[17];
+bool		validate_token(char *line);
 int			find_words(char *str);
 void		count_lines_and_signs(char *content, int *signs, int *lines);
 int			ft_putchar_fd(char c, int fd);
@@ -34,5 +36,5 @@ char		*ft_strsub(const char *str, unsigned int i, size_t len);
 size_t		ft_strlen(const char *str);
 void		ft_strdel(char **as);
 char		*ft_strnew(size_t size);
-
+char		*ft_strchr(const char *str, int c);
 #endif

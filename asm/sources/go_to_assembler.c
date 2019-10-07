@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 04:27:29 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:12:00 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ int					go_to_assembler(char *file)
 	t_assembler		ass;
 	t_reader		reader;
 
-	ft_bzero(&ass, sizeof(t_assembler));
+	ft_bzero(&ass, sizeof(t_assembler*));
+	ft_bzero(&ass.tokens, sizeof(t_token*));
 	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
-	return (0);
+	store_all_token_details(&ass);
+	return (1);
 }

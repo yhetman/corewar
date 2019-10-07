@@ -6,13 +6,13 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:02 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 03:16:04 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:46:36 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
 
-t_op	op_tab[17] =
+t_op	g_options[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},

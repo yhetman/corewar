@@ -10,10 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS= main.c				\
-	  go_to_assembler.c		\
-	  great_initialization.c \
-	  great_freeing.c
+SRCS= main.c					\
+	  go_to_assembler.c			\
+	  great_initialization.c 	\
+	  great_freeing.c			\
+	  store_all_token_details.c
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
