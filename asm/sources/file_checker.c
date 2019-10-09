@@ -6,11 +6,35 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:29:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 20:50:16 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 22:02:31 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+static bool	find_commands(char ***stored, t_assembler *ass)
+{
+	int		line;
+	int		command;
+
+	line = 1;
+	while (stored[++line])
+	{
+		if (!stored[line][0])
+			;
+		else if (stored[line][0][0] == COMMENT_CHAR)
+		{
+			command = 0;
+			while (stored[line][0][++command])
+				if (!ft_strchr(COMMENT_CHARS, stored[line][0][command]))
+						return (great_freeing(ass, NULL));
+		}
+		else if (stored[line][0])
+			if (!get_command_info(ass, line))
+				return (false);
+	}
+	return (true);
+}
 
 static bool	find_matches(char *line, char *buffer, char *string, int length)
 {
@@ -52,7 +76,7 @@ int			file_checker(t_assembler *ass, t_header *head)
 	if (!find_matches(ass->stored[1][0], head->comment,
 				COMMENT_CMD_STRING, COMMENT_LENGTH))
 		return (false);
-	if (!find_commands(ass))
+	if (!find_commands(ass->stored, ass))
 		return (false);
 	return (1);
 }
