@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 18:12:00 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 18:36:45 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int			set_reader(char *file, t_assembler *ass, t_reader *reader, char *li
 
 int					go_to_assembler(char *file)
 {
-//	t_header		header;
+	t_header		header;
 	t_assembler		ass;
 	t_reader		reader;
 
@@ -72,5 +72,7 @@ int					go_to_assembler(char *file)
 	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
 	store_all_token_details(&ass);
+	if (!file_checker(&ass, &header))
+		return (great_freeing(&ass, NULL));
 	return (1);
 }

@@ -14,13 +14,14 @@ SRCS= main.c					\
 	  go_to_assembler.c			\
 	  great_initialization.c 	\
 	  great_freeing.c			\
-	  store_all_token_details.c
+	  store_all_token_details.c	\
+	  file_checker.c			
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
 NAME=assembler
 FLAGS=#-Wall -Wextra -Werror
-DEBUG=-g3 -fsanitize=address
+DEBUG=-g3 # -fsanitize=address
 INCLUDE=-I./includes/ -I./asmlib/includes
 ASMLIB=asmlib.a
 ASMLIB_PATH=./asmlib/
@@ -45,7 +46,7 @@ $(OBJDIR):
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@printf "$(COLOR3)||||$(EOC)"
-	@gcc $(FLAGS) $(INCLUDE) -c $< -o $@
+	@gcc $(DEBUG) $(INCLUDE) -c $< -o $@
 	@ar -r $(ASMLIB_PATH)$(ASMLIB) $@
 	@ranlib $(ASMLIB_PATH)$(ASMLIB)
 

@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 17:46:08 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 18:31:27 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ typedef struct			s_assembler
 int					go_to_assembler(char *file);
 int					great_initialization(t_assembler *a, int lines, char *line);
 int					great_freeing(t_assembler *ass, char *line);
-int					store_all_token_details(t_assembler		*ass);
+int					store_all_token_details(t_assembler *ass);
+int					file_checker(t_assembler *ass, t_header *head);
 #endif
