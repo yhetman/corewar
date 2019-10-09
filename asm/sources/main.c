@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 04:27:20 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 20:24:54 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int					main(int argc, char **argv)
 
 	i = 1;
 	if (argc == 1)
-		print_usage();	// print usage
+		print_usage();
 	while (i < argc)
 	{
 		ft_putstr_fd("Processing file ", STD_OUT);
@@ -52,7 +52,7 @@ int					main(int argc, char **argv)
 			i++;
 		}
 		else
-			go_to_assembler(argv[i]);		//	assembler itself
+			go_to_assembler(argv[i]);
 		i++;
 	}
 	return (0);

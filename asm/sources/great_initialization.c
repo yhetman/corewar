@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 21:39:11 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 20:27:36 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	miss_trash(int *i, char *line)
 
 static bool	init_each_word(char **words, char *line, int i)
 {
-	int		w_nb;;
+	int		w_nb;
 	int		w_len;
 
 	w_nb = 0;
@@ -36,7 +36,7 @@ static bool	init_each_word(char **words, char *line, int i)
 	{
 		w_len = miss_trash(&i, line);
 		while (line[i + w_len] && line[i] == COMMENT_CHAR)
-				w_len++;
+			w_len++;
 		if (w_len > 0)
 		{
 			if (!(words[w_nb] = ft_strsub(line + i, 0, w_len)))
@@ -49,7 +49,7 @@ static bool	init_each_word(char **words, char *line, int i)
 	return (true);
 }
 
-static bool init_details(char ***grid, char **lines)
+static bool	init_details(char ***grid, char **lines)
 {
 	int		words;
 	int		i;
@@ -109,7 +109,7 @@ int			great_initialization(t_assembler *ass, int lines, char *file)
 		return (0);
 	if (!(init_command(ass->command, lines, file, -1)))
 		return (great_freeing(ass, file));
-	if (!(ass->stored = (char ***)malloc(sizeof(char**) * (lines+ 1))))
+	if (!(ass->stored = (char ***)malloc(sizeof(char**) * (lines + 1))))
 		return (0);
 	if (!(init_details(ass->stored, ass->command)))
 		return (great_freeing(ass, file));

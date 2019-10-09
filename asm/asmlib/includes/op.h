@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 18:51:34 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 20:13:03 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 # define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/"
 # define COMMENT_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/ {}[]"
+# define COMMAND_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/ ,"
 
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"

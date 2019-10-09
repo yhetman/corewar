@@ -6,17 +6,17 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 18:36:45 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 20:26:05 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static int	reading_process(char *file, t_reader *reader)
+static int			reading_process(char *file, t_reader *reader)
 {
-	char	buffer[BUFF_SIZE + 1];
-	int		content;
-	int		fd;
+	char			buffer[BUFF_SIZE + 1];
+	int				content;
+	int				fd;
 
 	ft_bzero(buffer, BUFF_SIZE + 1);
 	ft_bzero(reader, sizeof(t_reader*));
@@ -41,7 +41,8 @@ static inline int	error_exit(char *line, char *err_msg)
 	return (0);
 }
 
-static int			set_reader(char *file, t_assembler *ass, t_reader *reader, char *line)
+static int			set_reader(char *file, t_assembler *ass,
+						t_reader *reader, char *line)
 {
 	int				fd;
 

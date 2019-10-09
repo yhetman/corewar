@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 18:02:39 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 20:25:17 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool	init_tokens(t_assembler *ass)
 	return (true);
 }
 
-int			store_all_token_details(t_assembler		*ass)
+int			store_all_token_details(t_assembler *ass)
 {
 	int	i;
 
