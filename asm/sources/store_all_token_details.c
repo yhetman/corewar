@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 21:39:57 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/09 18:02:39 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,21 @@ static bool	init_tokens(t_assembler *ass)
 	int		line;
 	int		count;
 
-
+	line = 1;
+	while (ass->stored[++line])
+	{
+		if (ass->stored[line][0] && validate_token(ass->stored[line][0]))
+		{
+			count = -1;
+			while (++count < ass->count && ass->tokens[count].count > 0)
+				if (!ft_strcmp(ass->tokens[count].name, ass->stored[line][0]))
+					return (false);
+			ass->tokens[count].count = line;
+			if (!(ass->tokens[count].name = ft_strsub(ass->stored[line][0],
+						0, ft_strlen(ass->stored[line][0] - 1))))
+				return (false);
+		}
+	}
 	return (true);
 }
 
