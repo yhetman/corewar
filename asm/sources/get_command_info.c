@@ -6,13 +6,21 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/11 23:46:47 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/11 23:59:12 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static bool		check_info(t_command *command, t_assembler *ass, int count)
+static void		free_command(t_command *command)
+{
+	if (command->command)
+		free(command->command);
+	if (command->args)
+		free(command->args);
+}
+
+static int		check_info(t_command *command, t_assembler *ass, int count)
 {
 	int			index;
 	int			res;
@@ -20,10 +28,11 @@ static bool		check_info(t_command *command, t_assembler *ass, int count)
 	if (command->command)
 		index = define_index(ass, command->command);
 	if (index < 1)
-		return (false);
+		return (0);
 	if (comand->args)
-		res = check_command_arguments(ass, command, count);
-	if 
+		res = check_command_arguments(ass, command, index, count);
+	free_command(command);
+	return (res);
 }
 
 static int		define_command_or_comment(char **line, int *i, int *j)
@@ -86,6 +95,8 @@ int				get_command_info(t_assembler *ass, int count)
 	ft_bzero(&command, sizeof(t_command));
 	if (!get_info(&command, ass->stored[count]))
 		return (false);
-	if (!check_info(&command, ass, count));
+	if (!check_info(&command, ass, count))
+		return (false);
+	free_command(&command);
 	return (1);
 }
