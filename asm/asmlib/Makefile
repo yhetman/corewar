@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/03 18:43:09 by yhetman           #+#    #+#              #
-#*   Updated: 2019/10/07 05:20:14 by yhetman          ###   ########.fr       *#
+#*   Updated: 2019/10/12 00:15:14 by yhetman          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ FLAGS = -g3 # -fsanitize=address #  -Wno-missing-braces -g0 #-Wall -Wextra -Werr
 FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			op ft_bzero ft_putchar_fd ft_putstr_fd		\
 			ft_strnew ft_strlen find_words ft_strsub	\
-			ft_strchr validate_token ft_strcmp ft_strnstr
+			ft_strchr validate_token ft_strcmp ft_strnstr \
+			define_index
 
 OBJ  = $(addprefix obj/, $(addsuffix .o, $(FUNCTIONS)))
 SRC = $(addprefix src/, $(addsuffix .c, $(FUNCTIONS)))

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 20:19:01 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 00:14:49 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 t_op		g_options[17];
 
+int			define_index(t_op options, char *command);
 bool		validate_token(char *line);
 int			find_words(char *str);
 void		count_lines_and_signs(char *content, int *signs, int *lines);

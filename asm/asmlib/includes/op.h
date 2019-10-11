@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 20:13:03 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 00:04:51 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ typedef char					t_arg_type;
 typedef struct					s_op
 {
 	char						name[5];
-	int							nb_params;
-	char						params_type[3];
-	int							id;	
+	int							count_args;
+	char						args_type[3];
+	int							index;	
 	unsigned int				cycles;
 	char						description[50];
 	unsigned int				acb;
-	unsigned int				label_size;
+	unsigned int				command_size;
 }								t_op;
                                    	
 typedef struct					s_header
