@@ -6,13 +6,27 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/11 19:24:59 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/11 23:46:47 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static int		define_command_or_comment(int *i, int *j, char **line)
+static bool		check_info(t_command *command, t_assembler *ass, int count)
+{
+	int			index;
+	int			res;
+
+	if (command->command)
+		index = define_index(ass, command->command);
+	if (index < 1)
+		return (false);
+	if (comand->args)
+		res = check_command_arguments(ass, command, count);
+	if 
+}
+
+static int		define_command_or_comment(char **line, int *i, int *j)
 {
 	if (!line[0])
 		return (1);
@@ -48,7 +62,7 @@ static bool		get_info(t_command *command, char **line)
 
 	i = 0;
 	sign = 0;
-	if (!(result = define_command_or_comment(&i, &sign, line))
+	if (!(result = define_command_or_comment(line, &i, &sign))
 			|| result == 1)
 		return (result);
 	if (!(command->command = ft_strdup(line[i])))
@@ -68,10 +82,10 @@ static bool		get_info(t_command *command, char **line)
 int				get_command_info(t_assembler *ass, int count)
 {
 	t_command	command;
-	int			index;
 
 	ft_bzero(&command, sizeof(t_command));
-	if (!get_info(&command, ass->stored[index]))
+	if (!get_info(&command, ass->stored[count]))
 		return (false);
+	if (!check_info(&command, ass, count));
 	return (1);
 }
