@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 20:20:45 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/09 20:10:16 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 03:26:59 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@
 **  definition of buffer's size, used in get_next_line and ft_printf
 */
 
-# define BUFF_SIZE      2048
+# define BUFF_SIZE      10
+
 
 /*
 **  string stuff

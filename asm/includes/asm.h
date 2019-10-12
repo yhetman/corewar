@@ -6,12 +6,14 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 00:07:21 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 01:04:19 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
+
+# define DEBUG 1
 
 #include "../asmlib/includes/asmlib.h"
 
