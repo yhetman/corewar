@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:46:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 02:15:19 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 06:15:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_words(char *str)
 
 	words = 0;
 	tmp = str;
-	while (tmp && *tmp)
+	while (*tmp)
 	{
 		if (IS_TABUL(*tmp))
 			tmp++;

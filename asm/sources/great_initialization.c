@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 04:46:31 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 07:08:48 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static bool	init_each_word(char **words, char *line, int i)
 		printf("|init_details| -> |init_each_word|\n");
 	while (line[i])
 	{
+		if (!line || line[0] == '\0')
+			words[w_nb] = NULL;
 		w_len = miss_trash(&i, line);
 		while (line[i + w_len] && line[i] == COMMENT_CHAR)
 			w_len++;
@@ -93,10 +95,11 @@ static bool	init_command(char **command, int lines, char *file, int i)
 	int		curr;
 	int		str;
 
-	str = 0;
+	str = -1;
+	command[0] = NULL;
 	if (DEBUG)
 		printf("|great_initialization| -> |init_command|\n");
-	while (str < lines && ++i >= 0)
+	while (++str < lines && ++i >= 0)
 	{
 		curr = 0;
 		while (file[curr + i] && file[curr + i] != '\n')
@@ -113,7 +116,6 @@ static bool	init_command(char **command, int lines, char *file, int i)
 				printf("|line| -> |%d| -> |%s|\n", str, command[str]);
 		}
 		command[str][curr] = '\0';
-		str++;
 	}
 	command[str] = NULL;
 	return (true);

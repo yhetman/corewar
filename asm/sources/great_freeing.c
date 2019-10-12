@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:59:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 04:56:18 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 07:09:23 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,18 @@ static void	free_stored_info(char ***grid)
 	int		i;
 	int		j;
 
-	i = -1;
 	if (DEBUG)
 		printf("|great_freeing| -> |free_stored_info|\n");
 	if (grid)
 	{
-		while (grid[++i])
-		{
-			j = -1;
-			while(grid[i][++j])
-				printf("|%d|-|%d|--|%s|\n", i, j, grid[i][j]);
-		}
 		i = -1;
 		while (grid[++i])
 		{
 			j = -1;
-			if (i < 2)		
-			{
-				printf("|free grid |%s|-|%d|\n", grid[i][0], i);
+			if (i < 2)
 				free(grid[i][0]);
-			}
 			while (i > 1 && grid[i][++j])
-			{
-				printf("|free grid |%s|-|%d|-|%d|\n", grid[i][j], i, j);
-				free(grid[i][j]);
-			}
+				{printf("|%s\n|", grid[i][j]);free(grid[i][j]);}
 			free(grid[i]);
 			printf("|counter of cycle|--|%d|\n", i);
 		}
