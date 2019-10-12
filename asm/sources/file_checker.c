@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:29:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 02:53:00 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 17:24:11 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 	i = ft_strlen(string);
 	while (line[i] && IS_BLANK(line[i]))
 		i++;
-	if (!line[i] || k - i - (int)ft_strlen(string - 2 - 1) > length)
+	if (!line[i] || k - i - ((int)ft_strlen(string) - 3) > length)
 		return (false);
 	if (i == (int)ft_strlen(string) ||
 			IS_QOUTE(line[i]) || IS_QOUTE(line[k - 1]))

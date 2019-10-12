@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 02:42:55 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 17:13:24 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool	init_tokens(t_assembler *ass)
 					return (false);
 			ass->tokens[count].count = line;
 			if (!(ass->tokens[count].name = ft_strsub(ass->stored[line][0],
-						0, ft_strlen(ass->stored[line][0] - 1))))
+						0, ft_strlen(ass->stored[line][0]) - 1)))
 			{
 				if (DEBUG)
 					printf("|token number |%d| name |%s|\n",

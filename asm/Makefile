@@ -23,7 +23,7 @@ OBJDIR=./obj/
 SRCDIR=sources/
 NAME=assembler
 FLAGS=#-Wall -Wextra -Werror
-DEBUG=-g3 # -fsanitize=address
+DEBUG=-g3 -fsanitize=address
 INCLUDE=-I./includes/ -I./asmlib/includes
 ASMLIB=asmlib.a
 ASMLIB_PATH=./asmlib/
@@ -40,7 +40,7 @@ COLOR6 = \033[38;5;81m
 
 $(NAME): $(OBJDIR) $(ASMLIB_PATH)$(ASMLIB) $(OBJ)
 	@printf "$(COLOR2) >>$(EOC) $(COLOR1)$(NAME) is ready.$(EOC)\n"
-	@gcc $(FLAGS) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
+	@gcc $(DEBUG) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
 
 $(OBJDIR):
 	@printf "$(COLOR4)\t\t|\t\tCONSTRUCTING ASSEMBLER\t\t|$(EOC)\n"

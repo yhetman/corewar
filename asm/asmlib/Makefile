@@ -12,7 +12,7 @@
 
 NAME = asmlib.a
 
-FLAGS = -g3 # -fsanitize=address #  -Wno-missing-braces -g0 #-Wall -Wextra -Werror
+FLAGS = -g3  -fsanitize=address #  -Wno-missing-braces -g0 #-Wall -Wextra -Werror
 
 FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			op ft_bzero ft_putchar_fd ft_putstr_fd		\
@@ -45,7 +45,7 @@ $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)
 
 $(OBJ): obj/%.o: src/%.c $(HEADER_ASMLIB)
-	@$(CC) -o $@ $(FLAGS) $(HEADERS) -c $<
+	$(CC) -o $@ $(FLAGS) $(HEADERS) -c $<
 	@printf "$(CYAN)||||$(EOC)"
 
 clean:

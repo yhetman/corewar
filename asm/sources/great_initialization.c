@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 07:08:48 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 17:11:30 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	miss_trash(int *i, char *line)
 	return (j);
 }
 
-static bool	init_each_word(char **words, char *line, int i)
+static bool	init_each_word(char **words, char *line, int i, int nb_words)
 {
 	int		w_nb;
 	int		w_len;
@@ -36,10 +36,8 @@ static bool	init_each_word(char **words, char *line, int i)
 	w_nb = 0;
 	if (DEBUG)
 		printf("|init_details| -> |init_each_word|\n");
-	while (line[i])
+	while (nb_words > 0 && line && line[i])
 	{
-		if (!line || line[0] == '\0')
-			words[w_nb] = NULL;
 		w_len = miss_trash(&i, line);
 		while (line[i + w_len] && line[i] == COMMENT_CHAR)
 			w_len++;
@@ -49,6 +47,7 @@ static bool	init_each_word(char **words, char *line, int i)
 				return (false);
 			if (DEBUG)
 				printf("|word number|%d| -> |%s|\n", w_nb, words[w_nb]);
+			--nb_words;
 			w_nb++;
 		}
 		i += w_len;
@@ -63,26 +62,27 @@ static bool	init_details(char ***grid, char **lines)
 	int		i;
 
 	i = -1;
-	if (DEBUG)
-		printf("|great_initialization| -> |init_details|\n");
+//	if (DEBUG)
+//		printf("|great_initialization| -> |init_details|\n");
 	while (++i < 2)
 	{
 		if (!(grid[i] = (char**)malloc(sizeof(char*) * 2)))
 			return (false);
+
 		if (!(grid[i][0] = ft_strdup(lines[i])))
 			return (false);
 		grid[i][1] = NULL;
-		if (DEBUG)
-			printf("|line| -> |%d| -> |%s|\n", i, lines[i]);
+//		if (DEBUG)
+//			printf("|line| -> |%d| -> |%s|\n", i, lines[i]);
 	}
 	while (lines[i])
 	{
 		words = find_words(lines[i]);
-		if (DEBUG)
-			printf("|line| -> |%d| -> |%s|\t|words| -> |%d|\n", i, lines[i], words);
+//		if (DEBUG)
+//			printf("|line| -> |%d| -> |%s|\t|words| -> |%d|\n", i, lines[i], words);
 		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words + 1))))
 			return (false);
-		if (!init_each_word(grid[i], lines[i], 0))
+		if (!init_each_word(grid[i], lines[i], 0, words))
 			return (false);
 		i++;
 	}
@@ -96,7 +96,6 @@ static bool	init_command(char **command, int lines, char *file, int i)
 	int		str;
 
 	str = -1;
-	command[0] = NULL;
 	if (DEBUG)
 		printf("|great_initialization| -> |init_command|\n");
 	while (++str < lines && ++i >= 0)
@@ -105,15 +104,20 @@ static bool	init_command(char **command, int lines, char *file, int i)
 		while (file[curr + i] && file[curr + i] != '\n')
 			curr++;
 		if (!(command[str] = ft_strnew(curr + 1)))
+		{
+			printf("false\n");
+			exit (0);
+			command[str] = NULL;
 			return (false);
+		}
 		curr = 0;
 		while (file[i] && file[i] != '\n')
 		{
 			command[str][curr] = file[i];
 			curr++;
 			i++;
-			if (DEBUG)
-				printf("|line| -> |%d| -> |%s|\n", str, command[str]);
+//			if (DEBUG)
+//				printf("|line| -> |%d| -> |%s|\n", str, command[str]);
 		}
 		command[str][curr] = '\0';
 	}

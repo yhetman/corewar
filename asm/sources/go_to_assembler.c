@@ -6,11 +6,12 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 06:29:20 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/12 15:57:11 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+#include <stdio.h>
 
 static void			counts_char_line(char *buff, t_reader *reader)
 {
@@ -32,8 +33,6 @@ static int			reading_process(char *file, t_reader *reader)
 
 	if (DEBUG)
 		printf("|set_reader| -> |reading_process|\n");
-//	ft_bzero(buffer, sizeof(BUFF_SIZE + 1));
-//	ft_bzero(reader, sizeof(t_reader));
 	buffer[0] = 0;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
@@ -89,6 +88,7 @@ int					go_to_assembler(char *file)
 	t_assembler		ass;
 	t_reader		reader;
 
+	ft_bzero(&reader, sizeof(t_reader));
 	ft_bzero(&ass, sizeof(t_assembler));
 	ft_bzero(&ass.tokens, sizeof(t_token));
 	if (!set_reader(file, &ass, &reader, NULL))
