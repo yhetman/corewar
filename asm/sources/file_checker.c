@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:29:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 17:24:11 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/14 22:32:23 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 	i = ft_strlen(string);
 	while (line[i] && IS_BLANK(line[i]))
 		i++;
-	if (!line[i] || k - i - ((int)ft_strlen(string) - 3) > length)
-		return (false);
+	if (!line[i] || k - i - (int)ft_strlen(string) - 3 > length)
+		return (false);	
 	if (i == (int)ft_strlen(string) ||
-			IS_QOUTE(line[i]) || IS_QOUTE(line[k - 1]))
+			!IS_QOUTE(line[i]) || !IS_QOUTE(line[k - 1]))
 		return (false);
 	j = -1;
 	while (++i < k - 1)
@@ -71,9 +71,6 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 
 int			file_checker(t_assembler *ass, t_header *head)
 {
-	int		i;
-
-	i = -1;
 	if (DEBUG)
 		printf("|go_to_assembler| -> |file_checker|\n");
 	ft_bzero(head, sizeof(t_header *));
@@ -85,7 +82,7 @@ int			file_checker(t_assembler *ass, t_header *head)
 		return (false);
 	if (DEBUG)
 		printf("|.name| -> |%s|\n|.comment| -> |%s|\n", head->prog_name, head->comment);
-	if (!find_commands(ass->stored, ass))
+	if (!ass->stored[2] || !find_commands(ass->stored, ass))
 		return (false);
 	return (1);
 }

@@ -45,7 +45,7 @@ $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)
 
 $(OBJ): obj/%.o: src/%.c $(HEADER_ASMLIB)
-	$(CC) -o $@ $(FLAGS) $(HEADERS) -c $<
+	@$(CC) -o $@ $(FLAGS) $(HEADERS) -c $<
 	@printf "$(CYAN)||||$(EOC)"
 
 clean:

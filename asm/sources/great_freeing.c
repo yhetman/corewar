@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:59:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 17:25:52 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/14 19:43:05 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	free_commands(char **split)
 		return ;
 	while (split[++j])
 	{
-		if (DEBUG)
+		if (DEBUG > 1)
 			printf("|freed units counter|%s|-|%d|\n", split[j], j);
 		free(split[j]);
 	}	
