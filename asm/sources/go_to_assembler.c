@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 15:57:11 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/14 22:52:50 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int			reading_process(char *file, t_reader *reader)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
 	if (DEBUG)
-		printf("| File opened succesfully! |");
+		printf("| File opened succesfully! |\n");
 	while ((content = read(fd, buffer, BUFF_SIZE)) > 0)
 	{
 		buffer[content] = '\0';
