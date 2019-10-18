@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/14 23:06:21 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/18 20:16:18 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static int		check_info(t_command *command, t_assembler *ass, int count)
 		printf("|command|--|%s|--|index|--|%d|\n", command->command, index);
 	if (index < 1)
 		return (0);
-//	if (command->args)
-//		res = check_command_arguments(ass, command, index, count);
+	if (command->args)
+		res = get_command_arguments(ass, command, index, count);
 	free_command(command);
 	return (res);
 }

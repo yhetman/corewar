@@ -16,7 +16,8 @@ SRCS= main.c					\
 	  great_freeing.c			\
 	  store_all_token_details.c	\
 	  file_checker.c			\
-	  get_command_info.c		
+	  get_command_info.c		\
+	  get_command_arguments.c
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
