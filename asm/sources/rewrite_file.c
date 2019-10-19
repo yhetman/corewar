@@ -6,11 +6,38 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 21:20:34 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/19 21:41:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+static bool write_filename(int fd, char *destin, int bytes)
+{
+	int		i;
+	int		amount;
+	long	length;
+
+	amount = 0;
+	length = bytes;;
+	while (length)
+	{
+		length /= 256;
+		amount++;
+	}
+	while (4 - amount)
+	{
+		ft_putchar_fd(0x0, fd);
+		amount++;
+	}
+//	puthexa_fd(bytes, fd);
+	i = -1;
+	while (destin[++i])
+		ft_putchar_fd(destin[i], fd);
+	while (++i < sizeof(destin))
+		ft_putchar_fd(0x0, fd);
+	return (true);
+}
 
 static int	change_extension(char	*file)
 {
@@ -40,9 +67,9 @@ int	rewrite_file(t_assembler ass, t_header head, int lines,  char *file)
 
 	if ((fd = change_extension(file)) < 0)
 		return (0);
-//	if (!(count = catch_tokens(&ass)) || i > CHAMP_MAX_SIZE)
-//		return (0);
-//	if (write_filename(fd, header) == 0)
+	if (!write_filename(fd, head.prog_name, COREWAR_EXEC_MAGIC))
+		return (0);
+//	if (!(i = catch_tokens(&ass)) || i > CHAMP_MAX_SIZE)
 //		return (0);
 //	if (write_comment(fd, header, i) == 0)
 //		return (0);
