@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 21:44:35 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/19 21:54:08 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	rewrite_file(t_assembler ass, t_header head, int lines,  char *file)
 		return (0);
 //	if (!(i = catch_tokens(&ass)) || i > CHAMP_MAX_SIZE)
 //		return (0);
-//	if (write_comment(fd, head.comment, i, plus) == 0)
+//	if (write_comment(fd, head.comment, i, 4) == 0)
 //		return (0);
 //	if (write_tokens(ass, fd, lines) == 0)
 //		return (0);
