@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/14 22:52:50 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/19 21:15:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int					go_to_assembler(char *file)
 	store_all_token_details(&ass);
 	if (!file_checker(&ass, &header))
 		return (great_freeing(&ass, NULL));
+	rewrite_file(ass, header, reader.line, file);
 	return (1);
 }

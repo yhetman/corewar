@@ -17,7 +17,8 @@ SRCS= main.c					\
 	  store_all_token_details.c	\
 	  file_checker.c			\
 	  get_command_info.c		\
-	  get_command_arguments.c
+	  get_command_arguments.c	\
+	  rewrite_file.c
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
