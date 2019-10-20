@@ -6,34 +6,38 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:29:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/14 23:06:36 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/20 19:58:39 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static bool	find_commands(char ***stored, t_assembler *ass)
+static bool	find_commands( t_assembler *ass)
 {
 	int		line;
 	int		i;
 
-	line = 1;
+	line = 2;
 	if (DEBUG)
 		printf("|file_checker| -> |find_commands|\n");
-	while (stored[++line])
+	while (ass->stored[line])
 	{
-		if (!stored[line][0])
+		if (!ass->stored[line][0])
 			;
-		else if (stored[line][0][0] == COMMENT_CHAR)
+		else if (ass->stored[line][0][0] == COMMENT_CHAR)
 		{
-			i = 0;
-			while (stored[line][0][++i])
-				if (!ft_strchr(COMMENT_CHARS, stored[line][0][i]))
+			i = 1;
+			while (ass->stored[line][0][i])
+			{
+				if (!ft_strchr(COMMENT_CHARS, ass->stored[line][0][i]))
 						return (great_freeing(ass, NULL));
+				i++;
+			}
 		}
-		else if (stored[line][0])
+		else if (ass->stored[line][0])
 			if (!get_command_info(ass, line))
 				return (false);
+		line++;
 	}
 	return (true);
 }
@@ -82,7 +86,7 @@ int			file_checker(t_assembler *ass, t_header *head)
 		return (false);
 	if (DEBUG)
 		printf("|.name| -> |%s|\n|.comment| -> |%s|\n", head->prog_name, head->comment);
-	if (!ass->stored[2] || !find_commands(ass->stored, ass))
+	if (!ass->stored[2] || !find_commands(ass))
 		return (false);
 	return (1);
 }
