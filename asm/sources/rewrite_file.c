@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 21:54:08 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/20 19:28:16 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,30 @@ static int	change_extension(char	*file)
 		return (fd);
 	free(filename);
 	return (fd);
+}
+
+static int	catch_tokens(t_assembler *ass)
+{
+	int	count;
+	int	i;
+	int	current_token;
+	int	is_token;
+
+	count = 0;
+	i = 1;
+	current_token = -1;
+	while (ass->stored[++i])
+	{
+		is_token = no_command(ass, &i, &count, &current_token);
+		if (ass->stored[i][is_token] && ass->stored[i][is_token][0]
+				&& ass->stored[i][is_token][0] != COMMENT_CHAR)
+		{
+			count++;
+			if (!find_command(ass, &i, &count, is_token))
+				return (0);
+		}
+	}
+	return (count);
 }
 
 int	rewrite_file(t_assembler ass, t_header head, int lines,  char *file)

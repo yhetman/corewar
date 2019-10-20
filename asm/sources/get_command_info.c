@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/18 20:16:18 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/20 19:24:55 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int		define_command_or_comment(char **line, int *i, int *j)
 	return (2);
 }
 
-static bool		get_info(t_command *command, char **line)
+static int		get_info(t_command *command, char **line)
 {
 	int	i;
 	int	sign;
@@ -85,23 +85,23 @@ static bool		get_info(t_command *command, char **line)
 			|| result == 1)
 		return (result);
 	if (!(command->command = ft_strdup(line[i])))
-		return (false);
+		return (0);
 	i++;
 	if (!line[i])
-		return (false);
+		return (0);
 	if (!(command->args = ft_strdup(line[i])))
-		return (false);
+		return (0);
 	if (DEBUG)
 		printf("|command|--|%s|--|arguments|--|%s|\n", command->command, command->args);
 	i++;
 	if (!line[i])
-		return (true);
+		return (1);
 	if (line[i][0] != COMMENT_CHAR || line[i + 1])
-		return (false);
+		return (0);
 	while (line[i][++sign])
 		if (!ft_strchr(COMMENT_CHARS, line[i][sign]))
-			return (false);
-	return (true);
+			return (0);
+	return (1);
 }
 
 int				get_command_info(t_assembler *ass, int count)
@@ -111,7 +111,7 @@ int				get_command_info(t_assembler *ass, int count)
 	if (DEBUG)
 		printf("|file_checker| -> |get_command_info|\n");
 	ft_bzero(&command, sizeof(t_command));
-	if (!get_info(&command, ass->stored[count]))
+	if (get_info(&command, ass->stored[count]) == 0)
 		return (false);
 	if (!check_info(&command, ass, count))
 		return (false);
