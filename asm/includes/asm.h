@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 21:15:57 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/20 19:31:06 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ int					file_checker(t_assembler *ass, t_header *head);
 int					get_command_info(t_assembler *ass, int count);
 int					get_command_arguments(t_assembler *ass, t_command *command, int index, int count);
 int					rewrite_file(t_assembler ass, t_header head, int lines, char *file);
-
+int					catch_tokens(t_assembler *ass);
 #endif
