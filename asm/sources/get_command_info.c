@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/20 19:59:27 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/21 22:12:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void		free_command(t_command *command)
 {
-	if (DEBUG)
-		printf("|file_checker| -> |free_command|\n");
 	if (command->command)
 		free(command->command);
 	if (command->args)
@@ -27,12 +25,8 @@ static int		check_info(t_command *command, t_assembler *ass, int count)
 	int			index;
 	int			res;
 
-	if (DEBUG)
-		printf("|file_checker| -> |check_info|\n");
 	if (command->command)
 		index = define_index(ass->options, command->command);	
-	if (DEBUG)
-		printf("|command|--|%s|--|index|--|%d|\n", command->command, index);
 	if (index < 1)
 		return (0);
 	if (command->args)
@@ -43,8 +37,6 @@ static int		check_info(t_command *command, t_assembler *ass, int count)
 
 static int		define_command_or_comment(char **line, int *i, int *j)
 {
-	if (DEBUG)
-		printf("|get_info| -> |define_command_or_comment|\n");
 	if (!line[0])
 		return (1);
 	if (line[0] && ft_strchr(line[0], LABEL_CHAR) &&
@@ -79,20 +71,16 @@ static int		get_info(t_command *command, char **line)
 
 	i = 0;
 	sign = 0;
-	if (DEBUG)
-		printf("|get_command_info| -> |get_info|\n");
 	if (!(result = define_command_or_comment(line, &i, &sign))
 			|| result == 1)
 		return (result);
 	if (!(command->command = ft_strdup(line[i])))
 		return (0);
 	i++;
-	if (!line[i])
+	if (!line[i]) //return 0 if i == 2 wtf line[2] == NULL!!!!!!!!!!!!
 		return (0);
 	if (!(command->args = ft_strdup(line[i])))
 		return (0);
-	if (DEBUG)
-		printf("|command|--|%s|--|arguments|--|%s|\n", command->command, command->args);
 	i++;
 	if (!line[i])
 		return (1);
@@ -108,13 +96,11 @@ int				get_command_info(t_assembler *ass, int count)
 {
 	t_command	command;
 
-	if (DEBUG)
-		printf("|file_checker| -> |get_command_info|\n");
 	ft_bzero(&command, sizeof(t_command));
 	if (get_info(&command, ass->stored[count]) == 0)
 		return (false);
 	if (!check_info(&command, ass, count))
 		return (false);
-	free_command(&command);
+//	free_command(&command);
 	return (1);
 }

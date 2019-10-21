@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:29:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/20 19:58:39 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/21 14:27:14 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static bool	find_commands( t_assembler *ass)
 	int		i;
 
 	line = 2;
-	if (DEBUG)
-		printf("|file_checker| -> |find_commands|\n");
 	while (ass->stored[line])
 	{
 		if (!ass->stored[line][0])
@@ -35,7 +33,7 @@ static bool	find_commands( t_assembler *ass)
 			}
 		}
 		else if (ass->stored[line][0])
-			if (!get_command_info(ass, line))
+			if (!get_command_info(ass, line)) //get_command_info() return false if line == 3
 				return (false);
 		line++;
 	}
@@ -49,8 +47,6 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 	int		k;
 
 	
-	if (DEBUG)
-		printf("|file_checker| -> |find_matches|\n");
 	k = ft_strlen(line);
 	if (!line || !ft_strnstr(line, string, ft_strlen(string)))
 		return (false);
@@ -75,18 +71,13 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 
 int			file_checker(t_assembler *ass, t_header *head)
 {
-	if (DEBUG)
-		printf("|go_to_assembler| -> |file_checker|\n");
 	ft_bzero(head, sizeof(t_header *));
 	if (!find_matches(ass->stored[0][0], head->prog_name,
 				NAME_CMD_STRING, PROG_NAME_LENGTH))
 		return (false);
-	if (!find_matches(ass->stored[1][0], head->comment,
-				COMMENT_CMD_STRING, COMMENT_LENGTH))
+	if (!find_matches(ass->stored[1][0], head->comment, COMMENT_CMD_STRING, COMMENT_LENGTH))
 		return (false);
-	if (DEBUG)
-		printf("|.name| -> |%s|\n|.comment| -> |%s|\n", head->prog_name, head->comment);
-	if (!ass->stored[2] || !find_commands(ass))
+	if (!ass->stored[2] || !find_commands(ass)) //find_commands() return false
 		return (false);
 	return (1);
 }

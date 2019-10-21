@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:59:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/14 19:43:05 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/21 13:02:29 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static void	free_commands(char **split)
 	int		j;
 
 	j = -1;
-	if (DEBUG)
-		printf("|great_freeing| -> |free_commands|\n");
+//	if (DEBUG)
+//		printf("|great_freeing| -> |free_commands|\n");
 	if (!split)
 		return ;
 	while (split[++j])
 	{
-		if (DEBUG > 1)
-			printf("|freed units counter|%s|-|%d|\n", split[j], j);
+//		if (DEBUG > 1)
+//			printf("|freed units counter|%s|-|%d|\n", split[j], j);
 		free(split[j]);
 	}	
 	free(split);
@@ -55,8 +55,8 @@ static void	free_tokens_name(t_token *tokens, int count)
 	int		j;
 
 	j = -1;
-	if (DEBUG)
-		printf("|great_freeing| -> |free_tokens_name|\n");
+//	if (DEBUG)
+//		printf("|great_freeing| -> |free_tokens_name|\n");
 	if (!tokens)
 		return ;
 	while (++j < count)
@@ -67,8 +67,8 @@ static void	free_tokens_name(t_token *tokens, int count)
 int			great_freeing(t_assembler *ass, char *line)
 {
 	
-	if (DEBUG)
-		printf("|great_freeing|\n");
+//	if (DEBUG)
+//		printf("|great_freeing|\n");
 	free_commands(ass->command);
 	free_stored_info(ass->stored);
 	free_tokens_name(ass->tokens, ass->count);

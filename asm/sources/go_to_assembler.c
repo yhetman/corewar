@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 21:15:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/21 21:46:58 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,14 @@ static int			reading_process(char *file, t_reader *reader)
 	int				content;
 	int				fd;
 
-	if (DEBUG)
-		printf("|set_reader| -> |reading_process|\n");
 	buffer[0] = 0;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
-	if (DEBUG)
-		printf("| File opened succesfully! |\n");
 	while ((content = read(fd, buffer, BUFF_SIZE)) > 0)
 	{
 		buffer[content] = '\0';
 		counts_char_line(buffer, reader);
 	}
-	if (DEBUG)
-		printf("|File consists of |%d| signs and |%d| lines|\n", reader->sign, reader->line);
 	if (content > -1)
 		lseek(fd, 0, SEEK_SET);
 	if (!reader->sign || reader->line < 4)
@@ -64,8 +58,6 @@ static int			set_reader(char *file, t_assembler *ass,
 {
 	int				fd;
 
-	if (DEBUG)
-		printf("|go_to_assembler| -> |set_reader|\n");
 	if ((fd = reading_process(file, reader)) < 0)
 		return (error_exit(line, "ERROR OCCURED: reading process failed\n"));
 	if (!reader->line || !reader->sign)
@@ -94,8 +86,11 @@ int					go_to_assembler(char *file)
 	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
 	store_all_token_details(&ass);
-	if (!file_checker(&ass, &header))
+//	print_t_assembler(&ass);//print
+	if (!file_checker(&ass, &header)) //file_checker() return 0
+	{
 		return (great_freeing(&ass, NULL));
+	}
 	rewrite_file(ass, header, reader.line, file);
 	return (1);
 }

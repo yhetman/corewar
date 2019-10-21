@@ -6,13 +6,20 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 14:46:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/12 06:15:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/21 21:42:02 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
 
-int	find_words(char *str)
+static char	*skip_word(char *str)
+{
+	while (*str && !IS_TABUL(*str))
+		++str;
+	return (str);
+}
+
+int			find_words(char *str)
 {
 	char	*tmp;
 	int		words;
@@ -21,20 +28,12 @@ int	find_words(char *str)
 	tmp = str;
 	while (*tmp)
 	{
-		if (IS_TABUL(*tmp))
-			tmp++;
-		else if (*tmp == COMMENT_CHAR)
-		{
-			words++;
-			break ;
-		}
-		else if (tmp == str || IS_TABUL(*tmp - 1))
-		{
-			words++;
-			tmp++;
-		}
-		else
-			tmp++;
+		while (IS_TABUL(*tmp))
+			++tmp;
+		if (*tmp == COMMENT_CHAR)
+			tmp = skip_word(tmp);
+		else if (++words)
+			tmp = skip_word(tmp);
 	}
 	return (words);
 }

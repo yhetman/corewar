@@ -19,7 +19,8 @@ SRCS= main.c					\
 	  get_command_info.c		\
 	  get_command_arguments.c	\
 	  rewrite_file.c			\
-	  catch_tokens.c			
+	  catch_tokens.c			\
+	  debug.c
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
@@ -43,15 +44,23 @@ COLOR6 = \033[38;5;81m
 
 $(NAME): $(OBJDIR) $(ASMLIB_PATH)$(ASMLIB) $(OBJ)
 	@printf "$(COLOR2) >>$(EOC) $(COLOR1)$(NAME) is ready.$(EOC)\n"
-	@gcc $(DEBUG) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
+	@gcc $(FLAGS) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
 
 $(OBJDIR):
 	@printf "$(COLOR4)\t\t|\t\tCONSTRUCTING ASSEMBLER\t\t|$(EOC)\n"
 	@mkdir $(OBJDIR)
 
+debug: debugflags debuglib all
+
+debugflags:
+	$(eval FLAGS=$(FLAGS) $(DEBUG))
+
+debuglib:
+	make debug -C ./asmlib
+
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@printf "$(COLOR3)||||$(EOC)"
-	@gcc $(DEBUG) $(INCLUDE) -c $< -o $@
+	@gcc $(FLAGS) $(INCLUDE) -c $< -o $@
 	@ar -r $(ASMLIB_PATH)$(ASMLIB) $@
 	@ranlib $(ASMLIB_PATH)$(ASMLIB)
 

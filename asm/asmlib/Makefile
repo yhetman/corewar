@@ -12,7 +12,9 @@
 
 NAME = asmlib.a
 
-FLAGS = -g3  -fsanitize=address #  -Wno-missing-braces -g0 #-Wall -Wextra -Werror
+FLAGS = -Wno-missing-braces -g0 #-Wall -Wextra -Werror
+
+DEBUG = -g3 -fsanitize=address
 
 FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			op ft_bzero ft_putchar_fd ft_putstr_fd		\
@@ -40,6 +42,11 @@ $(NAME): $(OBJ_PATH) $(OBJ) $(HEADER_ASMLIB)
 	@printf " $(RED)>>$(EOC) $(GREEN)$(NAME) is ready.$(EOC)\n"
 	@ar rcs $(NAME) $(OBJ)
 	@ranlib $(NAME)
+
+debug: debugflags all
+
+debugflags:
+	$(eval FLAGS=$(FLAGS) $(DEBUG))
 
 $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)
