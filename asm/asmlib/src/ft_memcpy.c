@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_memspy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:10:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/22 12:32:42 by blukasho         ###   ########.fr       */
+/*   Created: 2018/10/31 11:55:28 by blukasho          #+#    #+#             */
+/*   Updated: 2019/10/22 13:55:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char			*str;
-	size_t			i;
+	size_t	i;
+	char	*sr;
+	char	*ds;
 
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))) || !s)
-		return (NULL);
-	while (i < len && s[start + 1])
-		str[i++] = s[start++];
-	str[i] = '\0';
-	return (str);
+	sr = (char *)src;
+	ds = (char *)dst;
+	i = -1;
+	while (++i < n)
+		ds[i] = sr[i];
+	return (dst);
 }

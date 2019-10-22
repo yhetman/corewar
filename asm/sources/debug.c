@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:31:10 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/21 22:12:58 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 11:50:28 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void		print_t_assembler(t_assembler *ass)
 
 	if (!ass)
 		return ;
-//	printf("<<<<<<ass->command>>>>>\n");
-//	if (ass->command)
-//		print_char_arr(ass->command);
-//	printf("<<<<<<ass->command>>>>>\n\n");
-//	printf("<<<<<<ass->stored>>>>>\n");
-//	if (ass->stored && (stored = ass->stored))
-//	{
-//		while (*stored)
-//		{
-//			printf(">\n");
-//			print_char_arr(*(stored++));
-//		}
-//	}
-//	printf("<<<<<<ass->stored>>>>>\n\n");
+	printf("<<<<<<ass->command>>>>>\n");
+	if (ass->command)
+		print_char_arr(ass->command);
+	printf("<<<<<<ass->command>>>>>\n\n");
+	printf("<<<<<<ass->stored>>>>>\n");
+	if (ass->stored && (stored = ass->stored))
+	{
+		while (*stored)
+		{
+			printf(">\n");
+			print_char_arr(*(stored++));
+		}
+	}
+	printf("<<<<<<ass->stored>>>>>\n\n");
 }

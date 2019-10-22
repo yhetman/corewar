@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/21 13:32:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 13:28:43 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct			s_assembler
 	char				***stored;
 	int					count;
 	t_token				*tokens;
-	t_op				options[17];
+	t_op				*options;
 }						t_assembler;
 
 int					go_to_assembler(char *file);
@@ -64,4 +64,5 @@ int					rewrite_file(t_assembler ass, t_header head, int lines, char *file);
 int					catch_tokens(t_assembler *ass);
 //debug
 void				print_t_assembler(t_assembler *ass);
+void				init_g_o(t_assembler *ass);
 #endif

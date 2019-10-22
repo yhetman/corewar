@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/21 16:28:59 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 13:09:57 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ int			store_all_token_details(t_assembler *ass)
 {
 	int	i;
 
-	i = -1;
-	while (++i < 17)
-		ass->options[i] = g_options[i];
+	init_g_o(ass);
 	i = 1;
 	while (ass->stored[++i])
 	{

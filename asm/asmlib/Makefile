@@ -20,7 +20,7 @@ FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			op ft_bzero ft_putchar_fd ft_putstr_fd		\
 			ft_strnew ft_strlen find_words ft_strsub	\
 			ft_strchr validate_token ft_strcmp ft_strnstr \
-			define_index ft_atoi
+			define_index ft_atoi ft_memcpy
 
 OBJ  = $(addprefix obj/, $(addsuffix .o, $(FUNCTIONS)))
 SRC = $(addprefix src/, $(addsuffix .c, $(FUNCTIONS)))

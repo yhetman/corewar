@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/21 21:46:58 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 14:15:27 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,14 @@ int					go_to_assembler(char *file)
 
 	ft_bzero(&reader, sizeof(t_reader));
 	ft_bzero(&ass, sizeof(t_assembler));
-	ft_bzero(&ass.tokens, sizeof(t_token));
+	ft_bzero(&(ass.tokens), sizeof(t_token));
 	if (!set_reader(file, &ass, &reader, NULL))
 		return (0);
 	store_all_token_details(&ass);
 //	print_t_assembler(&ass);//print
 	if (!file_checker(&ass, &header)) //file_checker() return 0
 	{
+		printf("FUCK\n");
 		return (great_freeing(&ass, NULL));
 	}
 	rewrite_file(ass, header, reader.line, file);

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 19:34:05 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 20:27:37 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/22 12:21:29 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ int		get_command_arguments(t_assembler *ass, t_command *command, int index, int 
 			return (0);
 		else if (command->args[i] == DIRECT_CHAR && !(get_direct_indirect(command->args + i, ass->options[index].args_type[arg], ass, 2)))
 			return (0);
-		else if (command->args[i] != DIRECT_CHAR && command->args[i] == 'r'
-			&& !get_direct_indirect(command->args + i, ass->options[index].args_type[arg], ass, 1))
+		else if (command->args[i] != DIRECT_CHAR && command->args[i] != 'r' && !get_direct_indirect(command->args + i, ass->options[index].args_type[arg], ass, 1))
 			return (0);
 		if (ft_strchr(command->args + i, SEPARATOR_CHAR))
 			i += ft_strchr(command->args + i, SEPARATOR_CHAR) - (command->args + i) +1;

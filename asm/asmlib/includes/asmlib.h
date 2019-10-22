@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 20:30:11 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/22 13:55:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-t_op		g_options[17];
 
 int			define_index(t_op *options, char *command);
 bool		validate_token(char *line);
@@ -42,4 +41,5 @@ char		*ft_strchr(const char *str, int c);
 int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strnstr(const char *s1, const char *s2, size_t len);
 int			ft_atoi(const char *str);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
 #endif

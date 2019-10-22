@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/21 22:12:13 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 12:20:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		check_info(t_command *command, t_assembler *ass, int count)
 	if (index < 1)
 		return (0);
 	if (command->args)
-		res = get_command_arguments(ass, command, index, count);
+		res = get_command_arguments(ass, command, index, count);//false
 	free_command(command);
 	return (res);
 }
@@ -99,7 +99,7 @@ int				get_command_info(t_assembler *ass, int count)
 	ft_bzero(&command, sizeof(t_command));
 	if (get_info(&command, ass->stored[count]) == 0)
 		return (false);
-	if (!check_info(&command, ass, count))
+	if (!check_info(&command, ass, count))//false
 		return (false);
 //	free_command(&command);
 	return (1);

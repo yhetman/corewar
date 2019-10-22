@@ -6,11 +6,12 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:02 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/21 22:09:39 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 13:57:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
+#include "../../includes/asm.h"
 
 t_op	g_options[17] =
 {
@@ -38,3 +39,9 @@ t_op	g_options[17] =
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
+
+void	init_g_o(t_assembler *ass)
+{
+	ass->options = (t_op *)malloc(17 * sizeof(t_op));
+	ft_memcpy((void *)ass->options, (void *)&g_options, 17 * sizeof(t_op));
+}

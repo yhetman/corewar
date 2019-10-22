@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/21 21:56:18 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 11:53:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static bool	init_details(char ***grid, char **lines)
 	while (lines[i])
 	{
 		words = find_words(lines[i]);
-		printf("|words |%d| |%s|\n", words, lines[i]);
+//		printf("|words |%d| |%s|\n", words, lines[i]);
 		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words + 1))))
 			return (false);
 		if (!init_each_word(grid[i], lines[i], 0, words))
