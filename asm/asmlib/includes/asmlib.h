@@ -22,7 +22,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-t_op		g_options[17];
+//t_op		g_options[17];
 
 int			define_index(t_op *options, char *command);
 bool		validate_token(char *line);
