@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/22 14:15:27 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/22 14:30:50 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,25 @@ static int			set_reader(char *file, t_assembler *ass,
 
 int					go_to_assembler(char *file)
 {
-	t_header		header;
-	t_assembler		ass;
-	t_reader		reader;
+	t_header		*header;
+	t_assembler		*ass;
+	t_reader		*reader;
 
-	ft_bzero(&reader, sizeof(t_reader));
-	ft_bzero(&ass, sizeof(t_assembler));
-	ft_bzero(&(ass.tokens), sizeof(t_token));
-	if (!set_reader(file, &ass, &reader, NULL))
+	reader = (t_reader *)malloc(sizeof(t_reader));
+	ft_bzero(reader, sizeof(t_reader));
+	ass = (t_assembler *)malloc(sizeof(t_assembler));
+	ft_bzero(ass, sizeof(t_assembler));
+	header = (t_header *)malloc(sizeof(t_header));
+	ft_bzero(header, sizeof(t_header));
+	if (!set_reader(file, ass, reader, NULL))
 		return (0);
-	store_all_token_details(&ass);
+	store_all_token_details(ass);
 //	print_t_assembler(&ass);//print
-	if (!file_checker(&ass, &header)) //file_checker() return 0
+	if (!file_checker(ass, header)) //file_checker() return 0
 	{
 		printf("FUCK\n");
-		return (great_freeing(&ass, NULL));
+		return (great_freeing(ass, NULL));
 	}
-	rewrite_file(ass, header, reader.line, file);
+//	rewrite_file(ass, header, reader->line, file);
 	return (1);
 }
