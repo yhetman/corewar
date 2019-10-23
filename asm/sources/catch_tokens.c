@@ -67,20 +67,20 @@ int		catch_tokens(t_assembler *ass)
 {
 	int	count;
 	int	i;
-	int	current_token;
-	int	is_token;
+	int	current;
+	int	token;
 
 	count = 0;
 	i = 1;
-	current_token = -1;
+	current = -1;
 	while (ass->stored[++i])
 	{
-		is_token = no_command(ass, &i, &count, &current_token);
-		if (ass->stored[i][is_token] && ass->stored[i][is_token][0]
-				&& ass->stored[i][is_token][0] != COMMENT_CHAR)
+		token = no_command(ass, &i, &count, &current);
+		if (ass->stored[i][token] && ass->stored[i][token][0]
+				&& ass->stored[i][token][0] != COMMENT_CHAR)
 		{
 			count++;
-			if (!find_command(ass, &i, &count, is_token))
+			if (!find_command(ass, &i, &count, token))
 				return (0);
 		}
 	}
