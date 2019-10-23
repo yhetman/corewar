@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/14 22:49:44 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/22 11:53:47 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static int	miss_trash(int *i, char *line)
 	int		j;
 
 	j = 0;
-//	if (DEBUG)
-//		printf("|init_each_word| -> |miss_trash|\n");
 	while (line[*i] && line[*i] != COMMENT_CHAR
 			&& (IS_TABUL(line[*i])))
 		(*i)++;
@@ -34,8 +32,6 @@ static bool	init_each_word(char **words, char *line, int i, int nb_words)
 	int		w_len;
 
 	w_nb = 0;
-//	if (DEBUG)
-//		printf("|init_details| -> |init_each_word|\n");
 	while (nb_words > 0 && line && line[i])
 	{
 		w_len = miss_trash(&i, line);
@@ -60,8 +56,6 @@ static bool	init_details(char ***grid, char **lines)
 	int		i;
 
 	i = -1;
-	if (DEBUG)
-		printf("|great_initialization| -> |init_details|\n");
 	while (++i < 2)
 	{
 		if (!(grid[i] = (char**)malloc(sizeof(char*) * 2)))
@@ -74,11 +68,11 @@ static bool	init_details(char ***grid, char **lines)
 	while (lines[i])
 	{
 		words = find_words(lines[i]);
+//		printf("|words |%d| |%s|\n", words, lines[i]);
 		if (!(grid[i] = (char**)malloc(sizeof(char*) * (words + 1))))
 			return (false);
 		if (!init_each_word(grid[i], lines[i], 0, words))
 			return (false);
-		printf("|%d|--|%s|\n", i, lines[i]);
 		i++;
 	}
 	grid[i] = NULL;
@@ -91,8 +85,6 @@ static bool	init_command(char **command, int lines, char *file, int i)
 	int		str;
 
 	str = -1;
-	if (DEBUG)
-		printf("|great_initialization| -> |init_command|\n");
 	while (++str < lines && ++i >= 0)
 	{
 		curr = 0;
@@ -118,8 +110,6 @@ static bool	init_command(char **command, int lines, char *file, int i)
 
 int			great_initialization(t_assembler *ass, int lines, char *file)
 {
-	if (DEBUG)
-		printf("| Entered great_initialization|\n");
 	if (!(ass->command = (char **)malloc(sizeof(char*) * (lines + 1))))
 		return (0);
 	if (!(init_command(ass->command, lines, file, -1)))

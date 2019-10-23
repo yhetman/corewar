@@ -6,14 +6,16 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:02 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 18:46:36 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/22 13:57:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
+#include "../../includes/asm.h"
 
 t_op	g_options[17] =
 {
+	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
 	{"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
@@ -35,6 +37,11 @@ t_op	g_options[17] =
 	{"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
 		"long load index", 1, 1},
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
-	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
+
+void	init_g_o(t_assembler *ass)
+{
+	ass->options = (t_op *)malloc(17 * sizeof(t_op));
+	ft_memcpy((void *)ass->options, (void *)&g_options, 17 * sizeof(t_op));
+}

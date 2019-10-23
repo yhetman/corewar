@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
-#*   Updated: 2019/10/07 05:24:55 by yhetman          ###   ########.fr       *#
+#*   Updated: 2019/10/23 09:19:31 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ SRCS= main.c					\
 	  get_command_info.c		\
 	  get_command_arguments.c	\
 	  rewrite_file.c			\
-	  catch_tokens.c			
+	  catch_tokens.c			\
+	  debug.c					\
+	  init.c					\
+	  clear.c					\
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
@@ -43,15 +46,23 @@ COLOR6 = \033[38;5;81m
 
 $(NAME): $(OBJDIR) $(ASMLIB_PATH)$(ASMLIB) $(OBJ)
 	@printf "$(COLOR2) >>$(EOC) $(COLOR1)$(NAME) is ready.$(EOC)\n"
-	@gcc $(DEBUG) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
+	@gcc $(FLAGS) $(INCLUDE) $(ASMLIB_PATH)$(ASMLIB) -o $(NAME)
 
 $(OBJDIR):
 	@printf "$(COLOR4)\t\t|\t\tCONSTRUCTING ASSEMBLER\t\t|$(EOC)\n"
 	@mkdir $(OBJDIR)
 
+debug: debugflags debuglib all
+
+debugflags:
+	$(eval FLAGS=$(FLAGS) $(DEBUG))
+
+debuglib:
+	make debug -C ./asmlib
+
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@printf "$(COLOR3)||||$(EOC)"
-	@gcc $(DEBUG) $(INCLUDE) -c $< -o $@
+	@gcc $(FLAGS) $(INCLUDE) -c $< -o $@
 	@ar -r $(ASMLIB_PATH)$(ASMLIB) $@
 	@ranlib $(ASMLIB_PATH)$(ASMLIB)
 

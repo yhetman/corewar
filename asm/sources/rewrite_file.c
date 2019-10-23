@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/20 19:31:08 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/23 13:14:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,21 @@ static int	change_extension(char	*file)
 	return (fd);
 }
 
-int	rewrite_file(t_assembler ass, t_header head, int lines,  char *file)
+int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 {
 	int	fd;
 	int	i;
 
 	if ((fd = change_extension(file)) < 0)
 		return (0);
-	if (!write_header(fd, head.prog_name, COREWAR_EXEC_MAGIC, 0))
+	if (!write_header(fd, head->prog_name, COREWAR_EXEC_MAGIC, 0))
 		return (0);
-//	if (!(i = catch_tokens(&ass)) || i > CHAMP_MAX_SIZE)
-//		return (0);
-//	if (write_comment(fd, head.comment, i, 4) == 0)
-//		return (0);
-//	if (write_tokens(ass, fd, lines) == 0)
-//		return (0);
+	if (!(i = catch_tokens(ass)) || i > CHAMP_MAX_SIZE)
+		return (0);
+	if (write_comment(fd, head->comment, i, 4) == 0)
+		return (0);
+	if (write_tokens(ass, fd, lines) == 0)
+		return (0);
 	if (close(fd) < 0)
 		return (0);
 	return (1);

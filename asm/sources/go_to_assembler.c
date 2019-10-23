@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/19 21:15:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/23 13:22:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,14 @@ static int			reading_process(char *file, t_reader *reader)
 	int				content;
 	int				fd;
 
-	if (DEBUG)
-		printf("|set_reader| -> |reading_process|\n");
 	buffer[0] = 0;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
-	if (DEBUG)
-		printf("| File opened succesfully! |\n");
 	while ((content = read(fd, buffer, BUFF_SIZE)) > 0)
 	{
 		buffer[content] = '\0';
 		counts_char_line(buffer, reader);
 	}
-	if (DEBUG)
-		printf("|File consists of |%d| signs and |%d| lines|\n", reader->sign, reader->line);
 	if (content > -1)
 		lseek(fd, 0, SEEK_SET);
 	if (!reader->sign || reader->line < 4)
@@ -64,8 +58,6 @@ static int			set_reader(char *file, t_assembler *ass,
 {
 	int				fd;
 
-	if (DEBUG)
-		printf("|go_to_assembler| -> |set_reader|\n");
 	if ((fd = reading_process(file, reader)) < 0)
 		return (error_exit(line, "ERROR OCCURED: reading process failed\n"));
 	if (!reader->line || !reader->sign)
@@ -77,25 +69,29 @@ static int			set_reader(char *file, t_assembler *ass,
 	line[reader->sign] = '\0';
 	if (close(fd) < 0)
 		return (error_exit(line, "ERROR OCCURED: closing of fd failed\n"));
-	if (!great_initialization(ass, reader->line, line))
-		return (great_freeing(ass, line));
+	if (!great_initialization(ass, reader->line, line) && ft_strdel(&line))
+		return (0);
+	if (line)
+		ft_strdel(&line);
 	return (1);
 }
 
 int					go_to_assembler(char *file)
 {
-	t_header		header;
-	t_assembler		ass;
-	t_reader		reader;
+	t_assembler		*ass;
+	t_header		*header;
+	t_reader		*reader;
 
-	ft_bzero(&reader, sizeof(t_reader));
-	ft_bzero(&ass, sizeof(t_assembler));
-	ft_bzero(&ass.tokens, sizeof(t_token));
-	if (!set_reader(file, &ass, &reader, NULL))
-		return (0);
-	store_all_token_details(&ass);
-	if (!file_checker(&ass, &header))
-		return (great_freeing(&ass, NULL));
-	rewrite_file(ass, header, reader.line, file);
-	return (1);
+	ass = init_t_assembler();
+	reader = init_t_reader();
+	if (!set_reader(file, ass, reader, NULL))
+		return (clear_t_assembler(ass) + clear_t_reader(reader));
+	store_all_token_details(ass);
+	header = init_t_header();
+	if (!file_checker(ass, header))
+		return (clear_t_assembler(ass) + clear_t_reader(reader) +
+				clear_t_header(header));
+//	rewrite_file(ass, header, reader->line, file);
+	return (clear_t_assembler(ass) + clear_t_reader(reader) +
+			clear_t_header(header) + 1);
 }

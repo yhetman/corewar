@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/20 19:31:06 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/23 13:12:40 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct			s_assembler
 	char				***stored;
 	int					count;
 	t_token				*tokens;
-	t_op				options[17];
+	t_op				*options;
 }						t_assembler;
 
 int					go_to_assembler(char *file);
@@ -60,6 +60,17 @@ int					store_all_token_details(t_assembler *ass);
 int					file_checker(t_assembler *ass, t_header *head);
 int					get_command_info(t_assembler *ass, int count);
 int					get_command_arguments(t_assembler *ass, t_command *command, int index, int count);
-int					rewrite_file(t_assembler ass, t_header head, int lines, char *file);
+int					rewrite_file(t_assembler *ass, t_header *head, int lines, char *file);
 int					catch_tokens(t_assembler *ass);
+//debug
+void				print_t_assembler(t_assembler *ass);
+void				init_g_o(t_assembler *ass);
+
+t_header			*init_t_header(void);
+t_reader			*init_t_reader(void);
+t_assembler			*init_t_assembler(void);
+int					clear_t_reader(t_reader *reader);
+int					clear_t_header(t_header *header);
+int					clear_t_assembler(t_assembler *ass);
+
 #endif
