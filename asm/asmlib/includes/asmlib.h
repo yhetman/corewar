@@ -22,7 +22,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-
 int			define_index(t_op *options, char *command);
 bool		validate_token(char *line);
 int			find_words(char *str);
