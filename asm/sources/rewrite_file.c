@@ -71,10 +71,10 @@ int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 		return (0);
 	if (!(i = catch_tokens(ass)) || i > CHAMP_MAX_SIZE)
 		return (0);
-	if (write_comment(fd, head->comment, i, 4) == 0)
+	if (!write_header(fd, head->comment, i, 4))
 		return (0);
-	if (write_tokens(ass, fd, lines) == 0)
-		return (0);
+	//if (write_tokens(ass, fd, lines) == 0)
+	//	return (0);
 	if (close(fd) < 0)
 		return (0);
 	return (1);
