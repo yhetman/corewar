@@ -23,6 +23,7 @@ SRCS= main.c					\
 	  debug.c					\
 	  init.c					\
 	  clear.c					\
+          init_writer.c 
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
