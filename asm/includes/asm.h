@@ -72,5 +72,5 @@ t_assembler			*init_t_assembler(void);
 int					clear_t_reader(t_reader *reader);
 int					clear_t_header(t_header *header);
 int					clear_t_assembler(t_assembler *ass);
-
+int init_writer(t_assembler *ass, char **buffer, int fd);
 #endif
