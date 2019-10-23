@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 00:36:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 02:43:02 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool write_header(int fd, char *destin, int bytes, int plus)
 	{
 		length /= 256;
 		amount++;
-i	}
+	}
 	while (4 - amount + plus)
 	{
 		ft_putchar_fd(0x0, fd);
