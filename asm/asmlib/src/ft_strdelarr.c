@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_strdelarr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/29 18:00:34 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 09:27:14 by blukasho         ###   ########.fr       */
+/*   Created: 2019/10/23 09:10:48 by blukasho          #+#    #+#             */
+/*   Updated: 2019/10/23 09:19:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
 
-int		ft_strdel(char **as)
+int			ft_strdelarr(char ***as)
 {
-	if (as == NULL)
+	char	**tmp;
+
+	if (!as || !*as)
 		return (0);
+	tmp = *as;
+	while (*tmp && !(ft_strdel(&(*tmp))))
+		++tmp;
 	free(*as);
 	*as = NULL;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/22 14:30:50 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/23 10:59:06 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,32 +69,37 @@ static int			set_reader(char *file, t_assembler *ass,
 	line[reader->sign] = '\0';
 	if (close(fd) < 0)
 		return (error_exit(line, "ERROR OCCURED: closing of fd failed\n"));
-	if (!great_initialization(ass, reader->line, line))
-		return (great_freeing(ass, line));
+	if (!great_initialization(ass, reader->line, line) && ft_strdel(&line))
+		return (0);
+	if (line)
+		ft_strdel(&line);
 	return (1);
 }
 
 int					go_to_assembler(char *file)
 {
-	t_header		*header;
 	t_assembler		*ass;
+	t_header		*header;
 	t_reader		*reader;
 
-	reader = (t_reader *)malloc(sizeof(t_reader));
-	ft_bzero(reader, sizeof(t_reader));
-	ass = (t_assembler *)malloc(sizeof(t_assembler));
-	ft_bzero(ass, sizeof(t_assembler));
-	header = (t_header *)malloc(sizeof(t_header));
-	ft_bzero(header, sizeof(t_header));
+	ass = init_t_assembler();
+	reader = init_t_reader();
 	if (!set_reader(file, ass, reader, NULL))
-		return (0);
+		return (clear_t_assembler(ass) + clear_t_reader(reader));
 	store_all_token_details(ass);
-//	print_t_assembler(&ass);//print
+	header = init_t_header();
 	if (!file_checker(ass, header)) //file_checker() return 0
 	{
 		printf("FUCK\n");
-		return (great_freeing(ass, NULL));
+		print_t_assembler(ass);//print
+		clear_t_assembler(ass);
+		clear_t_reader(reader);
+		clear_t_header(header);
+		return (0);
 	}
 //	rewrite_file(ass, header, reader->line, file);
+	clear_t_assembler(ass);
+	clear_t_reader(reader);
+	clear_t_header(header);
 	return (1);
 }

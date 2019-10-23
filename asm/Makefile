@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
-#*   Updated: 2019/10/07 05:24:55 by yhetman          ###   ########.fr       *#
+#*   Updated: 2019/10/23 09:19:31 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCS= main.c					\
 	  get_command_arguments.c	\
 	  rewrite_file.c			\
 	  catch_tokens.c			\
-	  debug.c
+	  debug.c					\
+	  init.c					\
+	  clear.c					\
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
