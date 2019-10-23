@@ -29,6 +29,8 @@
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
  
+# define REG_CHAR               'r'
+
 # define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'
 # define DIRECT_CHAR			'%'
