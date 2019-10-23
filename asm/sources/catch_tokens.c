@@ -6,11 +6,22 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 19:29:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/20 19:37:15 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/23 23:22:12 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+static int	find_number_of_token(t_token *tokens, int amount, int numb)
+{
+	int	i;
+
+	i = -1;
+	while (++i < amount)
+		if (tokens[i].count == numb)
+				return (i);
+	return (i);
+}
 
 static int	no_command(t_assembler *ass, int *i, int *count, int *current)
 {   
@@ -26,8 +37,8 @@ static int	no_command(t_assembler *ass, int *i, int *count, int *current)
 		ft_strchr(ass->stored[*i][0], LABEL_CHAR))
 	{
 		token = 1;
-		*current = find_number_of_token(ass, *i);
-                if (*current > -1)
+		*current = find_number_of_token(ass->tokens, ass->count, *i);
+		if (*current > -1)
 			ass->tokens[*current].byte.first = *count;
 	}
 	return (token);

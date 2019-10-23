@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/14 20:23:30 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/23 23:28:13 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
  
-# define REG_CHAR               'r'
+# define REG_CHAR				'r'
 
 # define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'

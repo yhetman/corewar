@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 09:19:31 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:20:50 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 # include <errno.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "../../includes/asm.h"
 
-int	              find_number_of_token(t_assembler *ass, int numb);
 int			define_index(t_op *options, char *command);
 bool		validate_token(char *line);
 int			find_words(char *str);

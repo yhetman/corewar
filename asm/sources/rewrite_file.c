@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 13:14:42 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/23 23:35:59 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static int write_commands(t_assembler *ass, int fd, int lines)
 {
-        int     i;
-        int     res;
+	int		i;
+	int		res;
 	char	**buffer;
 
 	i = 1;
-        res = 0;
+	res = 0;
 	while (++i < lines)
 	{
-		buffer = ass.stored[i];
+		buffer = ass->stored[i];
+		printf("|%d|-|OK!|\n", i);
 		if (!buffer || !buffer[0] || !buffer[0][0]
-                   || buffer[0][0] == COMMENT_CHAR)
-                        continue ;
+				|| buffer[0][0] == COMMENT_CHAR)
+			continue ;
 		else if (ft_strchr(buffer[0], LABEL_CHAR))
-			res = init_writer(ass, buffer, fd);
-		}
+			res = 0;// init_writer(ass, buffer, fd);
 	}
 	return (res);
 }
