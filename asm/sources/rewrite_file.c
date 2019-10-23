@@ -12,6 +12,27 @@
 
 #include "../includes/asm.h"
 
+static int write_commands(t_assembler *ass, int fd, int lines)
+{
+        int     i;
+        int     res;
+	char	**buffer;
+
+	i = 1;
+        res = 0;
+	while (++i < lines)
+	{
+		buffer = ass.stored[i];
+		if (!buffer || !buffer[0] || !buffer[0][0]
+                   || buffer[0][0] == COMMENT_CHAR)
+                        continue ;
+		else if (ft_strchr(buffer[0], LABEL_CHAR))
+			res = init_writer(ass, buffer, fd);
+		}
+	}
+	return (res);
+}
+
 static bool write_header(int fd, char *destin, int bytes, int plus)
 {
 	int		i;
@@ -30,7 +51,7 @@ static bool write_header(int fd, char *destin, int bytes, int plus)
 		ft_putchar_fd(0x0, fd);
 		amount++;
 	}
-//	puthexa_fd(bytes, fd);
+//	ft_puthex_fd(bytes, fd);
 	i = -1;
 	while (destin[++i])
 		ft_putchar_fd(destin[i], fd);
@@ -73,8 +94,8 @@ int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 		return (0);
 	if (!write_header(fd, head->comment, i, 4))
 		return (0);
-	//if (write_tokens(ass, fd, lines) == 0)
-	//	return (0);
+	if (!write_commands(ass, fd, lines))
+		return (0);
 	if (close(fd) < 0)
 		return (0);
 	return (1);
