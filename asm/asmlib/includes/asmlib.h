@@ -21,7 +21,9 @@
 # include <errno.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "../../includes/asm.h"
 
+int	              find_number_of_token(t_assembler *ass, int numb);
 int			define_index(t_op *options, char *command);
 bool		validate_token(char *line);
 int			find_words(char *str);
