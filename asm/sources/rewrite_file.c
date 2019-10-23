@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 23:35:59 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 00:36:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 				|| buffer[0][0] == COMMENT_CHAR)
 			continue ;
 		else if (ft_strchr(buffer[0], LABEL_CHAR))
-			res = 0;// init_writer(ass, buffer, fd);
+			res = init_writer(ass, buffer, fd);
+		
 	}
 	return (res);
 }
@@ -45,7 +46,7 @@ static bool write_header(int fd, char *destin, int bytes, int plus)
 	{
 		length /= 256;
 		amount++;
-	}
+i	}
 	while (4 - amount + plus)
 	{
 		ft_putchar_fd(0x0, fd);

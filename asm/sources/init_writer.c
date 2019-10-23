@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   init_writer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 17:56:54 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 00:26:35 by yhetman          ###   ########.fr       */
+/*   Created: 2019/10/24 00:13:38 by yhetman           #+#    #+#             */
+/*   Updated: 2019/10/24 00:19:26 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asmlib.h"
+#include "../includes/asm.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	init_writer(t_assembler *ass, char **buffer, int fd)
 {
-	unsigned int	j;
-
-	j = 0;
-	while (s1[j] && s1[j] == s2[j])
-		j++;
-	return ((unsigned char)s1[j] - (unsigned char)s2[j]);
 }
