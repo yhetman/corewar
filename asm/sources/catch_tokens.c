@@ -12,9 +12,37 @@
 
 #include "../includes/asm.h"
 
-static int	find_command(t_assembler *ass, int *i, int *count, int is_token);
-
 static int	no_command(t_assembler *ass, int *i, int *count, int *current);
+
+static int	find_command(t_assembler *ass, int *i, int *count, int token)
+{
+        int     j;
+	int	index;
+	int	args;
+
+	if (!(index = define_index(ass->options, ass->stored[*i][token])))
+		return (0);
+	if (ass->options[index].acb)
+		(*count)++;
+	j = 0;
+	args = -1;
+	while (++args < ass->options[index].count_args)
+	{
+		if (ass->stored[*i][1 + token][j] == REG_CHAR)
+			(*count)++;
+		else if (ass->stored[*i][1 + token][j] == '%')
+			*count = ass->options[index].command_size
+			? *count + 2
+                        : *count + 4;
+		else
+			*count += 2;
+		while (ass->stored[*i][1 + token][j] &&
+			ass->stored[*i][1 + token][j] != SEPARATOR_CHAR)
+			j++;
+		j++;
+	}
+	return (1);
+}
 
 int		catch_tokens(t_assembler *ass)
 {
