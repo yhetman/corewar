@@ -30,7 +30,8 @@ static bool	init_tokens(t_assembler *ass)
 			if (!(ass->tokens[count].name = ft_strsub(ass->stored[line][0],
 						0, ft_strlen(ass->stored[line][0]) - 1)))
 				return (false);
-		}
+                        ft_bzero(&(ass->tokens[count].byte), sizeof(t_bytes));
+                 }
 	}
 	return (true);
 }
