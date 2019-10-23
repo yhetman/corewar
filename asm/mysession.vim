@@ -57,21 +57,22 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +57 sources/go_to_assembler.c
+badd +100 sources/go_to_assembler.c
 badd +4 ../vm_champs/champs/42.s
 badd +44 sources/debug.c
-badd +53 includes/asm.h
+badd +63 includes/asm.h
 badd +46 asmlib/src/op.c
 badd +17 sources/file_checker.c
 badd +98 sources/get_command_info.c
 badd +103 sources/get_command_arguments.c
 badd +25 sources/store_all_token_details.c
 badd +36 sources/great_initialization.c
-badd +1 asmlib/src/ft_strsub.c
+badd +24 asmlib/src/ft_strsub.c
+badd +71 sources/rewrite_file.c
 argglobal
 silent! argdel *
 argadd sources/go_to_assembler.c
-edit asmlib/src/ft_strsub.c
+edit sources/go_to_assembler.c
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -186,12 +187,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 24) / 48)
+let s:l = 94 - ((36 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-24
-normal! 030|
+94
+normal! 02|
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

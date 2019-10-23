@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 10:59:06 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/23 13:22:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,10 @@ int					go_to_assembler(char *file)
 		return (clear_t_assembler(ass) + clear_t_reader(reader));
 	store_all_token_details(ass);
 	header = init_t_header();
-	if (!file_checker(ass, header)) //file_checker() return 0
-	{
-		printf("FUCK\n");
-		print_t_assembler(ass);//print
-		clear_t_assembler(ass);
-		clear_t_reader(reader);
-		clear_t_header(header);
-		return (0);
-	}
+	if (!file_checker(ass, header))
+		return (clear_t_assembler(ass) + clear_t_reader(reader) +
+				clear_t_header(header));
 //	rewrite_file(ass, header, reader->line, file);
-	clear_t_assembler(ass);
-	clear_t_reader(reader);
-	clear_t_header(header);
-	return (1);
+	return (clear_t_assembler(ass) + clear_t_reader(reader) +
+			clear_t_header(header) + 1);
 }
