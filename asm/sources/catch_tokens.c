@@ -12,16 +12,35 @@
 
 #include "../includes/asm.h"
 
-static int	no_command(t_assembler *ass, int *i, int *count, int *current);
+static int	no_command(t_assembler *ass, int *i, int *count, int *current)
+{   
+        int	token;
 
-static int	find_command(t_assembler *ass, int *i, int *count, int token)
+	token = 0;
+	if (ass->stored[*i][0] && ass->stored[*i][0][0] &&
+		ass->stored[*i][0][0] == COMMENT_CHAR)
+		;
+	else if (!ass->stored[*i][0] || !ass->stored[*i][0][0])
+		token = 0;
+	else if (ass->stored[*i][0] &&
+		ft_strchr(ass->stored[*i][0], LABEL_CHAR))
+	{
+		token = 1;
+		*current = find_number_of_token(ass, *i);
+                if (*current > -1)
+			ass->tokens[*current].byte.first = *count;
+	}
+	return (token);
+}
+
+static bool	find_command(t_assembler *ass, int *i, int *count, int token)
 {
         int     j;
 	int	index;
 	int	args;
 
 	if (!(index = define_index(ass->options, ass->stored[*i][token])))
-		return (0);
+		return (false);
 	if (ass->options[index].acb)
 		(*count)++;
 	j = 0;
@@ -41,7 +60,7 @@ static int	find_command(t_assembler *ass, int *i, int *count, int token)
 			j++;
 		j++;
 	}
-	return (1);
+	return (true);
 }
 
 int		catch_tokens(t_assembler *ass)
