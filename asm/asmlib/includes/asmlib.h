@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 18:13:11 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:58:30 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-void		ft_puthex_fd(unsigned long long hex, int fd);
+void		ft_puthex_fd(long long hex, int fd);
+void		 ft_puthex_n_fd(long long hex, int fd, int len);
 int			define_index(t_op *options, char *command);
 bool		validate_token(char *line);
 int			find_words(char *str);

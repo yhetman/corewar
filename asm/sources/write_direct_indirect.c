@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:32:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 14:35:46 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:58:54 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	find_correct_token(t_assembler *ass, char *name)
 	return (index);
 }
 
-static bool	count_bytes(t_assembler *ass, t_writer *writer, char *line, int *hex)
+static bool	count_bytes(t_assembler *ass, t_writer *writer, char *line, long long *hex)
 {
 	int		i;
 	char	*token;
@@ -42,9 +42,9 @@ static bool	count_bytes(t_assembler *ass, t_writer *writer, char *line, int *hex
 
 static void			write_direct(t_assembler *ass, t_writer *writer, int *cur, char *line)
 {
-	unsigned int	i;
-	int				numb;
-	int				hex;
+	int				i;
+	long long		numb;
+	long long		hex;
 
 	i = 0;
 	if (line[1] != LABEL_CHAR)
@@ -61,18 +61,23 @@ static void			write_direct(t_assembler *ass, t_writer *writer, int *cur, char *l
 	while (numb / 256 && i++)
 		numb /= 256;
 	numb = i;
-	i = ~0;
-	while (++i < (2 + 2 *
-			(1 - ass->options[writer->command_index].command_size) - numb))
-		ft_putchar_fd(0, writer->fd);
+	i = -1;
+	if (ass->options[writer->command_index].command_size)
+	{
+		while (++i < (2 - numb))
+			ft_putchar_fd(0, writer->fd);
+	}
+	else
+		while (++i < (4 - numb))
+			ft_putchar_fd(0, writer->fd);
 	ft_puthex_fd(hex, writer->fd);
 	*cur = ass->options[writer->command_index].command_size ?
-		*cur + 2 : *cur + 4;
+		(*cur) + 2 : (*cur) + 4;
 }
 
 static void	write_indirect(t_assembler *ass, t_writer *writer, int *cur, char *line)
 {
-	int		hex;
+	long long	hex;
 
 	if (line[0] == LABEL_CHAR && !count_bytes(ass, writer, line, &hex))
 		return ;

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 19:50:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 21:39:49 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,6 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 	return (res);
 }
 
-static bool 		write_header(int fd, char *destin, int bytes, int plus)
-{
-	unsigned long	i;
-	int				amount;
-	unsigned long	length;
-
-	amount = 2;
-	length = bytes;;
-	while ((length /= 256))
-		amount++;
-	ft_putchar_fd(0x00, fd);
-	ft_putchar_fd((bytes >> 16), fd);
-	while ((4 - amount + plus))
-	{
-		ft_putchar_fd(bytes / 256, fd);
-		ft_putchar_fd(bytes % 256, fd);
-		amount++;
-	}
-	i = ~0;
-	while (destin[++i])
-		ft_putchar_fd(destin[i], fd);
-	length = (!plus) ? PROG_NAME_LENGTH : COMMENT_LENGTH;
-	while (++i < (length + 1 + plus))
-		ft_putchar_fd(0x0, fd);
-	return (true);
-}
-
 static int	change_extension(char	*file)
 {
 	int		fd;
@@ -98,17 +71,21 @@ int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 	int	fd;
 	int	i;
 
+//	if (!head->prog_name || !head->comment)
+//		return (0);
 	if ((fd = change_extension(file)) < 0)
 		return (0);
-	if (!write_header(fd, head->prog_name, COREWAR_EXEC_MAGIC, 0))
-		return (0);
+	ft_puthex_n_fd(COREWAR_EXEC_MAGIC, fd, 4);
+	ft_putstr_fd(head->prog_name, fd);
+	ft_puthex_n_fd(0x00, fd, (132 - ft_strlen(head->prog_name)));
 	if (!(i = catch_tokens(ass)) || i > CHAMP_MAX_SIZE)
 		return (0);
-	if (!write_header(fd, head->comment, i, 4))
+	ft_puthex_n_fd(i, fd, 4);
+	ft_putstr_fd(head->comment, fd);
+	ft_puthex_n_fd(0x00, fd, 2052 - ft_strlen(head->comment));
+	if (!write_commands(ass, fd, lines))
 		return (0);
-//	if (!write_commands(ass, fd, lines))
-//		return (0);
-//	if (close(fd) < 0)
-//		return (0);
+	if (close(fd) < 0)
+		return (0);
 	return (1);
 }
