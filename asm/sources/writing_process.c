@@ -14,25 +14,25 @@
 
 static void	write_arguments();
 
-static void	write_acb(t_op options, int fd, char *str, int *cursor)
+static void	write_arg_type_bc(t_op options, int fd, char *str, int *cursor)
 {
 	int				i;
-	unsigned char	acb;
+	unsigned char	byte_code;
 
 	i = -1;
-	acb = 0;
+	byte_code = 0;
 	while (++i < options.count_args)
 	{
 		if (str[0] == REG_CHAR)
-			acb += (REG_CODE << ((3 - i) * 2));
+			byte_code += (REG_CODE << ((3 - i) * 2));
 		else if (str[0] == '%')
-			acb += (DIR_CODE << ((3 - i) * 2));
+			byte_code += (DIR_CODE << ((3 - i) * 2));
 		else
-			acb += (IND_CODE << ((3 - i) * 2));
+			byte_code += (IND_CODE << ((3 - i) * 2));
 		str = ft_strchr(str, SEPARATOR_CHAR)
 			? ft_strchr(str, SEPARATOR_CHAR) + 1 : str;
 	}
-	ft_putchar_fd(acb, fd);
+	ft_putchar_fd(byte_code, fd);
 	*cursor++;
 }
 
@@ -50,8 +50,8 @@ int			writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd)
 		else
 			return (0);
 		writer->curr_command = writer->cursor;
-		if (ass->options[writer->command_index].acb)
-			write_acb(ass->options[writer->command_index], fd,
+		if (ass->options[writer->command_index].args_bc)
+			write_arg_type_bc(ass->options[writer->command_index], fd,
 					buffer[writer->token + 1], &(writer->cursor));
 	}
 	//write_arguments();
