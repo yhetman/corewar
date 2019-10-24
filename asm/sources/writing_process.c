@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 00:13:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 13:47:54 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 15:32:14 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd)
 			writer->cursor++;
 		}
 		else
-			return (0);
+			return (0)e
 		writer->curr_command = writer->cursor;
 		if (ass->options[writer->command_index].args_bc)
 			write_arg_type_bc(ass->options[writer->command_index], fd,
