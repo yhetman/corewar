@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 05:03:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 11:40:27 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 	i = 1;
 	res = 0;
 	writer = init_writer();
+	writer->fd = fd;
 	writer->cursor = -1;
 	while (++i < lines)
 	{

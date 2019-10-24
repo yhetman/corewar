@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 05:02:12 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 11:59:01 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct			s_writer
 	int					command_index;
 	int					curr_command;
 	int					token;
+	int					fd;
 }						t_writer;
 
 typedef struct			s_bytes
@@ -82,4 +83,5 @@ int					clear_t_reader(t_reader *reader);
 int					clear_t_header(t_header *header);
 int					clear_t_assembler(t_assembler *ass);
 int					writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd);
+void				write_direct_indirect(t_assembler *ass, t_writer *writer, char **buffer, int i);
 #endif
