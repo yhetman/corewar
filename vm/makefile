@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/24 12:25:21 by blukasho          #+#    #+#              #
+#    Updated: 2019/10/24 12:39:25 by blukasho         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME :=		corewar
 
 DEF :=		\x1b[0m
@@ -10,9 +22,11 @@ OP_PATH	 := $(SRC_PATH)op/
 LIB_PATH :=	libft/ft_printf/
 OBJ_PATH :=	.obj/
 
-#CC		:=	clang
+CC		:=	clang
 
 INC_PATH :=	includes/
+
+CCFLAGS  := -Wall -Wextra
 IFLAGS	 :=	-I $(LIB_PATH)$(INC_PATH) -I $(INC_PATH)
 
 HFILES	 :=	corewar op corewar_error_manager
@@ -32,7 +46,7 @@ OBJS :=		$(addprefix $(OBJ_PATH), $(SRCS:%.c=%.o))
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ_PATH) $(OBJS)
-	@$(CC) $(IFLAGS) $(OBJS) $(LIB) -o $(NAME)
+	@$(CC) $(IFLAGS) $(OBJS) $(LIB) $(CCFLAGS) -o $(NAME)
 	@echo "$(GRN)Corewar is ready$(DEF)"
 $(LIB): 
 	@make -C $(LIB_PATH)
@@ -42,7 +56,7 @@ $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)$(OP_PATH)
 	@echo "$(YLW)Directory for objects was created$(DEF)"
 $(OBJ_PATH)%.o: %.c $(HDRS)
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CCFLAGS) $(IFLAGS) -c $< -o $@
 	@echo "$(YLW)$(subst $(OBJ_PATH)$(SRC_PATH),,$@) was created$(DEF)"
 
 clean: mclean
