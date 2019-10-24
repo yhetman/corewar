@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:29:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 23:54:42 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 19:14:29 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 	int		i;
 	int		j;
 	int		k;
-
 	
 	k = ft_strlen(line);
 	if (!line || !ft_strnstr(line, string, ft_strlen(string)))
@@ -72,9 +71,10 @@ static bool	find_matches(char *line, char *buffer, char *string, int length)
 int			file_checker(t_assembler *ass, t_header *head)
 {
 	ft_bzero(head, sizeof(t_header *));
-	if (!find_matches(ass->stored[0][0], head->prog_name,
-				NAME_CMD_STRING, PROG_NAME_LENGTH))
+	if (!find_matches(ass->stored[0][0], head->prog_name, NAME_CMD_STRING, PROG_NAME_LENGTH))
+	{
 		return (false);
+	}
 	if (!find_matches(ass->stored[1][0], head->comment, COMMENT_CMD_STRING, COMMENT_LENGTH))
 		return (false);
 	if (!ass->stored[2] || !find_commands(ass)) //find_commands() return false

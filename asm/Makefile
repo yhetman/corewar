@@ -30,7 +30,7 @@ OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
 NAME=assembler
-FLAGS=-Wall -Wextra -Werror
+FLAGS=#-Wall -Wextra -Werror
 DEBUG=-g3 -fsanitize=address
 INCLUDE=-I./includes/ -I./asmlib/includes
 ASMLIB=asmlib.a

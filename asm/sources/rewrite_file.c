@@ -6,13 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 15:32:14 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 19:50:43 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
-
-
 
 static t_writer	*init_writer(void)
 {
@@ -53,23 +51,23 @@ static bool 		write_header(int fd, char *destin, int bytes, int plus)
 	int				amount;
 	unsigned long	length;
 
-	amount = 0;
+	amount = 2;
 	length = bytes;;
-	while (length)
+	while ((length /= 256))
+		amount++;
+	ft_putchar_fd(0x00, fd);
+	ft_putchar_fd((bytes >> 16), fd);
+	while ((4 - amount + plus))
 	{
-		length /= 256;
+		ft_putchar_fd(bytes / 256, fd);
+		ft_putchar_fd(bytes % 256, fd);
 		amount++;
 	}
-	while (4 - amount + plus)
-	{
-		ft_putchar_fd(0x0, fd);
-		amount++;
-	}
-	ft_puthex_fd(bytes, fd);
 	i = ~0;
 	while (destin[++i])
 		ft_putchar_fd(destin[i], fd);
-	while (++i < (ft_strlen(destin) + plus))
+	length = (!plus) ? PROG_NAME_LENGTH : COMMENT_LENGTH;
+	while (++i < (length + 1 + plus))
 		ft_putchar_fd(0x0, fd);
 	return (true);
 }
@@ -108,9 +106,9 @@ int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 		return (0);
 	if (!write_header(fd, head->comment, i, 4))
 		return (0);
-	if (!write_commands(ass, fd, lines))
-		return (0);
-	if (close(fd) < 0)
-		return (0);
+//	if (!write_commands(ass, fd, lines))
+//		return (0);
+//	if (close(fd) < 0)
+//		return (0);
 	return (1);
 }

@@ -12,7 +12,7 @@
 
 NAME = asmlib.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = #-Wall -Wextra -Werror
 
 DEBUG = -g3 -fsanitize=address
 
