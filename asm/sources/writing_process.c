@@ -6,13 +6,36 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 00:13:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 05:04:24 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 11:28:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static void	write_arguments();
+static void	write_arguments(t_assembler *ass, t_writer *writer, char **buffer, int fd)
+{
+	int		i;
+	int		numb;
+
+	i = 0;
+	numb = -1;
+	while (buffer[writer->token] && 
+			++numb < ass->options[writer->command_index].args_count)
+	{
+		if (buffer[writer->token + 1][i] == REG_CHAR)
+		{
+			ft_putchar_fd(buffer[writer->token + 1] + i + 1, fd);
+			writer->cursor++;
+		}
+		else
+			write_direct_indirect(ass, writer, fd, i);
+		while (buffer[writer->token + 1][i]
+				&& buffer[writer->token + 1][i] != SEPARATOR_CHAR)
+			i++;
+		i++;
+	}
+	writer->token = 0;
+}
 
 static void	write_arg_type_bc(t_op options, int fd, char *str, int *cursor)
 {
@@ -54,6 +77,6 @@ int			writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd)
 			write_arg_type_bc(ass->options[writer->command_index], fd,
 					buffer[writer->token + 1], &(writer->cursor));
 	}
-	//write_arguments();
+	write_arguments(*ass, writer, buffer, fd);
 	return (1);
 }
