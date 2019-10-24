@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 00:13:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 12:04:20 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 13:47:54 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	write_arg_type_bc(t_op options, int fd, char *str, int *cursor)
 			? ft_strchr(str, SEPARATOR_CHAR) + 1 : str;
 	}
 	ft_putchar_fd(byte_code, fd);
-	*cursor++;
+	(*cursor)++;
 }
 
 int			writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd)
@@ -65,7 +65,7 @@ int			writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd)
 		writer->token = 1;
 	if (buffer[writer->token])
 	{
-		if (writer->command_index = define_index(ass->options, buffer[writer->token]))
+		if ((writer->command_index = define_index(ass->options, buffer[writer->token])))
 		{
 			ft_putchar_fd(writer->command_index, fd);
 			writer->cursor++;
