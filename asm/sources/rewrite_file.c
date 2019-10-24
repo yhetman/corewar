@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 14:37:31 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:56:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 	while (++i < lines)
 	{
 		buffer = ass->stored[i];
-		printf("|%d|-|OK!|\n", i);
 		if (!buffer || !buffer[0] || !buffer[0][0]
 				|| buffer[0][0] == COMMENT_CHAR)
 			continue ;
@@ -66,7 +65,7 @@ static bool 		write_header(int fd, char *destin, int bytes, int plus)
 		ft_putchar_fd(0x0, fd);
 		amount++;
 	}
-//	ft_puthex_fd(bytes, fd);
+	ft_puthex_fd(bytes, fd);
 	i = ~0;
 	while (destin[++i])
 		ft_putchar_fd(destin[i], fd);

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 14:48:03 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 15:00:32 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ static int		check_info(t_command *command, t_assembler *ass)
 	if (index < 1)
 		return (0);
 	if (command->args)
-		res = get_command_arguments(ass, command, index);//false
-	free_command(command);
+		res = get_command_arguments(ass, command, index);
 	return (res);
 }
 
@@ -79,7 +78,7 @@ static int		get_info(t_command *command, char **line)
 	if (!(command->command = ft_strdup(line[i])))
 		return (0);
 	i++;
-	if (!line[i]) //return 0 if i == 2 wtf line[2] == NULL!!!!!!!!!!!!
+	if (!line[i])
 		return (0);
 	if (!(command->args = ft_strdup(line[i])))
 		return (0);
@@ -100,9 +99,14 @@ int				get_command_info(t_assembler *ass, int count)
 
 	ft_bzero(&command, sizeof(t_command));
 	if (get_info(&command, ass->stored[count]) == 0)
+	{
+		free_command(&command);
 		return (false);
-	if (!check_info(&command, ass))//false
+	}
+	if (!check_info(&command, ass))
+	{
+		free_command(&command);
 		return (false);
-//	free_command(&command);
+	}
 	return (1);
 }
