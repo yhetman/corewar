@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 19:29:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 23:22:12 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 12:01:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static bool	find_command(t_assembler *ass, int *i, int *count, int token)
 
 	if (!(index = define_index(ass->options, ass->stored[*i][token])))
 		return (false);
-	if (ass->options[index].acb)
+	if (ass->options[index].args_bc)
 		(*count)++;
 	j = 0;
 	args = -1;
