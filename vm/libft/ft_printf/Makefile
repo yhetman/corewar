@@ -6,13 +6,14 @@
 #    By: voksenui <voksenui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/12 21:30:50 by voksenui          #+#    #+#              #
-#    Updated: 2019/02/20 07:24:06 by voksenui         ###   ########.fr        #
+#    Updated: 2019/10/24 13:29:02 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
+DEBUGFLAGS = -g3 -fsanitize=address
 
 LIB			=	libft/
 LIB_N		=	libft.a
@@ -28,6 +29,11 @@ CFLAGS		=	-Wall -Wextra
 C			=	gcc
 
 all: $(NAME)
+
+debug: debugflags all
+
+debugflags:
+	$(eval FLAGS=$(FLAGS) $(DEBUGFLAGS))
 
 $(NAME): $(OBJ)
 	make -C $(LIB)

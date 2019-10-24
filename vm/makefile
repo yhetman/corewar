@@ -6,7 +6,7 @@
 #    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/24 12:25:21 by blukasho          #+#    #+#              #
-#    Updated: 2019/10/24 12:39:25 by blukasho         ###   ########.fr        #
+#    Updated: 2019/10/24 13:29:02 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ CC		:=	clang
 
 INC_PATH :=	includes/
 
-CCFLAGS  := -Wall -Wextra
+CCFLAGS  := -Wall -Wextra -Werror
+DEBUGFLAGS := -g3 -fsanitize=address
 IFLAGS	 :=	-I $(LIB_PATH)$(INC_PATH) -I $(INC_PATH)
 
 HFILES	 :=	corewar op corewar_error_manager
@@ -44,6 +45,14 @@ OBJS :=		$(addprefix $(OBJ_PATH), $(SRCS:%.c=%.o))
 
 
 all: $(NAME)
+
+debug: debugflags debuglib all
+
+debugflags:
+	$(eval CCFLAGS=$(CCFLAGS) $(DEBUGFLAGS))
+
+debuglib:
+	@make debug -C $(LIB_PATH)
 
 $(NAME): $(LIB) $(OBJ_PATH) $(OBJS)
 	@$(CC) $(IFLAGS) $(OBJS) $(LIB) $(CCFLAGS) -o $(NAME)

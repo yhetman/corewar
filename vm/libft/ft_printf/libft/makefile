@@ -6,13 +6,15 @@
 #    By: voksenui <voksenui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 16:46:29 by voksenui          #+#    #+#              #
-#    Updated: 2019/02/20 06:25:36 by voksenui         ###   ########.fr        #
+#    Updated: 2019/10/24 13:29:02 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 
 FLAGS= -Wall -Werror -Wextra -c
+
+DEBUGFLAGS= -g3 -fsanitize=address
 
 SRC= ft_memset.c ft_putchar.c ft_bzero.c ft_memcpy.c \
 ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
@@ -35,6 +37,11 @@ get_next_line.c
 OBJ= $(SRC:.c=.o)
 
 all: $(NAME)
+
+debug: debugflags all
+
+debugflags:
+	$(eval FLAGS=$(FLAGS) $(DEBUGFLAGS))
 
 $(NAME): $(OBJ)
 	ar rcs  $(NAME) $(OBJ)
