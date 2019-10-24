@@ -6,20 +6,34 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 02:43:02 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 05:03:07 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
+
+
+static t_writer	*init_writer(void)
+{
+	t_writer	*writer;
+
+	writer = (t_writer *)malloc(sizeof (t_writer));
+	ft_bzero(writer, sizeof(t_writer));
+	return (writer);
+}
+
 static int write_commands(t_assembler *ass, int fd, int lines)
 {
-	int		i;
-	int		res;
-	char	**buffer;
+	int			i;
+	int			res;
+	char		**buffer;
+	t_writer	*writer;
 
 	i = 1;
 	res = 0;
+	writer = init_writer();
+	writer->cursor = -1;
 	while (++i < lines)
 	{
 		buffer = ass->stored[i];
@@ -27,9 +41,8 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 		if (!buffer || !buffer[0] || !buffer[0][0]
 				|| buffer[0][0] == COMMENT_CHAR)
 			continue ;
-		else if (ft_strchr(buffer[0], LABEL_CHAR))
-			res = init_writer(ass, buffer, fd);
-		
+		else 
+			res = writing_process(ass, writer, buffer, fd);
 	}
 	return (res);
 }
