@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/22 12:20:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:27:35 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int		check_info(t_command *command, t_assembler *ass, int count)
 	int			index;
 	int			res;
 
+	index = 0;
+	res = 0;
 	if (command->command)
 		index = define_index(ass->options, command->command);	
 	if (index < 1)

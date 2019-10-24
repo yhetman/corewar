@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:32:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 13:46:28 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:35:46 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static bool	count_bytes(t_assembler *ass, t_writer *writer, char *line, int *hex
 	return (true);
 }
 
-static void	write_direct(t_assembler *ass, t_writer *writer, int *cur, char *line)
+static void			write_direct(t_assembler *ass, t_writer *writer, int *cur, char *line)
 {
-	int		i;
-	int		numb;
-	int		hex;
+	unsigned int	i;
+	int				numb;
+	int				hex;
 
 	i = 0;
 	if (line[1] != LABEL_CHAR)
@@ -61,9 +61,9 @@ static void	write_direct(t_assembler *ass, t_writer *writer, int *cur, char *lin
 	while (numb / 256 && i++)
 		numb /= 256;
 	numb = i;
-	i = -1;
-	while (++i < 2 + 2 *
-			(1 - ass->options[writer->command_index].command_size) - numb)
+	i = ~0;
+	while (++i < (2 + 2 *
+			(1 - ass->options[writer->command_index].command_size) - numb))
 		ft_putchar_fd(0, writer->fd);
 	ft_puthex_fd(hex, writer->fd);
 	*cur = ass->options[writer->command_index].command_size ?

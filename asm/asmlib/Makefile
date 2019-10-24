@@ -12,7 +12,7 @@
 
 NAME = asmlib.a
 
-FLAGS = -Wno-missing-braces -g0 #-Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 DEBUG = -g3 -fsanitize=address
 

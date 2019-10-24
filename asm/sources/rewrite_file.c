@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 11:40:27 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 14:37:31 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 	return (res);
 }
 
-static bool write_header(int fd, char *destin, int bytes, int plus)
+static bool 		write_header(int fd, char *destin, int bytes, int plus)
 {
-	int		i;
-	int		amount;
-	long	length;
+	unsigned long	i;
+	int				amount;
+	unsigned long	length;
 
 	amount = 0;
 	length = bytes;;
@@ -67,10 +67,10 @@ static bool write_header(int fd, char *destin, int bytes, int plus)
 		amount++;
 	}
 //	ft_puthex_fd(bytes, fd);
-	i = -1;
+	i = ~0;
 	while (destin[++i])
 		ft_putchar_fd(destin[i], fd);
-	while (++i < sizeof(destin) + plus)
+	while (++i < (sizeof(destin) + plus))
 		ft_putchar_fd(0x0, fd);
 	return (true);
 }
