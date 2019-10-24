@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/22 13:09:57 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 00:32:51 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			store_all_token_details(t_assembler *ass)
 	}
 	if (!(ass->tokens = (t_token*)malloc(sizeof(t_token) * ass->count)))
 		return (great_freeing(ass, NULL));
+	ft_bzero(ass->tokens, sizeof(t_token) * ass->count);
 	if (!init_tokens(ass))
 		return (0);
 	return (1);
