@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/03 18:43:09 by yhetman           #+#    #+#              #
-#*   Updated: 2019/10/24 08:43:25 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/10/24 13:12:51 by yhetman          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			ft_strnew ft_strlen find_words ft_strsub	\
 			ft_strchr validate_token ft_strcmp ft_strnstr \
 			define_index ft_atoi ft_memcpy ft_strdelarr	\
+			ft_puthex_fd
 
 OBJ  = $(addprefix obj/, $(addsuffix .o, $(FUNCTIONS)))
 SRC = $(addprefix src/, $(addsuffix .c, $(FUNCTIONS)))
