@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 13:12:40 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 00:15:14 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ t_assembler			*init_t_assembler(void);
 int					clear_t_reader(t_reader *reader);
 int					clear_t_header(t_header *header);
 int					clear_t_assembler(t_assembler *ass);
-int init_writer(t_assembler *ass, char **buffer, int fd);
+int					init_writer(t_assembler *ass, char **buffer, int fd);
 #endif

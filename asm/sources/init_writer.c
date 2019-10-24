@@ -1,25 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_number_of_token.c                             :+:      :+:    :+:   */
+/*   init_writer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 17:59:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 18:01:15 by yhetman          ###   ########.fr       */
+/*   Created: 2019/10/24 00:13:38 by yhetman           #+#    #+#             */
+/*   Updated: 2019/10/24 00:19:26 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/asmlib.h"
-#include "../../includes/asm.h"
+#include "../includes/asm.h"
 
-int	find_number_of_token(t_assembler *ass, int numb)
+int	init_writer(t_assembler *ass, char **buffer, int fd)
 {
-	int	i;
-
-	i = -1;
-	while (++i < ass->count)
-		if (ass->tokens[i].count == numb)
-			return (i);
-	return (i);
 }
