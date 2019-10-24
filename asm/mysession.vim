@@ -57,14 +57,14 @@ endif
 set shortmess=aoO
 badd +46 sources/main.c
 badd +94 sources/go_to_assembler.c
-badd +1 sources/rewrite_file.c
-badd +0 Makefile
-badd +0 asmlib/Makefile
+badd +99 sources/rewrite_file.c
+badd +1 Makefile
+badd +18 asmlib/Makefile
 badd +39 asmlib/src/op.c
-badd +25 ~/Documents/projects/corewar/asm/asmlib/src/../../includes/asm.h
+badd +1 ~/Documents/projects/corewar/asm/asmlib/src/../../includes/asm.h
 badd +16 ~/Documents/projects/corewar/asm/asmlib/src/../includes/asmlib.h
 badd +4 asmlib/includes/op.h
-badd +66 sources/get_command_arguments.c
+badd +89 sources/get_command_arguments.c
 badd +33 sources/get_command_info.c
 badd +24 sources/debug.c
 badd +64 sources/write_direct_indirect.c
@@ -73,7 +73,7 @@ argglobal
 silent! argdel *
 $argadd sources/main.c
 set stal=2
-edit sources/rewrite_file.c
+edit sources/get_command_info.c
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -185,12 +185,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 108 - ((60 * winheight(0) + 35) / 70)
+let s:l = 99 - ((60 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-108
-normal! 0
+99
+normal! 024|
 tabedit asmlib/Makefile
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -309,11 +309,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 35) / 70)
+let s:l = 13 - ((12 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-18
+13
 normal! 0
 wincmd w
 argglobal
@@ -423,13 +423,14 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((9 * winheight(0) + 35) / 70)
+let s:l = 33 - ((11 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-31
-normal! 07|
+33
+normal! 021|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 103 + 103) / 207)
 exe 'vert 2resize ' . ((&columns * 103 + 103) / 207)
 tabedit ~/Documents/projects/corewar/asm/asmlib/src/../../includes/asm.h
@@ -544,13 +545,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 61 - ((41 * winheight(0) + 35) / 70)
+let s:l = 72 - ((54 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-61
-normal! 0
-tabnext 1
+72
+normal! 089|
+tabnext 2
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

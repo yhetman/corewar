@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 19:34:05 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 14:28:54 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:46:51 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static bool	check_amount(char *args, t_op options)
 	return (true);
 }
 
-int		get_command_arguments(t_assembler *ass, t_command *command, int index, int count)
+int		get_command_arguments(t_assembler *ass, t_command *command, int index)
 {
 	int	i;
 	int	arg;
