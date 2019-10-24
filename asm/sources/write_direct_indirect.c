@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:32:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 13:05:13 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 13:18:15 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ static bool	count_bytes(t_assembler *ass, t_writer *writer, char *line, int *hex
 		i++;
 	if (!(token = ft_strsub(line, 1, i - 1)))
 		return (false);
-	((i = find_correct_token(ass, token)) < 0)
+	if ((i = find_correct_token(ass, token)) < 0)
 		return (false);
 	*hex = ass->tokens[i].byte.first - writer->curr_command;
 	free(token);
 	return (true);
 }
+
 static void	write_direct(t_assembler *ass, t_writer *writer, int *cur, char *line)
 {
 	int		i;
@@ -50,7 +51,7 @@ static void	write_direct(t_assembler *ass, t_writer *writer, int *cur, char *lin
 		hex = ass->options[writer->command_index].command_size ? ft_atoi(line + 1) % 65536
 			: ft_atoi(line + 1) % 4294967296;
 	else
-		if (!cont_bytes(ass, writer, line + 1, &hex))
+		if (!count_bytes(ass, writer, line + 1, &hex))
 			return ;
 	if (hex < 0)
 		hex = ass->options[writer->command_index].command_size ? hex + 65536
@@ -64,7 +65,7 @@ static void	write_direct(t_assembler *ass, t_writer *writer, int *cur, char *lin
 	while (++i < 2 + 2 *
 			(1 - ass->options[writer->command_index].command_size) - numb)
 		ft_putchar_fd(0, writer->fd);
-	//ft_puthex_fd(hex, writer->fd);
+	ft_puthex_fd(hex, writer->fd);
 	*cur = ass->options[writer->command_index].command_size ?
 		*cur + 2 : *cur + 4;
 }
@@ -79,7 +80,7 @@ static void	write_indirect(t_assembler *ass, t_writer *writer, int *cur, char *l
 		hex = ft_atoi(line) % 65536;
 	hex = hex < 0 ? hex + 65536 : hex;
 	ft_putchar_fd(hex / 256, writer->fd);
-	ft_purchar_fd(hex % 256, writer->fd);
+	ft_putchar_fd(hex % 256, writer->fd);
 	(*cur) += 2;
 }
 
