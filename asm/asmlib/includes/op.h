@@ -70,7 +70,7 @@ typedef struct					s_op
 	int							index;	
 	unsigned int				cycles;
 	char						description[50];
-	unsigned int				acb;
+	unsigned int				args_bc;
 	unsigned int				command_size;
 }								t_op;
                                    	
