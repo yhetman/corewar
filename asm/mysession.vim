@@ -12,8 +12,12 @@ nnoremap tc :tabclose
 nnoremap tn :tabnew
 nnoremap tt :tabp
 nnoremap vv :vsplit 
-nnoremap wq :wa:mksession! mysession.vim:qa
-nnoremap ws :wa:mksession! mysession.vim:sh
+nnoremap wq :wa
+:mksession! mysession.vim
+:qa
+nnoremap ws :wa
+:mksession! mysession.vim
+:sh
 nnoremap ww :wa
 nnoremap yy :tabn
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
@@ -63,6 +67,11 @@ argglobal
 silent! argdel *
 argadd Makefile
 edit asmlib/Makefile
+badd +0 sources/main.c
+argglobal
+silent! argdel *
+argadd sources/main.c
+edit sources/main.c
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -183,6 +192,12 @@ exe s:l
 normal! zt
 17
 normal! 013|
+let s:l = 42 - ((41 * winheight(0) + 25) / 51)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+42
+normal! 09|
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

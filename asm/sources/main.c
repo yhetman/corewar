@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 23:55:10 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/24 00:07:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int					main(int argc, char **argv)
 		print_usage();
 	while (i < argc)
 	{
-//		ft_putstr_fd("Processing file ", STD_OUT);
-//		ft_putstr_fd(argv[i], STD_OUT);
-//		ft_putchar_fd('\n', STD_OUT);
+		ft_putstr_fd("Processing file ", STD_OUT);
+		ft_putstr_fd(argv[i], STD_OUT);
+		ft_putchar_fd('\n', STD_OUT);
 		if (!check_format(argv[i]))
 		{
 			print_requirements_to_files(argv[i]);
