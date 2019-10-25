@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 07:03:52 by user              #+#    #+#             */
-/*   Updated: 2019/10/24 12:38:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/25 14:24:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void				start_game(t_cw *cw)
 
 	while (cw->num_carriages)
 	{
+		print_map(cw->map);
 		if (cw->cycles_to_dump == cw->cycles)
 		{
 			print_map(cw->map);

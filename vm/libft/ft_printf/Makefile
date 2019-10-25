@@ -6,13 +6,13 @@
 #    By: voksenui <voksenui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/12 21:30:50 by voksenui          #+#    #+#              #
-#    Updated: 2019/10/24 13:29:02 by blukasho         ###   ########.fr        #
+#    Updated: 2019/10/25 14:16:04 by blukasho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 DEBUGFLAGS = -g3 -fsanitize=address
 
 LIB			=	libft/
@@ -25,7 +25,6 @@ SRC			=	process_diuoxp.c cast_specifics.c ft_printf.c \
 
 OBJ			=	$(SRC:.c=.o)
 
-CFLAGS		=	-Wall -Wextra
 C			=	gcc
 
 all: $(NAME)
