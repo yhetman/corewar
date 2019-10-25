@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/23 13:12:40 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/24 05:02:12 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define DEBUG 1
 
 #include "../asmlib/includes/asmlib.h"
+
 
 
 typedef struct			s_command
@@ -29,6 +30,14 @@ typedef struct			s_reader
 	int					line;
 	int					sign;
 }						t_reader;
+
+typedef struct			s_writer
+{
+	int					cursor;
+	int					command_index;
+	int					curr_command;
+	int					token;
+}						t_writer;
 
 typedef struct			s_bytes
 {
@@ -72,5 +81,5 @@ t_assembler			*init_t_assembler(void);
 int					clear_t_reader(t_reader *reader);
 int					clear_t_header(t_header *header);
 int					clear_t_assembler(t_assembler *ass);
-
+int					writing_process(t_assembler *ass, t_writer *writer, char **buffer, int fd);
 #endif

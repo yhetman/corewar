@@ -6,7 +6,7 @@
 #    By: yhetman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/29 14:44:07 by yhetman           #+#    #+#              #
-#*   Updated: 2019/10/24 00:34:41 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/10/24 08:43:25 by blukasho         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS= main.c					\
 	  debug.c					\
 	  init.c					\
 	  clear.c					\
+	  writing_process.c 
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
