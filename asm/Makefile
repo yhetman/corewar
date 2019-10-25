@@ -29,7 +29,7 @@ SRCS= main.c					\
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 OBJDIR=./obj/
 SRCDIR=sources/
-NAME=assembler
+NAME=asm
 FLAGS=#-Wall -Wextra -Werror
 DEBUG=-g3 -fsanitize=address
 INCLUDE=-I./includes/ -I./asmlib/includes
