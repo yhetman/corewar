@@ -6,18 +6,30 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 15:00:32 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/25 19:12:00 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
 
-static void		free_command(t_command *command)
+static void		free_command(t_command *command, int line)
 {
 	if (command->command)
+	{
+		ft_putstr_fd("| Invalid command name at the line >> ", 2);
+		ft_putnbr_fd(line, 2);
+		ft_putstr_fd(" |\n", 2);
 		free(command->command);
-	if (command->args)
+		if (command->args)
+			free(command->args);
+	}
+	else if (command->args)
+	{
 		free(command->args);
+		ft_putstr_fd("| Invalid arguments at the line >> ", 2);
+		ft_putnbr_fd(line, 2);
+		ft_putstr_fd(" |\n", 2);
+	}
 }
 
 static int		check_info(t_command *command, t_assembler *ass)
@@ -100,12 +112,12 @@ int				get_command_info(t_assembler *ass, int count)
 	ft_bzero(&command, sizeof(t_command));
 	if (get_info(&command, ass->stored[count]) == 0)
 	{
-		free_command(&command);
+		free_command(&command, count);
 		return (false);
 	}
 	if (!check_info(&command, ass))
 	{
-		free_command(&command);
+		free_command(&command, count);
 		return (false);
 	}
 	return (1);

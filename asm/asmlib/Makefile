@@ -21,7 +21,7 @@ FUNCTIONS = count_lines_and_signs ft_strdel ft_strdup	\
 			ft_strnew ft_strlen find_words ft_strsub	\
 			ft_strchr validate_token ft_strcmp ft_strnstr \
 			define_index ft_atoi ft_memcpy ft_strdelarr	\
-			ft_puthex_fd
+			ft_puthex_fd ft_putnbr_fd
 
 OBJ  = $(addprefix obj/, $(addsuffix .o, $(FUNCTIONS)))
 SRC = $(addprefix src/, $(addsuffix .c, $(FUNCTIONS)))

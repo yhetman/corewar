@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 21:39:49 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:57:42 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,22 @@ static int	change_extension(char	*file)
 	return (fd);
 }
 
+static int	check(t_header *head)
+{
+	if (head->prog_name[0] == '\0')
+		return (ft_putstr_fd("| NO NAME OF PLAYER |\n", STD_ERR));
+	if (head->comment[0] == '\0')
+		return (ft_putstr_fd("| NO COMMENT |\n", STD_ERR));
+	return (0);
+}
+
 int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 {
 	int	fd;
 	int	i;
 
-//	if (!head->prog_name || !head->comment)
-//		return (0);
+	if (check(head))
+		return (0);
 	if ((fd = change_extension(file)) < 0)
 		return (0);
 	ft_puthex_n_fd(COREWAR_EXEC_MAGIC, fd, 4);
@@ -87,5 +96,6 @@ int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 		return (0);
 	if (close(fd) < 0)
 		return (0);
+	ft_putstr_fd("| File successfully generated! |\n", STD_OUT);
 	return (1);
 }

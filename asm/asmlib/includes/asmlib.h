@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:52:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 20:58:30 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/25 19:05:17 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strnstr(const char *s1, const char *s2, size_t len);
 int			ft_atoi(const char *str);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
+void		ft_putnbr_fd(int n, int fd);
 #endif
