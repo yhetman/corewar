@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   get_champions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 03:12:35 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 15:10:00 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 16:52:16 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,29 @@ static void			new_champion(t_champion **all, t_champion *new)
 		*all = new;
 }
 
-static void			init_all_champions(t_champion *champs, long id, char *file)
+static void			init_each_champion(t_champion *champs, t_vm *vm, long id, char *file)
 {
 	t_champion		*new_champ;
 	int				fd;
 
 	if (!(new_champ = (t_champion*)malloc(sizeof(t_champion))))
-			vm_exit("ERROR! Malloc failed!", NULL);
+			vm_exit("ERROR! Malloc failed!", &vm);
 	ft_bzero(new_champ, sizeof(t_champion));
+	if (!(new_champ->head = (t_header*)malloc(sizeof(t_header))))
+		vm_exit("ERROR! Malloc failed!", &vm);
+	ft_bzero(new_champ->head, sizeof(t_header));
 	new_champ->id = id;
 	if ((fd = open(file, O_RDONLY)) == -1)
-		vm_exit("ERROR! File reading failed", NULL);
+		vm_exit("ERROR! File reading failed", &vm);
+	if (!(check_byte_code(new_champ, fd)))
+		vm_exit("EROOR! Player contains invalid bytecode", &vm);
    	new_champion(champs, new_champ);
+	vm->amount_of_champs++;
 }
 
-void	check_file(int *ac, char ***av, t_vm *vm, t_champion **champs)
+void				get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs)
 {
-	long	id;
+	long			id;
 
 	id = 0;
 	if (*ac >= 3 && !ft_strcmp(**av, "-n"))
@@ -73,20 +79,16 @@ void	check_file(int *ac, char ***av, t_vm *vm, t_champion **champs)
 		|| check_champions_list(*champs, id)
 		|| !is_cor(*(*av + 2)))
 			usage();
-		init_all_champions(champs, id, *(*av + 2))
-		new_champion(champs, parse_champion(*(*av + 2), id));
-		vm->amount_of_champs++;
+		init_each_champion(champs, vm, id, *(*av + 2))
 		(*ac) -= 3;
 		(*av) += 3;
 	}
 	else if (is_cor(**argv))
 	{
-		init_all_champions(champs, id, **av);
-		new_champion(champs, parse_champion(**av, id));
-		vm->amount_of_champs++;
+		init_each_champion(champs, vm, id, **av);
 		(*ac)--;
 		(*av)++;
 	}
 	else
 		usage();
-	}
+}

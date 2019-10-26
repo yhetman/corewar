@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 15:10:10 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 17:26:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@
 ** next               — pointer to the next champ
 */
 
+typedef char			t_byte;
+
 typedef struct			s_champion
 {
 	long				id;
-	char				*name;
-	char				*comment;
-	long				code_size;
-	unsigned short		*code;
+	t_header			*head;
+	unsigned short		code[CHAMP_MAX_SIZE];
 	unsigned int		current_lives_num;
 	unsigned int		previous_lives_num;
 	ssize_t				cycle_live;
@@ -221,188 +221,6 @@ void			op_aff(t_vm *vm, t_cursor *cursor);
 ** Array
 */
 
-static t_op		g_op[16] = {
-	{
-		.name = "live",
-		.code = 0x01,
-		.args_num = 1,
-		.args_types_code = false,
-		.args = {T_DIR, 0, 0},
-		.modify_carry = false,
-		.t_dir_size = 4,
-		.cycles = 10,
-		.func = &op_live
-	},
-	{
-		.name = "ld",
-		.code = 0x02,
-		.args_num = 2,
-		.args_types_code = true,
-		.args = {T_DIR | T_IND, T_REG, 0},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 5,
-		.func = &op_ld
-	},
-	{
-		.name = "st",
-		.code = 0x03,
-		.args_num = 2,
-		.args_types_code = true,
-		.args = {T_REG, T_REG | T_IND, 0},
-		.modify_carry = false,
-		.t_dir_size = 4,
-		.cycles = 5,
-		.func = &op_st
-	},
-	{
-		.name = "add",
-		.code = 0x04,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG, T_REG, T_REG},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 10,
-		.func = &op_add
-	},
-	{
-		.name = "sub",
-		.code = 0x05,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG, T_REG, T_REG},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 10,
-		.func = &op_sub
-	},
-	{
-		.name = "and",
-		.code = 0x06,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 6,
-		.func = &op_and
-	},
-	{
-		.name = "or",
-		.code = 0x07,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 6,
-		.func = &op_or
-	},
-	{
-		.name = "xor",
-		.code = 0x08,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 6,
-		.func = &op_xor
-	},
-	{
-		.name = "zjmp",
-		.code = 0x09,
-		.args_num = 1,
-		.args_types_code = false,
-		.args = {T_DIR, 0, 0},
-		.modify_carry = false,
-		.t_dir_size = 2,
-		.cycles = 20,
-		.func = &op_zjmp
-	},
-	{
-		.name = "ldi",
-		.code = 0x0A,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
-		.modify_carry = false,
-		.t_dir_size = 2,
-		.cycles = 25,
-		.func = &op_ldi
-	},
-	{
-		.name = "sti",
-		.code = 0x0B,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG, T_REG | T_DIR | T_IND, T_REG | T_DIR},
-		.modify_carry = false,
-		.t_dir_size = 2,
-		.cycles = 25,
-		.func = &op_sti
-	},
-	{
-		.name = "fork",
-		.code = 0x0C,
-		.args_num = 1,
-		.args_types_code = false,
-		.args = {T_DIR, 0, 0},
-		.modify_carry = false,
-		.t_dir_size = 2,
-		.cycles = 800,
-		.func = &op_fork
-	},
-	{
-		.name = "lld",
-		.code = 0x0D,
-		.args_num = 2,
-		.args_types_code = true,
-		.args = {T_DIR | T_IND, T_REG, 0},
-		.modify_carry = true,
-		.t_dir_size = 4,
-		.cycles = 10,
-		.func = &op_lld
-	},
-	{
-		.name = "lldi",
-		.code = 0x0E,
-		.args_num = 3,
-		.args_types_code = true,
-		.args = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
-		.modify_carry = true,
-		.t_dir_size = 2,
-		.cycles = 50,
-		.func = &op_lldi
-	},
-	{
-		.name = "lfork",
-		.code = 0x0F,
-		.args_num = 1,
-		.args_types_code = false,
-		.args = {T_DIR, 0, 0},
-		.modify_carry = false,
-		.t_dir_size = 2,
-		.cycles = 1000,
-		.func = &op_lfork
-	},
-	{
-		.name = "aff",
-		.code = 0x10,
-		.args_num = 1,
-		.args_types_code = true,
-		.args = {T_REG, 0, 0},
-		.modify_carry = false,
-		.t_dir_size = 4,
-		.cycles = 2,
-		.func = &op_aff
-	}
-};
-
-/*
-** Functions
-*/
 
 int32_t			get_op_arg(t_vm *vm, t_cursor *cursor, uint8_t index,bool mod);
 t_cursor		*duplicate_cursor(t_cursor *cursor, int32_t addr);
@@ -423,7 +241,7 @@ t_cursor				*init_cursor(t_player *champ, int32_t next_op);
 /*
 ** Parse
 */
-void					parse_corewar_args(int argc, char **argv, t_vm *vm);
+//void					parse_corewar_args(int argc, char **argv, t_vm *vm);
 //void					parse_vs_flag(int *argc, char ***argv, t_vm *vm);
 //void					check_dump(int *argc, char ***argv, t_vm *vm);
 //void					parse_show_flag(int *argc, char ***argv, t_vm *vm);

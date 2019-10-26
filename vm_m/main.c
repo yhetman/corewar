@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 14:39:32 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 16:23:50 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			main(int ac, char **av)
 			check_dump(&ac, &av, vm);
 		else if (!ft_strcmp(*av, "-n")
 				|| is_cor(*av))
-			check_file(&ac, &av, vm, &champs);
+			get_champions(&ac, &av, vm, &champs);
 		else
 			usage();
 	}
