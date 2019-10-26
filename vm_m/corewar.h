@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 19:05:04 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 02:20:36 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,20 @@ typedef struct			s_champion
 ** next           — pointer to the next cursor
 */
 
-typedef struct			s_cursor
+typedef struct			s_carriage
 {
-	unsigned long		id;
-	bool				carry;
+	unsigned long		champ;
 	int					wait;
 	long				next_op;
 	long				registers[REG_NUMBER];
 	long long			cycle_live;
-	unsigned short		op_code;
+	unsigned short		code;
 	unsigned short		args[3];
 	unsigned long		step;
+	bool				carry;
 	t_champion			*champion;
-	struct s_cursor		*next;
-}						t_cursor;
+	struct s_carriage		*next;
+}						t_carriage;
 
 /*
 ** Virtual machine
@@ -147,8 +147,8 @@ typedef struct			s_vm
 	t_champion			*champs[MAX_PLAYERS];
 	long				amount_of_champs;
 	t_champion			*alive;
-	t_cursor			*cursors;
-	unsigned int		amount_of_cursors;
+	t_carriage			*carriages;
+	unsigned int		amount_of_carr;
 	unsigned int		lives;
 	ssize_t				cycles;
 	ssize_t				cyc_reminder;

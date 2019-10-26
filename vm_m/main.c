@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 19:02:40 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 00:59:55 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,19 @@ static int	start_virtual_machine(t_vm *vm)
 	next_op = 0;
 	if (vm->amount_of_champs < 1
 			|| vm->amount_of_champs > MAX_PLAYERS)
-		vm_exit("| WRONG NUMBER OF PLAYERS |\n", &vm);
+		return (0);
 	while (++id <= vm->amount_of_champs)
 	{
 		if (!(vm->champs[id - 1] = check_champions_list(champs, id)))
-			usage(0);
+			usage();
 		ft_memcpy(&(vm->arena[next_op]), vm->champs[id - 1]->code,
 				(size_t)(vm->champs[id - 1]->code_size));
 		next_op += MEM_SIZE / vm->amount_of_champs;
 	}
 	vm->alive = vm->champs[vm->amount_of_champs - 1];
-//	set_cursors(vm);
+	if (!place_carriages(vm))
+		return (0);
+	return (1);
 //	print_intro(vm->champs, vm->amount_of_champs);
 //	exec(vm);
 }
@@ -93,15 +95,15 @@ int			main(int ac, char **av)
 	{
 		if (!ft_strcmp(*av, "-dump"))
 			check_dump(&ac, &av, vm);
-		else if (!ft_strcmp(*av, "-n")
-				|| is_cor(*av))
+		else if (!ft_strcmp(*av, "-n") || is_cor(*av))
 			get_champions(&ac, &av, vm, &champs);
 		else
 			usage();
 	}
-	start_virtual_machine(vm, champs);
+	if (!(start_virtual_machine(vm, champs)))
+		vm_exit("ERROR! Invalid amount of champions!", &vm);
 //	print_last_alive(vm);
-	vm_exit(NULL, &vm);
+//	vm_exit(NULL, &vm);
 	return (0);
 }
 						
