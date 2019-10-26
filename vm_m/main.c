@@ -6,11 +6,28 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 16:23:50 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 19:02:40 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static t_champion	*check_champions_list(t_champion *all, long id)
+{
+	t_champion		*champ;
+
+	champ = NULL;
+	if (id < 1 || id > MAX_PLAYERS)
+		return (NULL);
+	champ = all;
+	while (champ)
+	{
+		if (champ->id == id)
+			return (champ);
+		champ = champ->next;
+	}
+	return (NULL);
+}
 
 static t_vm	*malloc_vm(t_vm *vm)
 {
@@ -49,16 +66,16 @@ static int	start_virtual_machine(t_vm *vm)
 		vm_exit("| WRONG NUMBER OF PLAYERS |\n", &vm);
 	while (++id <= vm->amount_of_champs)
 	{
-		if (!(vm->champs[id - 1] = get_champion(champs, id)))
+		if (!(vm->champs[id - 1] = check_champions_list(champs, id)))
 			usage(0);
 		ft_memcpy(&(vm->arena[next_op]), vm->champs[id - 1]->code,
 				(size_t)(vm->champs[id - 1]->code_size));
 		next_op += MEM_SIZE / vm->amount_of_champs;
 	}
 	vm->alive = vm->champs[vm->amount_of_champs - 1];
-	set_cursors(vm);
-	print_intro(vm->champs, vm->amount_of_champs);
-	exec(vm);
+//	set_cursors(vm);
+//	print_intro(vm->champs, vm->amount_of_champs);
+//	exec(vm);
 }
 
 int			main(int ac, char **av)
@@ -83,7 +100,7 @@ int			main(int ac, char **av)
 			usage();
 	}
 	start_virtual_machine(vm, champs);
-	print_last_alive(vm);
+//	print_last_alive(vm);
 	vm_exit(NULL, &vm);
 	return (0);
 }

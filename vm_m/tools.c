@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 17:48:59 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 14:38:57 by yhetman          ###   ########.fr       */
+/*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
+/*   Updated: 2019/10/26 19:01:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	usage()
 	exit(SUCCESS);
 }
 
-inline int8_t	get_byte(t_vm *vm, int32_t next_op, int32_t step)
-{
-	return (vm->arena[calc_addr(next_op + step)]);
-}
+//inline int8_t	get_byte(t_vm *vm, int32_t next_op, int32_t step)
+//{
+//	return (vm->arena[calc_addr(next_op + step)]);
+//}

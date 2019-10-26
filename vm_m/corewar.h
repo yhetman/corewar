@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 17:26:57 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 19:05:04 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 
 # include "libft.h"
 # include "op.h"
-# include <stdint.h>
 
 /*
 ** Macroses
 */
 
-# define INDEX(X)		((X) - 1)
 
 # define OP_CODE_LEN	1
 # define ARGS_CODE_LEN	1
@@ -69,11 +67,13 @@
 
 typedef char			t_byte;
 
+typedef ssize_t			t_read;
+
 typedef struct			s_champion
 {
 	long				id;
 	t_header			*head;
-	unsigned short		code[CHAMP_MAX_SIZE];
+	t_code				code[CHAMP_MAX_SIZE];
 	unsigned int		current_lives_num;
 	unsigned int		previous_lives_num;
 	ssize_t				cycle_live;
@@ -177,7 +177,7 @@ typedef struct			s_vm
 ** cycles          — cycles to execution of operator
 ** func            — pointer to function
 */
-
+/*
 typedef struct	s_op
 {
 	char		*name;
@@ -191,7 +191,7 @@ typedef struct	s_op
 	void		(*func)(t_vm *, t_cursor *);
 
 }				t_op;
-
+*/
 /*
 ** Operators
 */
@@ -234,8 +234,7 @@ void			int32_to_bytecode(uint8_t *arena, int32_t addr, int32_t value, int32_t si
 /*
 ** Init
 */
-t_player				*init_player(int id);
-t_cursor				*init_cursor(t_player *champ, int32_t next_op);
+//t_cursor				*init_cursor(t_player *champ, int32_t next_op);
 //t_vm					*malloc_vm(t-vm *vm);
 //void					init_arena(t_vm *vm);
 /*
@@ -251,34 +250,34 @@ t_champion				*get_champion(char *filename, int num);
 /*
 ** Cursor
 */
-void					set_cursors(t_vm *vm);
-void					add_cursor(t_cursor **list, t_cursor *new);
+//void					set_cursors(t_vm *vm);
+//void					add_cursor(t_cursor **list, t_cursor *new);
 /*
 ** Execute
 */
-void					exec(t_vm *vm);
-void					exec_cycle(t_vm *vm);
+//void					exec(t_vm *vm);
+//void					exec_cycle(t_vm *vm);
 /*
 ** Execute Utils
 */
-void					update_op_code(t_vm *vm, t_cursor *current);
-void					move_cursor(t_vm *vm, t_cursor *cursor);
+//void					update_op_code(t_vm *vm, t_cursor *current);
+//void					move_cursor(t_vm *vm, t_cursor *cursor);
 /*
 ** Find
 */
-t_player				*find_player(t_player *list, int32_t id);
+//t_player				*find_player(t_player *list, int32_t id);
 /*
 ** Free
 */
-void					free_vm(t_vm **vm);
+//void					free_vm(t_vm **vm);
 /*
 ** Utils
 */
 void					vm_exit(char *s, t_vm **vm);
 bool					is_cor(const char *filename);
-int32_t					calc_addr(int32_t addr);
-int8_t					get_byte(t_vm *vm, int32_t next_op, int32_t step);
-void					cycles_to_die_check(t_vm *vm);
+//int32_t					calc_addr(int32_t addr);
+//int8_t					get_byte(t_vm *vm, int32_t next_op, int32_t step);
+//void					cycles_to_die_check(t_vm *vm);
 /*
 ** Print
 */
@@ -286,12 +285,5 @@ void					print_intro(t_player **champs, int32_t amount_of_champs);
 void					print_last_alive(t_vm *vm);
 void					usage();
 void					print_arena(uint8_t *arena, int print_mode);
-/*
-** Log
-*/
-void					log_cycle(ssize_t cycle);
-void					log_pc_movements(uint8_t *arena, t_cursor *cursor);
-void					log_cursor_death(t_vm *vm, t_cursor *cursor);
-void					log_cycles_to_die(ssize_t cyc_reminder);
 
 #endif
