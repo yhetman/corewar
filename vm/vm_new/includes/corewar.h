@@ -6,17 +6,17 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 14:48:22 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/26 16:44:33 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
+#ifndef _COREWAR_H
 
-# define COREWAR_H
+# define _COREWAR_H
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
-# include "op.h"
+# include <op.h>
 # include <stdint.h>
 
 /*
@@ -38,35 +38,6 @@
 # define OP_LOG				4
 # define DEATH_LOG			8
 # define PC_MOVEMENT_LOG	16
-
-/*
-** Arg's type — Arg's code
-*/
-
-//static unsigned short	g_arg_code[3] = {
-//	T_REG,
-//	T_DIR,
-//	T_IND
-//};
-
-/*
-** Player
-*/
-
-/*
-** id                 — id number of champ
-** name               — champion's name
-** comment            — champion's comment
-** code_size          — size of champion's executable code
-** code               — champion's executable code
-** current_lives_num  — number of reports that champ is alive
-**                      during current cyc_reminder period
-** previous_lives_num — number of reports that champ is alive
-**                      during previous cyc_reminder period
-** cycle_live          — cycle's number, on which champ was assigned
-**                      as alive last time
-** next               — pointer to the next champ
-*/
 
 typedef struct			s_champion
 {
@@ -157,10 +128,6 @@ typedef struct			s_vm
 	size_t				checks;
 	ssize_t				dump_cycle;
 	int					dump_print_mode;
-	//ssize_t				show_cycle;
-	//int					show_print_mode;
-	//bool					display_aff;
-	//int					log;
 }						t_vm;
 
 /*

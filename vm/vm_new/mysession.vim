@@ -55,46 +55,15 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 includes/corewar.h
-badd +1 ~/Documents/projects/corewar/vm/vm_new
-badd +19 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_add.c
-badd +23 srcs/op/op_add.c
-badd +23 ~/Documents/projects/corewar/vm/vm_old/corewar/log.c
-badd +14 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_aff.c
-badd +15 srcs/op/op_aff.c
-badd +12 srcs/op_live.c
-badd +16 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_live.c
-badd +18 srcs/op/op_ld.c
-badd +14 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_ld.c
-badd +15 srcs/op/op_st.c
-badd +22 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_st.c
-badd +12 srcs/op/op_sub.c
-badd +15 srcs/op/op_and.c
-badd +24 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_and.c
-badd +23 srcs/op/op_or.c
-badd +24 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_or.c
-badd +8 srcs/op/op_xor.c
-badd +24 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_xor.c
-badd +14 srcs/op/op_zjmp.c
-badd +25 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_zjmp.c
-badd +25 srcs/op/op_ldi.c
-badd +28 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_ldi.c
-badd +20 srcs/op/op_sti.c
-badd +33 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_sti.c
-badd +18 srcs/op/op_fork.c
-badd +21 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_fork.c
-badd +23 srcs/op/op_lld.c
-badd +18 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_lld.c
-badd +28 srcs/op/op_lldi.c
-badd +29 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_lldi.c
-badd +1 ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_lfork.c
-badd +16 srcs/op/op_lfork.c
-badd +0 Makefile
+badd +0 includes/corewar.h
+badd +29 srcs/op/op_add.c
+badd +1 includes/op.h
+badd +0 srcs/op/op_live.c
 argglobal
 silent! argdel *
-$argadd Makefile
+$argadd includes/corewar.h
 set stal=2
-edit srcs/op/op_aff.c
+edit srcs/op/op_live.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -212,16 +181,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 35) / 70)
+let s:l = 32 - ((28 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
+32
 normal! 0
-lcd ~/Documents/projects/corewar/vm/vm_new
 wincmd w
 argglobal
-edit ~/Documents/projects/corewar/vm/vm_new/includes/corewar.h
+edit includes/corewar.h
 setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
@@ -327,18 +295,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 190 - ((8 * winheight(0) + 35) / 70)
+let s:l = 66 - ((65 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-190
-normal! 0
-lcd ~/Documents/projects/corewar/vm/vm_new
+66
+normal! 016|
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
 exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
-tabedit ~/Documents/projects/corewar/vm/vm_old/corewar/op/op_lfork.c
+tabedit includes/op.h
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -373,8 +339,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'c'
-setlocal filetype=c
+if &filetype != 'cpp'
+setlocal filetype=cpp
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -435,8 +401,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'c'
-setlocal syntax=c
+if &syntax != 'cpp'
+setlocal syntax=cpp
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -450,14 +416,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((20 * winheight(0) + 35) / 70)
+let s:l = 68 - ((64 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-21
-normal! 0
-lcd ~/Documents/projects/corewar/vm/vm_new
-tabnext 1
+68
+normal! 028|
+tabnext 2
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
