@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: blukasho <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 12:56:17 by blukasho          #+#    #+#              #
-#*   Updated: 2019/06/23 15:12:46 by blukasho         ###   ########.fr       *#
+#    Updated: 2019/10/26 14:09:30 by yhetman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS = ft_bzero.c ft_memcpy.c ft_memset.c ft_memccpy.c ft_memmove.c \
 	   ft_sum_two_digits.c ft_pos_exp_of_digit.c ft_neg_exp_of_digit.c\
 	   ft_int_arr_comparing.c ft_print_int_arr.c ft_strlenarr.c\
 	   t_sum_two_digits_del.c check_period.c ft_sum.c ft_get_double_bits.c\
-	   ft_get_double_exp.c ft_get_double_man.c\
+	   ft_get_double_exp.c ft_get_double_man.c ft_is_integer.c \
 	   ft_print_double_bits.c ft_len_of_digit.c\
 
 SRCS_FT_PRINTF =  additional_functions.c additional_functions_1.c\

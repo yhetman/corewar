@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 12:38:36 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 15:10:10 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -404,41 +404,32 @@ static t_op		g_op[16] = {
 ** Functions
 */
 
-int32_t			get_op_arg(t_vm *vm,
-							t_cursor *cursor,
-							uint8_t index,
-							t_bool mod);
+int32_t			get_op_arg(t_vm *vm, t_cursor *cursor, uint8_t index,bool mod);
 t_cursor		*duplicate_cursor(t_cursor *cursor, int32_t addr);
 void			parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
 bool			is_arg_types_valid(t_cursor *cursor, t_op *op);
 bool			is_args_valid(t_cursor *cursor, t_vm *vm, t_op *op);
 uint32_t		calc_step(t_cursor *cursor, t_op *op);
 uint32_t		step_size(uint8_t arg_type, t_op *op);
-int32_t			bytecode_to_int32(const uint8_t *arena,
-									int32_t addr,
-									int32_t size);
-void			int32_to_bytecode(uint8_t *arena,
-									int32_t addr,
-									int32_t value,
-									int32_t size);
-
+int32_t			bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size);
+void			int32_to_bytecode(uint8_t *arena, int32_t addr, int32_t value, int32_t size);
 /*
 ** Init
 */
 t_player				*init_player(int id);
 t_cursor				*init_cursor(t_player *champ, int32_t next_op);
-t_vm					*init_vm(void);
-void					init_arena(t_vm *vm);
+//t_vm					*malloc_vm(t-vm *vm);
+//void					init_arena(t_vm *vm);
 /*
 ** Parse
 */
 void					parse_corewar_args(int argc, char **argv, t_vm *vm);
-void					parse_vs_flag(int *argc, char ***argv, t_vm *vm);
-void					parse_dump_flag(int *argc, char ***argv, t_vm *vm);
-void					parse_show_flag(int *argc, char ***argv, t_vm *vm);
-void					parse_aff_flag(int *argc, char ***argv, t_vm *vm);
-void					parse_log_flag(int *argc, char ***argv, t_vm *vm);
-t_player				*parse_champion(char *filename, int num);
+//void					parse_vs_flag(int *argc, char ***argv, t_vm *vm);
+//void					check_dump(int *argc, char ***argv, t_vm *vm);
+//void					parse_show_flag(int *argc, char ***argv, t_vm *vm);
+//void					parse_aff_flag(int *argc, char ***argv, t_vm *vm);
+//void					parse_log_flag(int *argc, char ***argv, t_vm *vm);
+t_champion				*get_champion(char *filename, int num);
 /*
 ** Cursor
 */
@@ -465,8 +456,8 @@ void					free_vm(t_vm **vm);
 /*
 ** Utils
 */
-void					terminate(char *s);
-t_bool					is_filename(const char *filename, const char *ext);
+void					vm_exit(char *s, t_vm **vm);
+bool					is_cor(const char *filename);
 int32_t					calc_addr(int32_t addr);
 int8_t					get_byte(t_vm *vm, int32_t next_op, int32_t step);
 void					cycles_to_die_check(t_vm *vm);

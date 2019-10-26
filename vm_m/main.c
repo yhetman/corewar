@@ -6,18 +6,11 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 13:29:12 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/26 14:39:32 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-nclude "corewar.h"
-
-static inline bool	is_cor(const char *file)
-{
-	return ((file && ft_strlen(file) >= 4)
-			? (!ft_strcmp(ft_strchr(file, '\0') - 4, ".cor"))
-		 : (false));
-}
+#include "corewar.h"
 
 static t_vm	*malloc_vm(t_vm *vm)
 {
@@ -29,16 +22,16 @@ static t_vm	*malloc_vm(t_vm *vm)
 	return (vm);
 }
 
-static void	check_dump(int *argc, char ***argv, t_vm *vm)
+static void	check_dump(int *ac, char ***av, t_vm *vm)
 {
-	if (!vm->dump_print_mode && *argc >= 2
-			&& IS_INT(*(*argv + 1)))
+	if (!vm->dump_print_mode && *ac >= 2
+			&& IS_INT(*(*av + 1)))
 	{
-		if ((vm->dump_cycle = ft_atoi(*(*argv + 1))) < 0)
+		if ((vm->dump_cycle = ft_atoi(*(*av + 1))) < 0)
 			vm->dump_cycle = -1;
 		vm->dump_print_mode = ((!ft_strcmp(**argv, "-d")) ? 64 : 32);
-		(*argc) -= 2;
-		(*argv) += 2;
+		(*ac) -= 2;
+		(*av) += 2;
 	}
 	else
 		usage();
@@ -56,13 +49,13 @@ static int	start_virtual_machine(t_vm *vm)
 		vm_exit("| WRONG NUMBER OF PLAYERS |\n", &vm);
 	while (++id <= vm->amount_of_champs)
 	{
-		if (!(vm->champs[INDEX(id)] = get_champion(champs, id)))
+		if (!(vm->champs[id - 1] = get_champion(champs, id)))
 			usage(0);
-		ft_memcpy(&(vm->arena[next_op]), vm->champs[INDEX(id)]->code,
-				(size_t)(vm->champs[INDEX(id)]->code_size));
+		ft_memcpy(&(vm->arena[next_op]), vm->champs[id - 1]->code,
+				(size_t)(vm->champs[id - 1]->code_size));
 		next_op += MEM_SIZE / vm->amount_of_champs;
 	}
-	vm->alive = vm->champs[INDEX(vm->amount_of_champs)];
+	vm->alive = vm->champs[vm->amount_of_champs - 1];
 	set_cursors(vm);
 	print_intro(vm->champs, vm->amount_of_champs);
 	exec(vm);

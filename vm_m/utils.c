@@ -6,14 +6,18 @@
 /*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:48:59 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/12/23 19:06:22 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2019/10/26 14:38:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include "corewar_vs.h"
-#include <stdio.h>
-#include <errno.h>
+
+bool	is_cor(const char *file)
+{
+	return ((file && ft_strlen(file) >= 4)
+			? (!ft_strcmp(ft_strchr(file, '\0') - 4, ".cor"))
+		 : (false));
+}
 
 void	vm_exit(char *msg, t_vm *vm)
 {
@@ -27,7 +31,7 @@ void	usage()
 {
 	ft_putendl_fd("Usage: \n", 1);
 	ft_putstr_fd("\t\t{ ./corewar [-dump [nbr_cycles]]", 1);
-	ft_putstr_fd(["[-n [number]] champion1.cor] ... }\n", 1);
+	ft_putstr_fd("[-n [number]] champion1.cor] ... }\n", 1);
 	exit(SUCCESS);
 }
 
