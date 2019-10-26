@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/26 13:55:17 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/26 14:48:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,14 +192,6 @@ typedef struct	s_op
 	void		(*func)(t_vm *, t_cursor *);
 
 }				t_op;
-
-/*
-** Operators
-*/
-
-/*
-** Functions
-*/
 
 void			op_live(t_vm *vm, t_cursor *next_op);
 void			op_ld(t_vm *vm, t_cursor *next_op);
