@@ -1,0 +1,943 @@
+In file included from ./includes/corewar.h:19:0,
+                 from srcs/carriages_placement.c:13:
+./includes/op.h:21:1: error: unknown type name ‘t_op’
+ t_op    op_tab[17] =
+ ^
+./includes/op.h:23:3: error: braces around scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+   ^
+./includes/op.h:23:3: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+    ^
+./includes/op.h:23:4: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:4: error: initializer element is not computable at load time
+./includes/op.h:23:4: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:12: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+            ^
+./includes/op.h:23:12: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:3: error: braces around scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+   ^
+./includes/op.h:23:3: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:16: error: ‘T_DIR’ undeclared here (not in a function)
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+                ^
+./includes/op.h:23:15: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+               ^
+./includes/op.h:23:15: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:24: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+                        ^
+./includes/op.h:23:24: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:27: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+                           ^
+./includes/op.h:23:27: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:31: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+                               ^
+./includes/op.h:23:31: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:40: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+                                        ^
+./includes/op.h:23:40: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:23:43: error: excess elements in scalar initializer [-Werror]
+   {"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+                                           ^
+./includes/op.h:23:43: note: (near initialization for ‘op_tab[0]’)
+./includes/op.h:24:3: error: braces around scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+   ^
+./includes/op.h:24:3: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+    ^
+./includes/op.h:24:4: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:4: error: initializer element is not computable at load time
+./includes/op.h:24:4: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:10: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+          ^
+./includes/op.h:24:10: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:3: error: braces around scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+   ^
+./includes/op.h:24:3: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:22: error: ‘T_IND’ undeclared here (not in a function)
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                      ^
+./includes/op.h:24:29: error: ‘T_REG’ undeclared here (not in a function)
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                             ^
+./includes/op.h:24:29: error: excess elements in scalar initializer [-Werror]
+./includes/op.h:24:29: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:13: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+             ^
+./includes/op.h:24:13: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:37: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                                     ^
+./includes/op.h:24:37: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:40: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                                        ^
+./includes/op.h:24:40: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:43: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                                           ^
+./includes/op.h:24:43: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:51: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                                                   ^
+./includes/op.h:24:51: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:24:54: error: excess elements in scalar initializer [-Werror]
+   {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+                                                      ^
+./includes/op.h:24:54: note: (near initialization for ‘op_tab[1]’)
+./includes/op.h:25:3: error: braces around scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+   ^
+./includes/op.h:25:3: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+    ^
+./includes/op.h:25:4: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:4: error: initializer element is not computable at load time
+./includes/op.h:25:4: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:10: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+          ^
+./includes/op.h:25:10: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:3: error: braces around scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+   ^
+./includes/op.h:25:3: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:21: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+                     ^
+./includes/op.h:25:21: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:13: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+             ^
+./includes/op.h:25:13: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:37: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+                                     ^
+./includes/op.h:25:37: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:40: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+                                        ^
+./includes/op.h:25:40: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:43: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+                                           ^
+./includes/op.h:25:43: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:52: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+                                                    ^
+./includes/op.h:25:52: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:25:55: error: excess elements in scalar initializer [-Werror]
+   {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+                                                       ^
+./includes/op.h:25:55: note: (near initialization for ‘op_tab[2]’)
+./includes/op.h:26:3: error: braces around scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+   ^
+./includes/op.h:26:3: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+    ^
+./includes/op.h:26:4: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:4: error: initializer element is not computable at load time
+./includes/op.h:26:4: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:11: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+           ^
+./includes/op.h:26:11: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:3: error: braces around scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+   ^
+./includes/op.h:26:3: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:22: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                      ^
+./includes/op.h:26:22: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:29: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                             ^
+./includes/op.h:26:29: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:14: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+              ^
+./includes/op.h:26:14: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:37: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                                     ^
+./includes/op.h:26:37: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:40: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                                        ^
+./includes/op.h:26:40: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:44: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                                            ^
+./includes/op.h:26:44: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:56: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                                                        ^
+./includes/op.h:26:56: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:26:59: error: excess elements in scalar initializer [-Werror]
+   {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+                                                           ^
+./includes/op.h:26:59: note: (near initialization for ‘op_tab[3]’)
+./includes/op.h:27:3: error: braces around scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+   ^
+./includes/op.h:27:3: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+    ^
+./includes/op.h:27:4: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:4: error: initializer element is not computable at load time
+./includes/op.h:27:4: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:11: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+           ^
+./includes/op.h:27:11: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:3: error: braces around scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+   ^
+./includes/op.h:27:3: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:22: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                      ^
+./includes/op.h:27:22: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:29: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                             ^
+./includes/op.h:27:29: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:14: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+              ^
+./includes/op.h:27:14: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:37: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                                     ^
+./includes/op.h:27:37: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:40: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                                        ^
+./includes/op.h:27:40: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:44: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                                            ^
+./includes/op.h:27:44: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:60: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                                                            ^
+./includes/op.h:27:60: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:27:63: error: excess elements in scalar initializer [-Werror]
+   {"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+                                                               ^
+./includes/op.h:27:63: note: (near initialization for ‘op_tab[4]’)
+./includes/op.h:28:3: error: braces around scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+   ^
+./includes/op.h:28:3: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+    ^
+./includes/op.h:28:4: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:4: error: initializer element is not computable at load time
+./includes/op.h:28:4: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:11: error: excess elements in scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+           ^
+./includes/op.h:28:11: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:3: error: braces around scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+   ^
+./includes/op.h:28:3: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:38: error: excess elements in scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+                                      ^
+./includes/op.h:28:38: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:61: error: excess elements in scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+                                                             ^
+./includes/op.h:28:61: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:14: error: excess elements in scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+              ^
+./includes/op.h:28:14: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:69: error: excess elements in scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+                                                                     ^
+./includes/op.h:28:69: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:28:72: error: excess elements in scalar initializer [-Werror]
+   {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+                                                                        ^
+./includes/op.h:28:72: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:29:6: error: excess elements in scalar initializer [-Werror]
+      "et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
+      ^
+./includes/op.h:29:6: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:29:43: error: excess elements in scalar initializer [-Werror]
+      "et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
+                                           ^
+./includes/op.h:29:43: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:29:46: error: excess elements in scalar initializer [-Werror]
+      "et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
+                                              ^
+./includes/op.h:29:46: note: (near initialization for ‘op_tab[5]’)
+./includes/op.h:30:3: error: braces around scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+   ^
+./includes/op.h:30:3: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+    ^
+./includes/op.h:30:4: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:4: error: initializer element is not computable at load time
+./includes/op.h:30:4: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:10: error: excess elements in scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+          ^
+./includes/op.h:30:10: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:3: error: braces around scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+   ^
+./includes/op.h:30:3: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:37: error: excess elements in scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+                                     ^
+./includes/op.h:30:37: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:60: error: excess elements in scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+                                                            ^
+./includes/op.h:30:60: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:13: error: excess elements in scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+             ^
+./includes/op.h:30:13: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:68: error: excess elements in scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+                                                                    ^
+./includes/op.h:30:68: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:30:71: error: excess elements in scalar initializer [-Werror]
+   {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
+                                                                       ^
+./includes/op.h:30:71: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:31:6: error: excess elements in scalar initializer [-Werror]
+      "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
+      ^
+./includes/op.h:31:6: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:31:46: error: excess elements in scalar initializer [-Werror]
+      "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
+                                              ^
+./includes/op.h:31:46: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:31:49: error: excess elements in scalar initializer [-Werror]
+      "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
+                                                 ^
+./includes/op.h:31:49: note: (near initialization for ‘op_tab[6]’)
+./includes/op.h:32:3: error: braces around scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+   ^
+./includes/op.h:32:3: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+    ^
+./includes/op.h:32:4: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:4: error: initializer element is not computable at load time
+./includes/op.h:32:4: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:11: error: excess elements in scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+           ^
+./includes/op.h:32:11: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:3: error: braces around scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+   ^
+./includes/op.h:32:3: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:38: error: excess elements in scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+                                      ^
+./includes/op.h:32:38: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:61: error: excess elements in scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+                                                             ^
+./includes/op.h:32:61: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:14: error: excess elements in scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+              ^
+./includes/op.h:32:14: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:69: error: excess elements in scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+                                                                     ^
+./includes/op.h:32:69: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:32:72: error: excess elements in scalar initializer [-Werror]
+   {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+                                                                        ^
+./includes/op.h:32:72: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:33:6: error: excess elements in scalar initializer [-Werror]
+      "ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
+      ^
+./includes/op.h:33:6: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:33:43: error: excess elements in scalar initializer [-Werror]
+      "ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
+                                           ^
+./includes/op.h:33:43: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:33:46: error: excess elements in scalar initializer [-Werror]
+      "ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
+                                              ^
+./includes/op.h:33:46: note: (near initialization for ‘op_tab[7]’)
+./includes/op.h:34:3: error: braces around scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+   ^
+./includes/op.h:34:3: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+    ^
+./includes/op.h:34:4: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:4: error: initializer element is not computable at load time
+./includes/op.h:34:4: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:12: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+            ^
+./includes/op.h:34:12: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:3: error: braces around scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+   ^
+./includes/op.h:34:3: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:15: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+               ^
+./includes/op.h:34:15: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:24: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+                        ^
+./includes/op.h:34:24: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:27: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+                           ^
+./includes/op.h:34:27: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:31: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+                               ^
+./includes/op.h:34:31: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:47: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+                                               ^
+./includes/op.h:34:47: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:34:50: error: excess elements in scalar initializer [-Werror]
+   {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+                                                  ^
+./includes/op.h:34:50: note: (near initialization for ‘op_tab[8]’)
+./includes/op.h:35:3: error: braces around scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+   ^
+./includes/op.h:35:3: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+    ^
+./includes/op.h:35:4: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:4: error: initializer element is not computable at load time
+./includes/op.h:35:4: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:11: error: excess elements in scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+           ^
+./includes/op.h:35:11: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:3: error: braces around scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+   ^
+./includes/op.h:35:3: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:38: error: excess elements in scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+                                      ^
+./includes/op.h:35:38: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:53: error: excess elements in scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+                                                     ^
+./includes/op.h:35:53: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:14: error: excess elements in scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+              ^
+./includes/op.h:35:14: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:61: error: excess elements in scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+                                                             ^
+./includes/op.h:35:61: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:35:65: error: excess elements in scalar initializer [-Werror]
+   {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+                                                                 ^
+./includes/op.h:35:65: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:36:6: error: excess elements in scalar initializer [-Werror]
+      "load index", 1, 1},
+      ^
+./includes/op.h:36:6: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:36:20: error: excess elements in scalar initializer [-Werror]
+      "load index", 1, 1},
+                    ^
+./includes/op.h:36:20: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:36:23: error: excess elements in scalar initializer [-Werror]
+      "load index", 1, 1},
+                       ^
+./includes/op.h:36:23: note: (near initialization for ‘op_tab[9]’)
+./includes/op.h:37:3: error: braces around scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+   ^
+./includes/op.h:37:3: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+    ^
+./includes/op.h:37:4: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:4: error: initializer element is not computable at load time
+./includes/op.h:37:4: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:11: error: excess elements in scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+           ^
+./includes/op.h:37:11: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:3: error: braces around scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+   ^
+./includes/op.h:37:3: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:22: error: excess elements in scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+                      ^
+./includes/op.h:37:22: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:45: error: excess elements in scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+                                             ^
+./includes/op.h:37:45: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:14: error: excess elements in scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+              ^
+./includes/op.h:37:14: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:61: error: excess elements in scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+                                                             ^
+./includes/op.h:37:61: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:37:65: error: excess elements in scalar initializer [-Werror]
+   {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+                                                                 ^
+./includes/op.h:37:65: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:38:6: error: excess elements in scalar initializer [-Werror]
+      "store index", 1, 1},
+      ^
+./includes/op.h:38:6: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:38:21: error: excess elements in scalar initializer [-Werror]
+      "store index", 1, 1},
+                     ^
+./includes/op.h:38:21: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:38:24: error: excess elements in scalar initializer [-Werror]
+      "store index", 1, 1},
+                        ^
+./includes/op.h:38:24: note: (near initialization for ‘op_tab[10]’)
+./includes/op.h:39:3: error: braces around scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+   ^
+./includes/op.h:39:3: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+    ^
+./includes/op.h:39:4: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:4: error: initializer element is not computable at load time
+./includes/op.h:39:4: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:12: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+            ^
+./includes/op.h:39:12: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:3: error: braces around scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+   ^
+./includes/op.h:39:3: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:15: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+               ^
+./includes/op.h:39:15: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:24: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+                        ^
+./includes/op.h:39:24: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:28: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+                            ^
+./includes/op.h:39:28: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:33: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+                                 ^
+./includes/op.h:39:33: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:41: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+                                         ^
+./includes/op.h:39:41: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:39:44: error: excess elements in scalar initializer [-Werror]
+   {"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+                                            ^
+./includes/op.h:39:44: note: (near initialization for ‘op_tab[11]’)
+./includes/op.h:40:3: error: braces around scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+   ^
+./includes/op.h:40:3: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+    ^
+./includes/op.h:40:4: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:4: error: initializer element is not computable at load time
+./includes/op.h:40:4: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:11: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+           ^
+./includes/op.h:40:11: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:3: error: braces around scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+   ^
+./includes/op.h:40:3: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:30: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+                              ^
+./includes/op.h:40:30: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:14: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+              ^
+./includes/op.h:40:14: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:38: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+                                      ^
+./includes/op.h:40:38: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:42: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+                                          ^
+./includes/op.h:40:42: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:46: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+                                              ^
+./includes/op.h:40:46: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:59: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+                                                           ^
+./includes/op.h:40:59: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:40:62: error: excess elements in scalar initializer [-Werror]
+   {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+                                                              ^
+./includes/op.h:40:62: note: (near initialization for ‘op_tab[12]’)
+./includes/op.h:41:3: error: braces around scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+   ^
+./includes/op.h:41:3: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+    ^
+./includes/op.h:41:4: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:4: error: initializer element is not computable at load time
+./includes/op.h:41:4: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:12: error: excess elements in scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+            ^
+./includes/op.h:41:12: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:3: error: braces around scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+   ^
+./includes/op.h:41:3: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:39: error: excess elements in scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+                                       ^
+./includes/op.h:41:39: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:54: error: excess elements in scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+                                                      ^
+./includes/op.h:41:54: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:15: error: excess elements in scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+               ^
+./includes/op.h:41:15: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:62: error: excess elements in scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+                                                              ^
+./includes/op.h:41:62: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:41:66: error: excess elements in scalar initializer [-Werror]
+   {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
+                                                                  ^
+./includes/op.h:41:66: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:42:6: error: excess elements in scalar initializer [-Werror]
+      "long load index", 1, 1},
+      ^
+./includes/op.h:42:6: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:42:25: error: excess elements in scalar initializer [-Werror]
+      "long load index", 1, 1},
+                         ^
+./includes/op.h:42:25: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:42:28: error: excess elements in scalar initializer [-Werror]
+      "long load index", 1, 1},
+                            ^
+./includes/op.h:42:28: note: (near initialization for ‘op_tab[13]’)
+./includes/op.h:43:3: error: braces around scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+   ^
+./includes/op.h:43:3: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+    ^
+./includes/op.h:43:4: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:4: error: initializer element is not computable at load time
+./includes/op.h:43:4: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:13: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+             ^
+./includes/op.h:43:13: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:3: error: braces around scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+   ^
+./includes/op.h:43:3: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:16: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+                ^
+./includes/op.h:43:16: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:25: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+                         ^
+./includes/op.h:43:25: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:29: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+                             ^
+./includes/op.h:43:29: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:35: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+                                   ^
+./includes/op.h:43:35: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:48: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+                                                ^
+./includes/op.h:43:48: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:43:51: error: excess elements in scalar initializer [-Werror]
+   {"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+                                                   ^
+./includes/op.h:43:51: note: (near initialization for ‘op_tab[14]’)
+./includes/op.h:44:3: error: braces around scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+   ^
+./includes/op.h:44:3: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:4: error: initialization makes integer from pointer without a cast [-Werror=int-conversion]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+    ^
+./includes/op.h:44:4: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:4: error: initializer element is not computable at load time
+./includes/op.h:44:4: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:11: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+           ^
+./includes/op.h:44:11: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:3: error: braces around scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+   ^
+./includes/op.h:44:3: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:14: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+              ^
+./includes/op.h:44:14: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:23: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+                       ^
+./includes/op.h:44:23: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:27: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+                           ^
+./includes/op.h:44:27: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:30: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+                              ^
+./includes/op.h:44:30: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:37: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+                                     ^
+./includes/op.h:44:37: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:44:40: error: excess elements in scalar initializer [-Werror]
+   {"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
+                                        ^
+./includes/op.h:44:40: note: (near initialization for ‘op_tab[15]’)
+./includes/op.h:45:3: error: braces around scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+   ^
+./includes/op.h:45:3: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:7: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+       ^
+./includes/op.h:45:7: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:3: error: braces around scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+   ^
+./includes/op.h:45:3: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:10: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+          ^
+./includes/op.h:45:10: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:15: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+               ^
+./includes/op.h:45:15: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:18: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+                  ^
+./includes/op.h:45:18: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:21: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+                     ^
+./includes/op.h:45:21: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:24: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+                        ^
+./includes/op.h:45:24: note: (near initialization for ‘op_tab[16]’)
+./includes/op.h:45:27: error: excess elements in scalar initializer [-Werror]
+   {0, 0, {0}, 0, 0, 0, 0, 0}
+                           ^
+./includes/op.h:45:27: note: (near initialization for ‘op_tab[16]’)
+In file included from srcs/carriages_placement.c:13:0:
+./includes/corewar.h:76:2: error: unknown type name ‘t_header’
+  t_header   *head;
+  ^
+./includes/corewar.h:77:2: error: unknown type name ‘t_code’
+  t_code    code[CHAMP_MAX_SIZE];
+  ^
+./includes/corewar.h:204:26: error: unknown type name ‘t_cursor’
+ void   op_live(t_vm *vm, t_cursor *next_op);
+                          ^
+./includes/corewar.h:205:24: error: unknown type name ‘t_cursor’
+ void   op_ld(t_vm *vm, t_cursor *next_op);
+                        ^
+./includes/corewar.h:206:24: error: unknown type name ‘t_cursor’
+ void   op_st(t_vm *vm, t_cursor *next_op);
+                        ^
+./includes/corewar.h:207:25: error: unknown type name ‘t_cursor’
+ void   op_add(t_vm *vm, t_cursor *next_op);
+                         ^
+./includes/corewar.h:208:25: error: unknown type name ‘t_cursor’
+ void   op_sub(t_vm *vm, t_cursor *next_op);
+                         ^
+./includes/corewar.h:209:25: error: unknown type name ‘t_cursor’
+ void   op_and(t_vm *vm, t_cursor *cursor);
+                         ^
+./includes/corewar.h:210:24: error: unknown type name ‘t_cursor’
+ void   op_or(t_vm *vm, t_cursor *cursor);
+                        ^
+./includes/corewar.h:211:25: error: unknown type name ‘t_cursor’
+ void   op_xor(t_vm *vm, t_cursor *cursor);
+                         ^
+./includes/corewar.h:212:26: error: unknown type name ‘t_cursor’
+ void   op_zjmp(t_vm *vm, t_cursor *cursor);
+                          ^
+./includes/corewar.h:213:25: error: unknown type name ‘t_cursor’
+ void   op_ldi(t_vm *vm, t_cursor *cursor);
+                         ^
+./includes/corewar.h:214:25: error: unknown type name ‘t_cursor’
+ void   op_sti(t_vm *vm, t_cursor *cursor);
+                         ^
+./includes/corewar.h:215:26: error: unknown type name ‘t_cursor’
+ void   op_fork(t_vm *vm, t_cursor *cursor);
+                          ^
+./includes/corewar.h:216:25: error: unknown type name ‘t_cursor’
+ void   op_lld(t_vm *vm, t_cursor *cursor);
+                         ^
+./includes/corewar.h:217:26: error: unknown type name ‘t_cursor’
+ void   op_lldi(t_vm *vm, t_cursor *cursor);
+                          ^
+./includes/corewar.h:218:27: error: unknown type name ‘t_cursor’
+ void   op_lfork(t_vm *vm, t_cursor *cursor);
+                           ^
+./includes/corewar.h:219:25: error: unknown type name ‘t_cursor’
+ void   op_aff(t_vm *vm, t_cursor *cursor);
+                         ^
+./includes/corewar.h:226:32: error: unknown type name ‘t_cursor’
+ int32_t   get_op_arg(t_vm *vm, t_cursor *cursor, uint8_t index,bool mod);
+                                ^
+./includes/corewar.h:226:50: error: unknown type name ‘uint8_t’
+ int32_t   get_op_arg(t_vm *vm, t_cursor *cursor, uint8_t index,bool mod);
+                                                  ^
+./includes/corewar.h:227:1: error: unknown type name ‘t_cursor’
+ t_cursor  *duplicate_cursor(t_cursor *cursor, int32_t addr);
+ ^
+./includes/corewar.h:227:29: error: unknown type name ‘t_cursor’
+ t_cursor  *duplicate_cursor(t_cursor *cursor, int32_t addr);
+                             ^
+./includes/corewar.h:228:35: error: unknown type name ‘t_cursor’
+ void   parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
+                                   ^
+./includes/corewar.h:228:53: error: unknown type name ‘t_op’
+ void   parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op);
+                                                     ^
+./includes/corewar.h:229:27: error: unknown type name ‘t_cursor’
+ bool   is_arg_types_valid(t_cursor *cursor, t_op *op);
+                           ^
+./includes/corewar.h:229:45: error: unknown type name ‘t_op’
+ bool   is_arg_types_valid(t_cursor *cursor, t_op *op);
+                                             ^
+./includes/corewar.h:230:22: error: unknown type name ‘t_cursor’
+ bool   is_args_valid(t_cursor *cursor, t_vm *vm, t_op *op);
+                      ^
+./includes/corewar.h:230:50: error: unknown type name ‘t_op’
+ bool   is_args_valid(t_cursor *cursor, t_vm *vm, t_op *op);
+                                                  ^
+./includes/corewar.h:231:1: error: unknown type name ‘uint32_t’
+ uint32_t  calc_step(t_cursor *cursor, t_op *op);
+ ^
+./includes/corewar.h:231:21: error: unknown type name ‘t_cursor’
+ uint32_t  calc_step(t_cursor *cursor, t_op *op);
+                     ^
+./includes/corewar.h:231:39: error: unknown type name ‘t_op’
+ uint32_t  calc_step(t_cursor *cursor, t_op *op);
+                                       ^
+./includes/corewar.h:232:1: error: unknown type name ‘uint32_t’
+ uint32_t  step_size(uint8_t arg_type, t_op *op);
+ ^
+./includes/corewar.h:232:21: error: unknown type name ‘uint8_t’
+ uint32_t  step_size(uint8_t arg_type, t_op *op);
+                     ^
+./includes/corewar.h:232:39: error: unknown type name ‘t_op’
+ uint32_t  step_size(uint8_t arg_type, t_op *op);
+                                       ^
+./includes/corewar.h:233:35: error: unknown type name ‘uint8_t’
+ int32_t   bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size);
+                                   ^
+./includes/corewar.h:234:26: error: unknown type name ‘uint8_t’
+ void   int32_to_bytecode(uint8_t *arena, int32_t addr, int32_t value, int32_t size);
+                          ^
+./includes/corewar.h:285:22: error: unknown type name ‘t_player’
+ void     print_intro(t_player **champs, int32_t amount_of_champs);
+                      ^
+./includes/corewar.h:288:22: error: unknown type name ‘uint8_t’
+ void     print_arena(uint8_t *arena, int print_mode);
+                      ^
+srcs/carriages_placement.c: In function ‘readiness_message’:
+srcs/carriages_placement.c:41:39: error: request for member ‘prog_name’ in something not a structure or union
+     index, vm->champs[index - 1]->head->prog_name);
+                                       ^
+srcs/carriages_placement.c:43:32: error: request for member ‘prog_comment’ in something not a structure or union
+     vm->champs[index - 1]->head->prog_comment);
+                                ^
+srcs/carriages_placement.c: In function ‘carriages_placement’:
+srcs/carriages_placement.c:53:2: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘players’
+  players = 0;
+  ^
+srcs/carriages_placement.c:57:9: error: ‘new_carr’ undeclared (first use in this function)
+   if (!(new_carr = (t_carriage*)malloc(t_carriage)))
+         ^
+srcs/carriages_placement.c:57:9: note: each undeclared identifier is reported only once for each function it appears in
+srcs/carriages_placement.c:57:40: error: expected expression before ‘t_carriage’
+   if (!(new_carr = (t_carriage*)malloc(t_carriage)))
+                                        ^
+srcs/carriages_placement.c:61:5: error: ‘t_vm {aka struct s_vm}’ has no member named ‘next_op’
+   vm->next_op = next_op;
+     ^
+srcs/carriages_placement.c:62:38: error: left-hand operand of comma expression has no effect [-Werror=unused-value]
+   carriage_cycle_list(&(vm->carriages, new_carr));
+                                      ^
+srcs/carriages_placement.c:62:3: error: too few arguments to function ‘carriage_cycle_list’
+   carriage_cycle_list(&(vm->carriages, new_carr));
+   ^
+srcs/carriages_placement.c:25:15: note: declared here
+ static void   carriage_cycle_list(t_carriage **all, t_carriage *last)
+               ^
+cc1: all warnings being treated as errors
+make: *** [objs/carriages_placement.o] Error 1
