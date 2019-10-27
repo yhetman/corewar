@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:23:09 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 00:12:26 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 00:21:55 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check_register(t_vm *vm, long next_op, unsigned long step)
 {
 	char	reg;
 
-	reg = read_one_byte(vm, next_op, step);
+	reg = (vm->arena[count_operation(carr->next_op + step)];
 	return ((reg >= 1 && reg <= REG_NUMBER) ? 0 : 1);
 }
 
@@ -47,7 +47,7 @@ static int	get_command_arguments(t_vm *vm, t_carriage *carr, t_op *option)
 	args = 0;
 	if (option->args_type)
 	{
-		args_type = read_one_byte(vm, carr->next_op, 1);
+		args_type = (vm->arena[count_operation(carr->next_op + 1)];
 		while (++args <= 3)
 			if (option->count_args >= args)
 				carr->args_types[args - 1] =
