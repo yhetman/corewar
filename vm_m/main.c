@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 00:59:55 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 03:09:02 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	start_virtual_machine(t_vm *vm)
 		next_op += MEM_SIZE / vm->amount_of_champs;
 	}
 	vm->alive = vm->champs[vm->amount_of_champs - 1];
-	if (!place_carriages(vm))
+	if (!carriages_placement(vm))
 		return (0);
 	return (1);
 //	print_intro(vm->champs, vm->amount_of_champs);
@@ -85,11 +85,10 @@ int			main(int ac, char **av)
 	t_vm		*vm;
 	t_champion	*champs;
 
-	ac--;
 	av++;
-	champs = NULL;
-	if (!ac)
+	if (!(--ac))
 		usage();
+	champs = NULL;
 	vm = malloc_vm(vm);
 	while (ac)
 	{
@@ -102,8 +101,8 @@ int			main(int ac, char **av)
 	}
 	if (!(start_virtual_machine(vm, champs)))
 		vm_exit("ERROR! Invalid amount of champions!", &vm);
+	execute_champs_code(vm);
 //	print_last_alive(vm);
-//	vm_exit(NULL, &vm);
 	return (0);
 }
 						

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   place_carriages.c                                  :+:      :+:    :+:   */
+/*   carriages_placement.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 01:00:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 02:22:12 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 03:12:38 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,22 @@ static void			carriage_cycle_list(t_carriage **all, t_carriage *last)
 	*all = last;
 }
 
-int					place_carriages(t_vm *vm)
+static void			readiness_message(t_vm *vm)
+{
+	long			index;
+
+	index = 0;
+	ft_printf("\t\t\t|===TOURNAMENT===STANDINGS===|\n");
+	while (++index <= vm->amount_of_champs)
+	{
+		ft_printf("\t\t\t|--CHAMPION-NUMBER--|%d| WHOSE NAME IS \"%s\" ",
+				index, vm->champs[index - 1]->head->prog_name);
+		ft_printf("ALWAYS FOLLOW HIS MOTTO \"%s\" SO NOW HE'S READY TO WIN!\n",
+				vm->champs[index - 1]->head->prog_comment);
+	}
+}
+
+int					carriages_placement(t_vm *vm)
 {
 	long			players;
 	unsigned long	next_op;
@@ -48,5 +63,6 @@ int					place_carriages(t_vm *vm)
 		vm->amount_of_carr++;
 		next_op += MEM_SIZE / vm->amount_of_champs;
 	}
+	readiness_message(vm);
 	return (1);
 }
