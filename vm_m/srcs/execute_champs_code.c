@@ -6,13 +6,13 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 16:48:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 18:00:35 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
 
-static void	output_dump_memory(t_vm *vm)
+static int	output_dump_memory(t_vm *vm)
 {
 	int		x;
 	int		y;
@@ -25,16 +25,18 @@ static void	output_dump_memory(t_vm *vm)
 		while (++y < vm->dump_print_mode)
 			ft_printf("%.2x ", vm->arena[x + y]);
 		write(1, "\n", 1);
-		x += vm->dump_print_mode
+		x += vm->dump_print_mode;
 	}
+	return (0);
 }
 
-static void	op_apply(t_vm	*vm, t_carriage *carr)
+static int	op_apply(t_vm	*vm, t_carriage *carr)
 {
-	t_op	*op;
-
-
+	if (vm && carr)
+	{}
+	return (0);
 }
+
 
 int			execute_champs_code(t_vm *vm)
 {
@@ -42,21 +44,16 @@ int			execute_champs_code(t_vm *vm)
 
 	while (vm->amount_of_carr)
 	{
-		if (vm->dump_cycle == vm->cycles)
-		{
-			output_dump_memory(vm);
-			exit(0);
-		}
+		if (vm->dump_cycle == vm->cycles && !output_dump_memory(vm))
+			vm_exit(NULL, vm);
 		vm->cycles++;
 		vm->cycles_after_check++;
 		ex_carr = vm->carriages;
-		while (ex_carr)
-		{
-			op_apply(vm, ex_carr);
+		while (ex_carr && !op_apply(vm, ex_carr))
 			ex_carr = ex_carr->next;
-		}
-		if (vm->cycles_to_die = vm->cycles->after_check
-				|| vm->cycles_to_die <= 0)
+		if ((vm->cycles_to_die == vm->cycles_after_check) || (vm->cycles_to_die <= 0))
+		{}
 			//check_cycles(vm);
 	}
+	return (1);
 }

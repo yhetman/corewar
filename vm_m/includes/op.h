@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 10:32:47 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 16:58:48 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:59:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef char			t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-static t_op 	   op_tab[17] = {
+static t_op 	   g_option[17] = {
 		{"\0", 0, "\0", 0, 0, "\0", 0, 0},
 		{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 		{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},

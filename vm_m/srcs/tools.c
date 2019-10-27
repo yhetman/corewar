@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 16:47:09 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 17:29:56 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	vm_exit(char *msg, t_vm *vm)
 {
 	ft_putendl_fd(msg, 1);
 	if (vm)
-		free_vm(&vm)
+		free_vm(vm)
 	exit(1);
 }
 
