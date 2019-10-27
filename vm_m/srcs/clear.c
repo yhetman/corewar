@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:12:17 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 17:59:24 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 18:50:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		free_champion(t_champion *champion)
 	if (!champion)
 		return (0);
 	if (champion->head)
-		free(champs->head);
+		free(champion->head);
 	free(champion);
 	return (0);
 }
@@ -45,7 +45,7 @@ int		free_vm(t_vm *vm)
 
 	if (!vm)
 		return (0);
-	if (vm->champs && !(i = 0))
+	if (!(i = 0))
 		while (i < 4)
 			free_champion(vm->champs[i++]);
 	if (vm->carriages)

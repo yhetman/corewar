@@ -59,7 +59,7 @@ badd +20 includes/op.h
 badd +19 includes/corewar.h
 badd +37 srcs/carriages_placement.c
 badd +54 srcs/execute_champs_code.c
-badd +31 srcs/tools.c
+badd +21 srcs/tools.c
 badd +41 srcs/clear.c
 badd +82 srcs/get_champions.c
 badd +94 srcs/main.c
@@ -69,7 +69,7 @@ argglobal
 silent! argdel *
 $argadd includes/op.h
 set stal=2
-edit srcs/tools.c
+edit srcs/clear.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -79,8 +79,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
+exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -187,12 +187,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 26 - ((25 * winheight(0) + 35) / 70)
+let s:l = 49 - ((48 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-26
-normal! 020|
+49
+normal! 08|
 wincmd w
 argglobal
 edit includes/corewar.h
@@ -301,15 +301,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 35) / 70)
+let s:l = 77 - ((62 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-18
-normal! 0
+77
+normal! 030|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
+exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 100 + 100) / 200)
 tabedit includes/corewar.h
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -320,8 +320,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
+exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -549,8 +549,8 @@ normal! zt
 91
 normal! 027|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
+exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
 tabedit Makefile
 set splitbelow splitright
 set nosplitbelow
