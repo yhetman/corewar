@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 10:32:47 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 15:31:57 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 16:58:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct		s_op
  * **
  * */
 
-typedef char	t_arg_type;
+typedef char			t_arg_type;
 
 #define T_REG					1
 #define T_DIR					2
@@ -81,14 +81,6 @@ typedef char	t_arg_type;
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
-
-typedef struct		header_s
-{
-	unsigned int		magic;
-	char				prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int		prog_size;
-	char				comment[COMMENT_LENGTH + 1];
-}					header_t;
 
 static t_op 	   op_tab[17] = {
 		{"\0", 0, "\0", 0, 0, "\0", 0, 0},

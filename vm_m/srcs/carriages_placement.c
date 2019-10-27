@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 01:00:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 16:45:52 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 17:01:37 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void			readiness_message(t_vm *vm)
 		ft_printf("\t\t\t|--CHAMPION-NUMBER--|%d| WHOSE NAME IS \"%s\" ",
 				index, vm->champs[index - 1]->head->prog_name);
 		ft_printf("ALWAYS FOLLOW HIS MOTTO \"%s\" SO NOW HE'S READY TO WIN!\n",
-				vm->champs[index - 1]->head->prog_comment);
+				vm->champs[index - 1]->head->comment);
 	}
 }
 
@@ -48,18 +48,18 @@ int					carriages_placement(t_vm *vm)
 {
 	long			players;
 	unsigned long	next_op;
-	t_carriage		*new_carr
+	t_carriage		*new_carr;
 
 	players = 0;
 	next_op = 0;
 	while (++players <= vm->amount_of_champs)
 	{
-		if (!(new_carr = (t_carriage*)malloc(t_carriage)))
+		if (!(new_carr = (t_carriage*)malloc(sizeof(t_carriage))))
 			return (0);
 		ft_bzero(new_carr, sizeof(t_carriage));
 		add_champ_info(new_carr, vm->champs[players - 1]);
-		vm->next_op = next_op;
-		carriage_cycle_list(&(vm->carriages, new_carr));
+		new_carr->next_op = next_op;
+		carriage_cycle_list(&(vm->carriages), new_carr);
 		vm->amount_of_carr++;
 		next_op += MEM_SIZE / vm->amount_of_champs;
 	}

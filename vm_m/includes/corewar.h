@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 16:49:17 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 16:58:48 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,19 @@ typedef char			t_byte;
 
 typedef ssize_t			t_read;
 
+typedef struct			s_header
+{
+	unsigned int		magic;
+	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		prog_size;
+	char				comment[COMMENT_LENGTH + 1];
+}						t_header;
+
 typedef struct			s_champion
 {
 	long				id;
 	t_header			*head;
-	t_code				code[CHAMP_MAX_SIZE];
+	t_byte				code[CHAMP_MAX_SIZE];
 	unsigned int		current_lives_num;
 	unsigned int		previous_lives_num;
 	ssize_t				cycle_live;
