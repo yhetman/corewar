@@ -6,11 +6,19 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:23:09 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 00:21:55 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 00:28:34 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static long	count_operation(long next_op_code)
+{
+	next_op_code %= MEM_SIZE;
+	if (next_op_code < 0)
+		next_op_code += MEM_SIZE;
+	return (next_op_code);
+}
 
 static int	check_register(t_vm *vm, long next_op, unsigned long step)
 {
