@@ -6,30 +6,62 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:23:09 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 19:22:14 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 00:12:26 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int	validate_params(t_carriage *carr, t_op *option)
+static int	check_register(t_vm *vm, long next_op, unsigned long step)
+{
+	char	reg;
+
+	reg = read_one_byte(vm, next_op, step);
+	return ((reg >= 1 && reg <= REG_NUMBER) ? 0 : 1);
+}
+
+static int	validate_arguments(t_vm *vm, t_carriage *carr, t_op *option)
+{
+	long			count;
+	unsigned long	step;
+
+	count = -1;
+	step = (1 + (option->args_bc ? 1 : 0));
+	while (++count < option->count_args)
+	{
+		if (!(carr->args_type[count] & option->args_type[count]))
+			return (1);
+		if ((carr->args_type[count] == T_REG)
+				&& check_register(vm, carr->next_op, step))
+			return (1);
+		step += size_of_step(carr->args_types[count], option);
+	}
+	return (0);
+}
+
+static int	get_command_arguments(t_vm *vm, t_carriage *carr, t_op *option)
 {
 	char	args_type;
 	int		args;
 
 	args = 0;
-	args_type = read_one_byte(vm, carr->next_op, args);
 	if (option->args_type)
 	{
+		args_type = read_one_byte(vm, carr->next_op, 1);
 		while (++args <= 3)
 			if (option->count_args >= args)
-				memorize_arguments(((char)(args_type & (0x300 / (4 * args))) >> 6 / args), args, carr);
+				carr->args_types[args - 1] =
+					T_REG << (char)(args_type & 0x300 / (4 * args) >> 6 / args) - 1;
 	}
+	else
+		carr->args_type[0] = op->args_types[0];
+	return (0);
 }
 
-void	code_calidation(t_vm *vm, t_carriage *carr, t_op *option)
+void	code_validation(t_vm *vm, t_carriage *carr, t_op *option)
 {
-	if (validate_params(carr, option))
+	get_command_arguments(vm, carr, option);
+	if (!validate_arguments(vm, carr, option))
 		*f[option->id]();
 	else
 		carr->step += count_steps(carr, option);
