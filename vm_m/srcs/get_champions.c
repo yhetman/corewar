@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 03:12:35 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 18:45:59 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 18:59:06 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void			init_each_champion(t_champion *champs, t_vm *vm, long id, char *fi
 	if ((fd = open(file, O_RDONLY)) == -1)
 		vm_exit("ERROR! File reading failed", vm);
 	if (!(check_byte_code(new_champ, fd)))
-		vm_exit("EROOR! Player contains invalid bytecode", vm);
+		vm_exit("ERROR! Player contains invalid bytecode", vm);
    	new_champion(&champs, new_champ);
 	vm->amount_of_champs++;
 }

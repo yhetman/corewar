@@ -59,17 +59,17 @@ badd +20 includes/op.h
 badd +19 includes/corewar.h
 badd +37 srcs/carriages_placement.c
 badd +54 srcs/execute_champs_code.c
-badd +21 srcs/tools.c
+badd +25 srcs/tools.c
 badd +46 srcs/clear.c
-badd +82 srcs/get_champions.c
-badd +90 srcs/main.c
+badd +44 srcs/get_champions.c
+badd +16 srcs/main.c
 badd +1 Makefile
-badd +38 srcs/check_byte_code.c
+badd +73 srcs/check_byte_code.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
 set stal=2
-edit srcs/tools.c
+edit srcs/check_byte_code.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -187,12 +187,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 33 - ((32 * winheight(0) + 35) / 70)
+let s:l = 88 - ((69 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-33
-normal! 019|
+88
+normal! 0
 wincmd w
 argglobal
 edit includes/corewar.h
