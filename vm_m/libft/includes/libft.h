@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:40:24 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 10:19:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 14:18:55 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct		s_double_res
 	t_sum_two_digits	*e;
 	t_neg_exp_of_digit	*m;
 }					t_double_res;
-
-typedef long long	intmax_t;
 
 t_double_res		*convert_double(long double ld);
 t_neg_exp_of_digit	*ft_get_double_man(t_bits *b);
