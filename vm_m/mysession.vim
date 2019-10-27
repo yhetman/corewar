@@ -60,16 +60,16 @@ badd +19 includes/corewar.h
 badd +37 srcs/carriages_placement.c
 badd +54 srcs/execute_champs_code.c
 badd +21 srcs/tools.c
-badd +41 srcs/clear.c
+badd +46 srcs/clear.c
 badd +82 srcs/get_champions.c
-badd +94 srcs/main.c
+badd +90 srcs/main.c
 badd +1 Makefile
 badd +38 srcs/check_byte_code.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
 set stal=2
-edit srcs/clear.c
+edit srcs/tools.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -187,12 +187,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 49 - ((48 * winheight(0) + 35) / 70)
+let s:l = 33 - ((32 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-49
-normal! 08|
+33
+normal! 019|
 wincmd w
 argglobal
 edit includes/corewar.h
@@ -320,7 +320,7 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 100 + 100) / 200)
 exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
 argglobal
 setlocal noautoindent
@@ -549,7 +549,7 @@ normal! zt
 91
 normal! 027|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 100) / 200)
+exe 'vert 1resize ' . ((&columns * 100 + 100) / 200)
 exe 'vert 2resize ' . ((&columns * 99 + 100) / 200)
 tabedit Makefile
 set splitbelow splitright
