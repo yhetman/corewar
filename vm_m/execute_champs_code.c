@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 03:19:07 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 03:22:54 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ static void	output_dump_memory(t_vm *vm)
 	}
 }
 
+static void	op_apply(t_vm	*vm, t_carriage *carr)
+{
+	t_op	*op;
+
+
+}
+
 int			execute_champs_code(t_vm *vm)
 {
 	t_carriage	*ex_carr;
@@ -45,7 +52,7 @@ int			execute_champs_code(t_vm *vm)
 		ex_carr = vm->carriages;
 		while (ex_carr)
 		{
-			//op_apply(ex_carr, vm);
+			op_apply(vm, ex_carr);
 			ex_carr = ex_carr->next;
 		}
 		if (vm->cycles_to_die = vm->cycles->after_check
