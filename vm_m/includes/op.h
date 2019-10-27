@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 10:32:47 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 14:21:51 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 14:56:43 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@
 
 typedef struct		s_op
 {
-	char			*name;
-	unsigned char	code;
-	unsigned char	args_num;
-	char			args_types_code;
-	unsigned char	args[3];
-	char			modify_carry;
-	unsigned char	t_dir_size;
+	char			name[5];
+	int				count_args;
+	char			args_type[3];
+	int				index;
 	unsigned int	cycles;
-
-}				t_op;
+	char			description[50];
+	unsigned int	args_bc;
+	unsigned int	command_size;
+}					t_op;
 
 #define IND_SIZE				2
 #define REG_SIZE				4
@@ -91,7 +90,7 @@ typedef struct		header_s
 	char				comment[COMMENT_LENGTH + 1];
 }					header_t;
 
-static t_op 	   op_tab[17] = {
+static t_op 	   op_tab[16] = {
 		{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 		{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
 		{"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
@@ -114,7 +113,6 @@ static t_op 	   op_tab[17] = {
 					"long load index", 1, 1},
 		{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 		{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-		{0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
 #endif
