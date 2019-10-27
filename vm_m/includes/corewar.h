@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/27 03:11:45 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 10:22:14 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 # define COREWAR_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
 # include "op.h"
 
 /*

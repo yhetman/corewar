@@ -6,11 +6,11 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 01:00:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 03:12:38 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 10:21:10 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 static t_carriage	*add_champ_info(t_carriage *carr, t_champion *champ)
 {
