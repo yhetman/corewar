@@ -6,11 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:24:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 18:56:50 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 12:47:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 static t_code	*read_exec_code(t_header *head, int fd)
 {

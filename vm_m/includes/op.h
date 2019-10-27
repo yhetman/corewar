@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 10:32:47 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 10:36:16 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 12:56:14 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,20 @@
  * ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
  * */
 
-t_op    op_tab[17] =
+typedef struct		s_op
 {
+	char			*name;
+	unsigned char	code;
+	unsigned char	args_num;
+	char			args_types_code;
+	unsigned char	args[3];
+	char			modify_carry;
+	unsigned char	t_dir_size;
+	unsigned int	cycles;
+
+}				t_op;
+
+static t_op    op_tab[17] = {
 		{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 		{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
 		{"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},

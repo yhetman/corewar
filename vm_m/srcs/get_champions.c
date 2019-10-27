@@ -6,11 +6,11 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 03:12:35 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 18:59:14 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 12:47:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 static t_champion	*check_champions_list(t_champion *all, long id)
 {
