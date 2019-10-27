@@ -6,13 +6,13 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:24:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 16:44:44 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 18:37:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
 
-static t_code	*read_exec_code(t_header *head, int fd)
+static t_byte	*read_exec_code(t_header *head, int fd)
 {
 	t_read		result;
 	t_byte		*buff;
@@ -29,14 +29,13 @@ static t_code	*read_exec_code(t_header *head, int fd)
 
 static long	read_bytes_convert_to_long(int fd, int bytes, long result)
 {
-	t_read	read;
+	t_read	reads;
 	t_byte	buff[bytes];
 	t_byte	sig_byte;
 	int		i;
 
 	i = 0;
-	if ((read = read(fd, &buff, bytes)) < 0
-				|| read < bytes)
+	if ((reads = read(fd, &buff, bytes)) < 0 || reads < bytes)
 		return (0);
 	sig_byte = (t_byte)(buff[0] & 0x80);
 	while (bytes--)
@@ -54,7 +53,7 @@ static char	*read_bytes_convert_to_str(int fd, unsigned int length)
 	if (!(buff = (t_byte*)malloc(length *sizeof(t_byte))))
 		return (NULL);
 	if ((res = read(fd, buff, length)) == -1 
-			|| res < len || (read(fd, &byte, 1) != 0))
+			|| res < length || (read(fd, &byte, 1) != 0))
 		return (NULL);
 	return (buff);
 }
@@ -79,7 +78,7 @@ int			check_byte_code(t_champion	*champ, int fd)
 {
 	long	value;
 
-	value = read_bytes_convert_to_long(fd, 4);
+	value = read_bytes_convert_to_long(fd, 4, 0);
 	if (value != COREWAR_EXEC_MAGIC)
 		return (0);
 	if (!check_header_bytecode(champ->head, fd))

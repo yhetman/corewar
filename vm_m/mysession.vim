@@ -55,16 +55,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 includes/op.h
-badd +78 includes/corewar.h
+badd +20 includes/op.h
+badd +19 includes/corewar.h
 badd +37 srcs/carriages_placement.c
 badd +54 srcs/execute_champs_code.c
 badd +31 srcs/tools.c
 badd +41 srcs/clear.c
 badd +55 srcs/get_champions.c
 badd +80 srcs/main.c
-badd +0 Makefile
-badd +0 srcs/check_byte_code.c
+badd +1 Makefile
+badd +21 srcs/check_byte_code.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
@@ -187,12 +187,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((20 * winheight(0) + 35) / 70)
+let s:l = 41 - ((25 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-21
-normal! 0
+41
+normal! 012|
 wincmd w
 argglobal
 edit includes/corewar.h
@@ -301,11 +301,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 57 - ((23 * winheight(0) + 35) / 70)
+let s:l = 18 - ((17 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-57
+18
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
