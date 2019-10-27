@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 14:23:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2019/10/27 03:09:16 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 03:11:45 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ typedef struct			s_vm
 	unsigned int		amount_of_carr;
 	unsigned int		lives;
 	ssize_t				cycles;
-	ssize_t				cyc_reminder;
+	ssize_t				cycles_to_die;
 	ssize_t				cycles_after_check;
 	size_t				checks;
 	ssize_t				dump_cycle;

@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 03:09:02 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/27 03:17:14 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ static int	start_virtual_machine(t_vm *vm)
 	if (!carriages_placement(vm))
 		return (0);
 	return (1);
-//	print_intro(vm->champs, vm->amount_of_champs);
-//	exec(vm);
 }
 
 int			main(int ac, char **av)
