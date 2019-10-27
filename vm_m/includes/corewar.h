@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 14:18:55 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 16:02:05 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,9 +282,9 @@ bool					is_cor(const char *filename);
 /*
 ** Print
 */
-void					print_intro(t_player **champs, int32_t amount_of_champs);
-void					print_last_alive(t_vm *vm);
+//void					print_intro(t_player **champs, int32_t amount_of_champs);
+//void					print_last_alive(t_vm *vm);
 void					usage();
-void					print_arena(uint8_t *arena, int print_mode);
+//void					print_arena(uint8_t *arena, int print_mode);
 
 #endif
