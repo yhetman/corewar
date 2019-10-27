@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 18:53:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/27 19:03:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	vm_exit(char *msg, t_vm *vm)
 
 void	usage()
 {
-	ft_putendl_fd("Usage: \n", 1);
-	ft_putstr_fd("\t{ ./corewar [-dump [nbr_cycles]]", 1);
-	ft_putstr_fd("[-n [number]] champion1.cor] ... }\n", 1);
+	ft_printf("Usage: \n");
+	ft_printf("\t{ ./corewar [-dump [nbr_cycles]]");
+	ft_printf("[-n [number]] champion1.cor] ... }\n");
 	exit(SUCCESS);
 }
 
