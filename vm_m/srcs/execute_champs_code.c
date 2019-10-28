@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 18:00:35 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 13:46:56 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,45 @@ static int	output_dump_memory(t_vm *vm)
 	return (0);
 }
 
-static int	op_apply(t_vm	*vm, t_carriage *carr)
+static void	check_numb_of_cycles(t_vm *vm, t_carriage *carr)
 {
-	if (vm && carr)
-	{}
+	if (carr->cycles == 0)
+	{
+		carr->code = vm->arena[carr->next_op];
+		if (vm->arena[carr->next_op] >= 0x01 && vm->arena[carr->next->op] <= 0x10)
+			carr->cycles = g_option[carr->code - 1].cycles;
+	if (carr->cycles > 0)
+		carr->cycles--;
+
+}
+
+static long	calculate_next_op(long	next_op_code)
+{
+	next_op_code %= MEM_SIZE;
+	if (next_op_code < 0)
+		next_op_code += MEM_SIZE;
+	return (next_op_code);
+}
+
+static int	op_apply(t_vm *vm, t_carriage *carr)
+{
+	t_op	*option;
+
+	check_numb_of_cycles(vm, carr);
+	if (carr->cycles == 0)
+	{
+		option = NULL;
+		if (carr->code >= 0x01 && carr->code <= 0x10)
+			option = &g_option[carr->code - 1];
+		if (option)
+			code_validation(vm, carr, option);
+		else
+			carr->step = 1;
+		carr->next_op += cursor->step;
+		carr->next_op = calculate_next_op(cursor->next_op);
+		carr->step = 0;
+		ft_bzero(carr->args, 3);
+	}
 	return (0);
 }
 

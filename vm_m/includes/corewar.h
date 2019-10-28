@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 18:36:02 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 13:41:52 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct			s_champion
 	t_byte				*code;
 	unsigned int		current_lives_num;
 	unsigned int		previous_lives_num;
-	ssize_t				cycle_live;
+	t_read				cycle_live;
 	struct s_champion		*next;
 }						t_champion;
 
@@ -81,11 +81,11 @@ typedef struct			s_vm
 	t_carriage			*carriages;
 	unsigned int		amount_of_carr;
 	unsigned int		lives;
-	ssize_t				cycles;
-	ssize_t				cycles_to_die;
-	ssize_t				cycles_after_check;
+	t_read				cycles;
+	t_read				cycles_to_die;
+	t_read				cycles_after_check;
 	size_t				checks;
-	ssize_t				dump_cycle;
+	t_read				dump_cycle;
 	int					dump_print_mode;
 }						t_vm;
 
