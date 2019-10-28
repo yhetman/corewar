@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 14:00:04 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 14:09:19 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static void	check_numb_of_cycles(t_vm *vm, t_carriage *carr)
 		(carr->cycle_live)--;
 }
 
-//static long	calculate_next_op(long	next_op_code)
-//{
-//	next_op_code %= MEM_SIZE;
-//	if (next_op_code < 0)
-//		next_op_code += MEM_SIZE;
-//	return (next_op_code);
-//}
+static long	calculate_next_op(long	next_op_code)
+{
+	next_op_code %= MEM_SIZE;
+	if (next_op_code < 0)
+		next_op_code += MEM_SIZE;
+	return (next_op_code);
+}
 
 static int	op_apply(t_vm *vm, t_carriage *carr)
 {
@@ -60,12 +60,12 @@ static int	op_apply(t_vm *vm, t_carriage *carr)
 		option = NULL;
 		if (carr->code >= 0x01 && carr->code <= 0x10)
 			option = &g_option[carr->code - 1];
-//		if (option)
-//			code_validation(vm, carr, option);
+		if (option)
+			code_validation(vm, carr, option);
 		else
 			carr->step = 1;
-//		carr->next_op += cursor->step;
-//		carr->next_op = calculate_next_op(cursor->next_op);
+		carr->next_op += carr->step;
+		carr->next_op = calculate_next_op(carr->next_op);
 		carr->step = 0;
 		ft_bzero(carr->args, 3);
 	}
