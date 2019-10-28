@@ -6,13 +6,13 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:57:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 19:36:09 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:55:24 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op_function.h"
 
-static long		next_op(long	next_op_code)
+static long	next_op(long	next_op_code)
 {
 	next_op_code %= MEM_SIZE;
 	if (next_op_code < 0)
@@ -20,11 +20,24 @@ static long		next_op(long	next_op_code)
 	return (next_op_code);
 }
 
-long			bytecode_to_int32(const unsigned char *arena, long bytes, long size)
+void		long_into_bytes(unsigned char *arena, long addr, long value,
+	   		long size)
 {
-	long		result;
-	int			i;
-	bool		sign;
+	short	b;
+
+	b = 0;
+	while (size)
+	{
+		arena[next_op(addr + size - 1)] = (unsigned char)((value >> b) & 0xFF);
+		b += 8;
+		size--;
+	}
+}
+long		bytes_into_long(const unsigned char *arena, long bytes, long size)
+{
+	long	result;
+	int		i;
+	bool	sign;
 
 	result = 0;
 	i = 0;
@@ -42,11 +55,11 @@ long			bytecode_to_int32(const unsigned char *arena, long bytes, long size)
 	return (result);
 }
 
-long			check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i)
+long		check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i)
 {
-	t_op		*option;
-	long		val;
-	long		bytes;
+	t_op	*option;
+	long	val;
+	long	bytes;
 
 	val = 0;
 	option = &g_option[car->code - 1];
