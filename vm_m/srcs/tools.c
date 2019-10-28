@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 13:47:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 14:01:14 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ unsigned long	count_step(t_carriage *carr, t_op *option)
 	i = -1;
 	step = 1 + (option->args_bc ? 1 : 0);
 	while (++i < g_option[(carr->code - 1)].count_args)
-		step += arg_length(carr->args_type[i]m option);
-	return (step)
+		step += arg_length(carr->args[i], option);
+	return (step);
 }
 
 bool	is_cor(const char *file)
