@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 15:52:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 17:28:19 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,13 @@ typedef struct			s_vm
 void			get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs);
 int				check_byte_code(t_champion *champ, int fd);
 int				carriages_placement(t_vm *vm);
-int				execcute_champs_code(t_vm *vm); 
+int				execute_champs_code(t_vm *vm);
 void			usage(void);
 void			vm_exit(char *msg, t_vm *vm);
 bool			is_cor(const char *file);
 void			code_validation(t_vm *vm, t_carriage *carr, t_op *option);
+unsigned long	arg_length(unsigned char type, t_op *option);
+unsigned long	count_step(t_carriage *carr, t_op *option);
 
 /*
 **		free functions block
