@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 21:08:08 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 21:35:10 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ typedef struct			s_vm
 	int					dump_print_mode;
 }						t_vm;
 
+
+long			next_op(long next_op_code);
+void			long_into_bytes(unsigned char *arena, long addr, long value, long size);
+long			check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i);
+long			bytes_into_long(const unsigned char *arena, long bytes, long size);
 void			get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs);
 int				check_byte_code(t_champion *champ, int fd);
 int				carriages_placement(t_vm *vm);

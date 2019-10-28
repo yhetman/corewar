@@ -6,13 +6,13 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:57:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 21:28:57 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 21:35:08 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op_function.h"
 
-static long	next_op(long	next_op_code)
+long		next_op(long	next_op_code)
 {
 	next_op_code %= MEM_SIZE;
 	if (next_op_code < 0)

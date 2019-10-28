@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:07:06 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 19:56:56 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 21:32:32 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "corewar.h"
 # include "op.h"
+
+t_carriage				*copy_carriage(t_carriage *car, long ptr);
+t_carriage				*init_car(t_champion *champ, long next_op);
+void					add_carriage(t_carriage **all, t_carriage *last);
 
 void					op_live(t_vm *vm, t_cursor *next_op);
 void					op_ld(t_vm *vm, t_cursor *next_op);
