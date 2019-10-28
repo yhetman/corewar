@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 13:41:52 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 14:10:00 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int				execcute_champs_code(t_vm *vm);
 void			usage(void);
 void			vm_exit(char *msg, t_vm *vm);
 bool			is_cor(const char *file);
+void			code_validation(t_vm *vm, t_carriage *carr, t_op *option);
 
 /*
 **		free functions block
