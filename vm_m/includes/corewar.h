@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 15:41:58 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 17:09:35 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,8 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
+# include "op_function.h"
 # include "op.h"
-
-# define OP_CODE_LEN	1
-# define ARGS_CODE_LEN	1
-# define REG_LEN		1
-
-# define LIVE_LOG			1
-# define CYCLE_LOG			2
-# define OP_LOG				4
-# define DEATH_LOG			8
-# define PC_MOVEMENT_LOG	16
 
 //static unsigned short	g_arg_code[3] = {
 //	T_REG,
@@ -88,23 +79,6 @@ typedef struct			s_vm
 	t_read				dump_cycle;
 	int					dump_print_mode;
 }						t_vm;
-
-//void			op_live(t_vm *vm, t_cursor *next_op);
-//void			op_ld(t_vm *vm, t_cursor *next_op);
-//void			op_st(t_vm *vm, t_cursor *next_op);
-//void			op_add(t_vm *vm, t_cursor *next_op);
-//void			op_sub(t_vm *vm, t_cursor *next_op);
-//void			op_and(t_vm *vm, t_cursor *cursor);
-//void			op_or(t_vm *vm, t_cursor *cursor);
-//void			op_xor(t_vm *vm, t_cursor *cursor);
-//void			op_zjmp(t_vm *vm, t_cursor *cursor);
-//void			op_ldi(t_vm *vm, t_cursor *cursor);
-//void			op_sti(t_vm *vm, t_cursor *cursor);
-//void			op_fork(t_vm *vm, t_cursor *cursor);
-//void			op_lld(t_vm *vm, t_cursor *cursor);
-//void			op_lldi(t_vm *vm, t_cursor *cursor);
-//void			op_lfork(t_vm *vm, t_cursor *cursor);
-//void			op_aff(t_vm *vm, t_cursor *cursor);
 
 void			get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs);
 int				check_byte_code(t_champion *champ, int fd);
