@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:39:11 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 19:55:32 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 20:02:48 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	op_st(t_vm *vm, t_carriage *car)
 	long	next_op;
 
 	car->step += (1 + 1);
-	reg = vm->arena[next_op(cursor->next_op + car->step)];
+	reg = vm->arena[next_op(car->next_op + car->step)];
 	value = car->reg[reg - 1];
 	car->step++;
 	if (car->args[1] == T_REG)
