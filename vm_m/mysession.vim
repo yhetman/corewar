@@ -55,13 +55,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +45 srcs/execute_champs_code.c
-badd +0 includes/corewar.h
-badd +35 srcs/tools.c
+badd +64 srcs/execute_champs_code.c
+badd +1 includes/corewar.h
+badd +60 srcs/tools.c
+badd +79 srcs/check_byte_code.c
+badd +100 srcs/main.c
+badd +63 srcs/code_validation.c
 argglobal
 silent! argdel *
 $argadd srcs/execute_champs_code.c
-edit srcs/execute_champs_code.c
+edit srcs/check_byte_code.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -179,12 +182,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 35) / 71)
+let s:l = 39 - ((35 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 0
+39
+normal! 019|
 wincmd w
 argglobal
 edit includes/corewar.h
@@ -293,12 +296,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 62 - ((22 * winheight(0) + 35) / 71)
+let s:l = 120 - ((65 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-62
-normal! 0
+120
+normal! 02|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
 exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
