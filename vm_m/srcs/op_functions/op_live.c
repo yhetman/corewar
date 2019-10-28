@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:35:56 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 18:48:25 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:06:49 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	op_live(t_vm *vm, t_carriage *carriage)
 
 	champ = NULL;
 	carriage->step += 1;
-//	name = check_option_params(vm, carriage, 1);
+//	name = check_option_params(vm, carriage, false, 1);
 	vm->lives++;
 	carriage->cycle_live = vm->cycles;
 	if (name <= -1 && name >= -(long)(vm->amount_of_champs))
