@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:24:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 18:37:15 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 14:19:40 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static long	read_bytes_convert_to_long(int fd, int bytes, long result)
 	if ((reads = read(fd, &buff, bytes)) < 0 || reads < bytes)
 		return (0);
 	sig_byte = (t_byte)(buff[0] & 0x80);
+	bytes = reads;
 	while (bytes--)
-		result += ((sig_byte) ? ((buff[bytes - 1] ^ 0xFF) << (i++ * 8))
-				: (buff[bytes - 1] << (i++ * 8)));
+		result += ((sig_byte) ? ((buff[bytes] ^ 0xFF) << (i++ * 8)) : (buff[bytes] << (i++ * 8)));
 	return ((sig_byte) ? result : (~result));
 }
 
