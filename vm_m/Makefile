@@ -11,7 +11,7 @@
 #* ************************************************************************** *#
 
 SRCS=carriages_placement.c execute_champs_code.c main.c check_byte_code.c\
-	 get_champions.c tools.c clear.c
+	 get_champions.c tools.c clear.c print.c
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 

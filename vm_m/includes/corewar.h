@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 14:10:00 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/28 15:52:29 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ void			code_validation(t_vm *vm, t_carriage *carr, t_op *option);
 int				free_vm(t_vm *vm);
 int				free_carriage(t_carriage *carriages);
 int				free_champion(t_champion *champions);
+int				print_result(t_vm *vm);
 
 #endif
