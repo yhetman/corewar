@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 00:51:13 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:19:20 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,3 @@ void	usage()
 	ft_putstr_fd("[-n [number]] champion1.cor] ... }\n", 1);
 	exit(SUCCESS);
 }
-
-//inline int8_t	get_byte(t_vm *vm, int32_t next_op, int32_t step)
-//{
-//	return (vm->arena[calc_addr(next_op + step)]);
-//}

@@ -6,27 +6,35 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:57:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 19:06:46 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:26:50 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op_function.h"
 
-int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size)
+static long		next_op(long	next_op_code)
 {
-	int32_t		result;
-	t_bool		sign;
+	next_op_code %= MEM_SIZE;
+	if (next_op_code < 0)
+		next_op_code += MEM_SIZE;
+	return (next_op_code);
+}
+
+long			bytecode_to_int32(const unsigned char *arena, long bytes, long size)
+{
+	long		result;
 	int			i;
+	bool		sign;
 
 	result = 0;
-	sign = (t_bool)(arena[calc_addr(addr)] & 0x80);
 	i = 0;
+	sign = (bool)(arena[next_op(addr)] & 0x80);
 	while (size)
 	{
 		if (sign)
-			result += ((arena[calc_addr(addr + size - 1)] ^ 0xFF) << (i++ * 8));
+			result += ((arena[next_op(addr + size - 1)] ^ 0xFF) << (i++ * 8));
 		else
-			result += arena[calc_addr(addr + size - 1)] << (i++ * 8);
+			result += arena[next_op(addr + size - 1)] << (i++ * 8);
 		size--;
 	}
 	if (sign)
@@ -34,29 +42,26 @@ int32_t		bytecode_to_int32(const uint8_t *arena, int32_t addr, int32_t size)
 	return (result);
 }
 
-long		check_option_params(t_vm *vm, t_carriage *carriage, bool turn,  unsigned short i)
+long			check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i)
 {
 	t_op		*option;
 	long		val;
 	long		bytes;
 
 	val = 0;
-	option = &g_option[carriage->code - 1];
-	if (carriage->args[ i - 1] & T_REG)
-		val = carriage->registers[get_one_byte(vm, carriage->next_op, carriage->step) - 1];
-	else if (carriage->args[i - 1] & T_DIR)
-		val = bytes_into_long(vm->arena,
-								carriage->next_op + carriage->step,
+	option = &g_option[car->code - 1];
+	if (car->args[ i - 1] & T_REG)
+		val = car->registers[vm->arena[next_op(car->next_op + car->step)] - 1];
+	else if (car->args[i - 1] & T_DIR)
+		val = bytes_into_long(vm->arena, car->next_op + car->step,
 								option->size);
 	else if (carriage->args[i - 1] & T_IND)
 	{
-		bytes = bytes_into_long(vm->arena,
-								carriage->next_op + carriage->step,
-								IND_SIZE);
+		bytes = bytes_into_long(vm->arena,car->next_op + car->step, IND_SIZE);
 		val = bytes_into_long(vm->arena,
-							carriage->next_op + (turn ? (bytes % IDX_MOD) : bytes),
+							car->next_op + (turn ? (bytes % IDX_MOD) : bytes),
 							DIR_SIZE);
 	}
-	carriage->step += size_of_step(carriage->arg[i - 1], option);
+	car->step += size_of_step(car->arg[i - 1], option);
 	return (val);
 }
