@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 17:09:35 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 17:45:23 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct			s_champion
 	long				id;
 	t_header			*head;
 	t_byte				code[CHAMP_MAX_SIZE];
-	unsigned int		current_lives_num;
-	unsigned int		previous_lives_num;
+	unsigned int		curr_live;
+	unsigned int		prev_live;
 	t_read				cycle_live;
 	struct s_champion		*next;
 }						t_champion;
