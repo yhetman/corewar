@@ -6,11 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:57:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 15:15:12 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:54:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op_function.h"
+#include <corewar.h>
 
 void	op_add(t_vm *vm, t_carriage *car)
 {

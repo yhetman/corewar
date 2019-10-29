@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/29 15:29:35 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:52:35 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef struct			s_vm
 	int					dump_print_mode;
 }						t_vm;
 
-# include "op_function.h"
 
 long			next_op(long next_op_code);
 void			long_into_bytes(unsigned char *arena, long addr, long value, long size);
@@ -94,10 +93,55 @@ unsigned long	count_step(t_carriage *carr, t_op *option);
 **		free functions block
 */
 
+
 int				free_vm(t_vm *vm);
 int				free_carriage(t_carriage *carriages);
 int				free_champion(t_champion *champions);
 int				print_result(t_vm *vm);
 void			check_live_cycles(t_vm *vm);
+
+t_carriage				*copy_carriage(t_carriage *car, long ptr);
+t_carriage				*init_car(t_champion *champ, long next_op);
+
+void					add_carriage(t_carriage **all, t_carriage *last);
+
+void					op_live(t_vm *vm, t_carriage *next_op);
+void					op_ld(t_vm *vm, t_carriage *next_op);
+void					op_st(t_vm *vm, t_carriage *next_op);
+void					op_add(t_vm *vm, t_carriage *next_op);
+void					op_sub(t_vm *vm, t_carriage *next_op);
+void					op_and(t_vm *vm, t_carriage *cursor);
+void					op_or(t_vm *vm, t_carriage *cursor);
+void					op_xor(t_vm *vm, t_carriage *cursor);
+void					op_zjmp(t_vm *vm, t_carriage *cursor);
+void					op_ldi(t_vm *vm, t_carriage *cursor);
+void					op_sti(t_vm *vm, t_carriage *cursor);
+void					op_fork(t_vm *vm, t_carriage *cursor);
+void					op_lld(t_vm *vm, t_carriage *cursor);
+void					op_lldi(t_vm *vm, t_carriage *cursor);
+void					op_lfork(t_vm *vm, t_carriage *cursor);
+void					op_aff(t_vm *vm, t_carriage *cursor);
+
+typedef void			(*t_op_func)(t_vm *vm, t_carriage *carr);
+
+static t_op_func		g_op_functions[17] = {
+						NULL,
+						op_live,
+						op_ld,
+						op_st,
+						op_add,
+						op_sub,
+						op_and,
+						op_or,
+						op_xor,
+						op_zjmp,
+						op_ldi,
+						op_sti,
+						op_fork,
+						op_lld,
+						op_lldi,
+						op_lfork,
+						op_aff
+};
 
 #endif

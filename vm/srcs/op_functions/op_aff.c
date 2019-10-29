@@ -6,11 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 21:40:46 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 21:43:00 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:54:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op_function.h"
+#include <corewar.h>
 
 void		op_aff(t_vm *vm, t_carriage *car)
 {

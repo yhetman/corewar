@@ -6,11 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:50:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 21:13:33 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:54:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op_function.h"
+#include <corewar.h>
 
 void			op_fork(t_vm *vm, t_carriage *car)
 {

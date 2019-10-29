@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   op_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/28 20:55:39 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 15:17:30 by yhetman          ###   ########.fr       */
+/*   Created: 2019/10/29 16:15:19 by blukasho          #+#    #+#             */
+/*   Updated: 2019/10/29 16:15:28 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_carriage	*init_car(t_champion *champ, long next_op)
 	static unsigned long	champ_id;
 
 	if (!(car = (t_carriage *)malloc(sizeof(t_carriage))))
-		vm_exit(NULL, vm);
+		vm_exit(NULL, NULL);
 	car->champ = ++champ_id;
 	ft_bzero(car, sizeof(t_carriage));
 	car->next_op = next_op;
@@ -40,10 +40,10 @@ t_carriage	*copy_carriage(t_carriage *car, long ptr)
 	int			i;
 
 	i = -1;
-	addr = next_op(car->op_next + ptr);
+	ptr = next_op(car->next_op + ptr);
 	new = init_car(car->champion, ptr);
 	while (++i < REG_NUMBER)
-		new->reg[i] = car->reg[i];
+		new->registers[i] = car->registers[i];
 	new->carry = car->carry;
 	new->cycle_live = car->cycle_live;
 	return (new);

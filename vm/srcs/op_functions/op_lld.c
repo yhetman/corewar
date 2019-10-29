@@ -6,11 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 21:24:17 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 21:28:56 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:54:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op_function.h"
+#include <corewar.h>
 
 void				op_lld(t_vm *vm, t_carriage *car)
 {
@@ -23,4 +23,4 @@ void				op_lld(t_vm *vm, t_carriage *car)
 	reg = vm->arena[next_op(car->next_op + car->step)];
 	car->registers[reg - 1] = val;
 	car->step++;
-	i
+}

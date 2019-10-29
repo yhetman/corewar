@@ -6,11 +6,11 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:17:43 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 20:22:49 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:56:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op_function.h"
+#include <corewar.h>
 
 void	op_zjmp(t_vm *vm, t_carriage *car)
 {
@@ -21,6 +21,6 @@ void	op_zjmp(t_vm *vm, t_carriage *car)
 	if (car->carry)
 	{
 		car->next_op = next_op(car->next_op + (addr % IDX_MOD));
-		cursor->step = 0;
+		car->step = 0;
 	}
-
+}
