@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:25:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 18:24:18 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:06:13 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	replace_carriages(t_carriage *previous, t_carriage *current)
 	current = current->next;
 }
 
-static int	count_cycles(t_vm, t_carriage *corpse, t_read deadline)
+static int	count_cycles(t_vm *vm, t_carriage *corpse, t_read deadline)
 {
-	if (deadlive <= 0 || vm->cycles - corpse->cycle_live >= deadline)
+	if (deadline <= 0 || vm->cycles - corpse->cycle_live >= deadline)
 	{
 		vm->amount_of_carr--;
 		return (0);
@@ -51,6 +51,7 @@ static void	define_corpse(t_vm *vm)
 		}
 		else
 			replace_carriages(prev, curr);
+	}
 }
 
 void	check_live_cycles(t_vm *vm)
@@ -67,8 +68,8 @@ void	check_live_cycles(t_vm *vm)
 	}
 	while (++i < vm->amount_of_champs)
 	{
-		vm->champ[i]->prev_live = vm->champ[i]->curr_live;
-		vm->champ[i]->curr_live = 0;
+		vm->champs[i]->prev_live = vm->champs[i]->curr_live;
+		vm->champs[i]->curr_live = 0;
 	}
 	vm->lives = 0;
 }
