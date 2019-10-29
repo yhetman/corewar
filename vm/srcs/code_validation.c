@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:23:09 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 14:19:51 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:02:43 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	code_validation(t_vm *vm, t_carriage *carr, t_op *option)
 {
 	get_command_arguments(vm, carr, option);
 	if (!validate_arguments(vm, carr, option))
-		g_op_functions[option->id](vm, carr);
+		g_op_functions[option->index](vm, carr);
 	else
 		carr->step += count_step(carr, option);
 }

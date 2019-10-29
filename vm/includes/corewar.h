@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/29 14:55:31 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:02:47 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct			s_vm
 	int					dump_print_mode;
 }						t_vm;
 
+# include "op_function.h"
 
 long			next_op(long next_op_code);
 void			long_into_bytes(unsigned char *arena, long addr, long value, long size);
