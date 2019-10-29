@@ -12,7 +12,12 @@
 
 SRCS=carriages_placement.c execute_champs_code.c main.c check_byte_code.c\
 	 get_champions.c tools.c clear.c print.c code_validation.c\
-	 check_live_cycles.c 
+	 check_live_cycles.c op_functions/op_live.c op_functions/op_ld.c \
+	op_functions/op_st.c op_functions/op_add.c op_functions/op_sub.c \
+	op_functions/op_and.c op_functions/op_or.c op_functions/op_xor.c \
+	op_functions/op_zjmp.c op_functions/op_ldi.c op_functions/op_sti.c \
+	op_functions/op_fork.c op_functions/op_lld.c op_functions/op_lldi.c \
+	op_functions/op_lfork.c op_functions/op_aff.c 
 
 OBJ=$(addprefix $(OBJDIR), $(SRCS:.c=.o))
 
@@ -39,6 +44,7 @@ $(NAME): $(OBJDIR) $(LIBPATH)$(LIBNAME) $(OBJ)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+	mkdir -p $(OBJDIR)/op_functions
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	gcc $(FLAGS) $(INCLUDE) -c $< -o $@
