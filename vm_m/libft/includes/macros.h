@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:04:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/26 14:08:33 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:52:48 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 */
 # define MAX(a, b)				(b & ((a - b) >> 31)) | (a & ((~(a - b)) >> 31))
 # define MIN(a, b)				(a & ((a - b) >> 31)) | (b & ((~(a - b)) >> 31))
-# define ABS(x)					((x < 0) ? -x : x)
+# define ABS(x)					(((X) < 0) ? (-(X)) : (X))
 # define DABS(a)				(a < 0.0f) ? -a : a
 # define POW(x)					((x) * (x))
 # define AVERAGE(x, y)			(((x) + (y)) / 2.0)

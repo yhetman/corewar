@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 18:36:02 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:17:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,8 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
+# include "op_function.h"
 # include "op.h"
-
-# define OP_CODE_LEN	1
-# define ARGS_CODE_LEN	1
-# define REG_LEN		1
-
-# define LIVE_LOG			1
-# define CYCLE_LOG			2
-# define OP_LOG				4
-# define DEATH_LOG			8
-# define PC_MOVEMENT_LOG	16
-
-//static unsigned short	g_arg_code[3] = {
-//	T_REG,
-//	T_DIR,
-//	T_IND
-//};
 
 typedef char			t_byte;
 
@@ -51,9 +36,9 @@ typedef struct			s_champion
 	long				id;
 	t_header			*head;
 	t_byte				*code;
-	unsigned int		current_lives_num;
-	unsigned int		previous_lives_num;
-	ssize_t				cycle_live;
+	unsigned int		curr_live;
+	unsigned int		prev_live;
+	t_read				cycle_live;
 	struct s_champion		*next;
 }						t_champion;
 
@@ -81,38 +66,29 @@ typedef struct			s_vm
 	t_carriage			*carriages;
 	unsigned int		amount_of_carr;
 	unsigned int		lives;
-	ssize_t				cycles;
-	ssize_t				cycles_to_die;
-	ssize_t				cycles_after_check;
+	t_read				cycles;
+	t_read				cycles_to_die;
+	t_read				cycles_after_check;
 	size_t				checks;
-	ssize_t				dump_cycle;
+	t_read				dump_cycle;
 	int					dump_print_mode;
 }						t_vm;
 
-//void			op_live(t_vm *vm, t_cursor *next_op);
-//void			op_ld(t_vm *vm, t_cursor *next_op);
-//void			op_st(t_vm *vm, t_cursor *next_op);
-//void			op_add(t_vm *vm, t_cursor *next_op);
-//void			op_sub(t_vm *vm, t_cursor *next_op);
-//void			op_and(t_vm *vm, t_cursor *cursor);
-//void			op_or(t_vm *vm, t_cursor *cursor);
-//void			op_xor(t_vm *vm, t_cursor *cursor);
-//void			op_zjmp(t_vm *vm, t_cursor *cursor);
-//void			op_ldi(t_vm *vm, t_cursor *cursor);
-//void			op_sti(t_vm *vm, t_cursor *cursor);
-//void			op_fork(t_vm *vm, t_cursor *cursor);
-//void			op_lld(t_vm *vm, t_cursor *cursor);
-//void			op_lldi(t_vm *vm, t_cursor *cursor);
-//void			op_lfork(t_vm *vm, t_cursor *cursor);
-//void			op_aff(t_vm *vm, t_cursor *cursor);
 
+long			next_op(long next_op_code);
+void			long_into_bytes(unsigned char *arena, long addr, long value, long size);
+long			check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i);
+long			bytes_into_long(const unsigned char *arena, long bytes, long size);
 void			get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs);
 int				check_byte_code(t_champion *champ, int fd);
 int				carriages_placement(t_vm *vm);
-int				execcute_champs_code(t_vm *vm); 
+int				execute_champs_code(t_vm *vm);
 void			usage(void);
 void			vm_exit(char *msg, t_vm *vm);
 bool			is_cor(const char *file);
+void			code_validation(t_vm *vm, t_carriage *carr, t_op *option);
+unsigned long	arg_length(unsigned char type, t_op *option);
+unsigned long	count_step(t_carriage *carr, t_op *option);
 
 /*
 **		free functions block
@@ -121,5 +97,7 @@ bool			is_cor(const char *file);
 int				free_vm(t_vm *vm);
 int				free_carriage(t_carriage *carriages);
 int				free_champion(t_champion *champions);
+int				print_result(t_vm *vm);
+void			check_live_cycles(t_vm *vm);
 
 #endif

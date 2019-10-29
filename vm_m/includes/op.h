@@ -6,7 +6,7 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 10:32:47 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/27 17:59:24 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:18:03 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct		s_op
 {
 	char			name[5];
 	int				count_args;
-	char			args_type[3];
+	char			args[3];
 	int				index;
 	unsigned int	cycles;
 	char			description[50];
