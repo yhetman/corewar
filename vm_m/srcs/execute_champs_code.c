@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 21:48:25 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 14:53:18 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,21 @@ static int	output_dump_memory(t_vm *vm)
 		while (++y < vm->dump_print_mode)
 			ft_printf("%.2x ", vm->arena[x + y]);
 		write(1, "\n", 1);
-		x += vm->dump_print_mode
+		x += vm->dump_print_mode;
 	}
 	return (0);
 }
 
 static void	check_numb_of_cycles(t_vm *vm, t_carriage *carr)
 {
-	if (carr->cycles == 0)
+	if (carr->cycle_live == 0)
 	{
 		carr->code = vm->arena[carr->next_op];
-		if (vm->arena[carr->next_op] >= 0x01 && vm->arena[carr->next->op] <= 0x10)
-			carr->cycles = g_option[carr->code - 1].cycles;
-	if (carr->cycles > 0)
-		carr->cycles--;
+		if (vm->arena[carr->next_op] >= 0x01 && vm->arena[carr->next_op] <= 0x10)
+			carr->cycle_live = g_option[carr->code - 1].cycles;
+	}
+	if (carr->cycle_live > 0)
+		carr->cycle_live--;
 
 }
 
@@ -55,7 +56,7 @@ static int	op_apply(t_vm *vm, t_carriage *carr)
 	t_op	*option;
 
 	check_numb_of_cycles(vm, carr);
-	if (carr->cycles == 0)
+	if (carr->cycle_live== 0)
 	{
 		option = NULL;
 		if (carr->code >= 0x01 && carr->code <= 0x10)
@@ -89,4 +90,5 @@ int			execute_champs_code(t_vm *vm)
 				|| vm->cycles_to_die <= 0)
 			check_live_cycles(vm);
 	}
+	return (0);
 }

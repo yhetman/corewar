@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 21:35:10 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 14:51:25 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
-# include "op_function.h"
 # include "op.h"
 
 //static unsigned short	g_arg_code[3] = {
