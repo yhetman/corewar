@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/29 15:02:47 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:29:35 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct			s_carriage
 
 typedef struct			s_vm
 {
-	unsigned short		arena[MEM_SIZE];
+	unsigned char		arena[MEM_SIZE];
 	t_champion			*champs[MAX_PLAYERS];
 	long				amount_of_champs;
 	t_champion			*alive;
