@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:07:06 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/28 17:11:25 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/28 21:49:36 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,26 @@
 # include "corewar.h"
 # include "op.h"
 
-void					op_live(t_vm *vm, t_cursor *next_op);
-void					op_ld(t_vm *vm, t_cursor *next_op);
-void					op_st(t_vm *vm, t_cursor *next_op);
-void					op_add(t_vm *vm, t_cursor *next_op);
-void					op_sub(t_vm *vm, t_cursor *next_op);
-void					op_and(t_vm *vm, t_cursor *cursor);
-void					op_or(t_vm *vm, t_cursor *cursor);
-void					op_xor(t_vm *vm, t_cursor *cursor);
-void					op_zjmp(t_vm *vm, t_cursor *cursor);
-void					op_ldi(t_vm *vm, t_cursor *cursor);
-void					op_sti(t_vm *vm, t_cursor *cursor);
-void					op_fork(t_vm *vm, t_cursor *cursor);
-void					op_lld(t_vm *vm, t_cursor *cursor);
-void					op_lldi(t_vm *vm, t_cursor *cursor);
-void					op_lfork(t_vm *vm, t_cursor *cursor);
-void					op_aff(t_vm *vm, t_cursor *cursor);
+t_carriage				*copy_carriage(t_carriage *car, long ptr);
+t_carriage				*init_car(t_champion *champ, long next_op);
+void					add_carriage(t_carriage **all, t_carriage *last);
+
+void					op_live(t_vm *vm, t_carriage *next_op);
+void					op_ld(t_vm *vm, t_carriage *next_op);
+void					op_st(t_vm *vm, t_carriage *next_op);
+void					op_add(t_vm *vm, t_carriage *next_op);
+void					op_sub(t_vm *vm, t_carriage *next_op);
+void					op_and(t_vm *vm, t_carriage *cursor);
+void					op_or(t_vm *vm, t_carriage *cursor);
+void					op_xor(t_vm *vm, t_carriage *cursor);
+void					op_zjmp(t_vm *vm, t_carriage *cursor);
+void					op_ldi(t_vm *vm, t_carriage *cursor);
+void					op_sti(t_vm *vm, t_carriage *cursor);
+void					op_fork(t_vm *vm, t_carriage *cursor);
+void					op_lld(t_vm *vm, t_carriage *cursor);
+void					op_lldi(t_vm *vm, t_carriage *cursor);
+void					op_lfork(t_vm *vm, t_carriage *cursor);
+void					op_aff(t_vm *vm, t_carriage *cursor);
 
 typedef void			(*t_op_func)(t_vm *vm, t_carriage *carr);
 

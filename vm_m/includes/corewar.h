@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 17:30:08 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:17:24 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include "../libft/includes/ft_printf.h"
 # include "op_function.h"
 # include "op.h"
-
-//static unsigned short	g_arg_code[3] = {
-//	T_REG,
-//	T_DIR,
-//	T_IND
-//};
 
 typedef char			t_byte;
 
@@ -42,8 +36,8 @@ typedef struct			s_champion
 	long				id;
 	t_header			*head;
 	t_byte				*code;
-	unsigned int		current_lives_num;
-	unsigned int		previous_lives_num;
+	unsigned int		curr_live;
+	unsigned int		prev_live;
 	t_read				cycle_live;
 	struct s_champion		*next;
 }						t_champion;
@@ -80,6 +74,11 @@ typedef struct			s_vm
 	int					dump_print_mode;
 }						t_vm;
 
+
+long			next_op(long next_op_code);
+void			long_into_bytes(unsigned char *arena, long addr, long value, long size);
+long			check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i);
+long			bytes_into_long(const unsigned char *arena, long bytes, long size);
 void			get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs);
 int				check_byte_code(t_champion *champ, int fd);
 int				carriages_placement(t_vm *vm);
@@ -99,5 +98,6 @@ int				free_vm(t_vm *vm);
 int				free_carriage(t_carriage *carriages);
 int				free_champion(t_champion *champions);
 int				print_result(t_vm *vm);
+void			check_live_cycles(t_vm *vm);
 
 #endif
