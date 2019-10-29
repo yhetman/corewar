@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 14:21:14 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:58:10 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ unsigned long	arg_length(unsigned char type, t_op *option)
 	if (type & T_IND)
 		return (IND_SIZE);
 	else if (type & T_REG)
-		return (REG_LEN);
+		return (1);
 	else if (type & T_DIR)
 		return (option->command_size);
 	return (0);

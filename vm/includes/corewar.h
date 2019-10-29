@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/29 14:17:24 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:55:31 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
-# include "op_function.h"
 # include "op.h"
 
 typedef char			t_byte;
