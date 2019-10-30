@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_champions.c                                     :+:      :+:    :+:   */
+/*   get_champions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 03:12:35 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 16:12:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:24:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ static void			new_champion(t_champion **all, t_champion *new)
 		*all = new;
 }
 
-static t_champion	*init_each_champion(t_champion *champs, t_vm *vm, long id, char *file)
+static t_champion	*init_each_champion(t_champion *champs, t_vm *vm,
+					long id, char *file)
 {
-	t_champion		*new_champ;
-	int				fd;
+	t_champion	*new_champ;
+	int			fd;
 
-	if (!(new_champ = (t_champion*)malloc(sizeof(t_champion))))
-			vm_exit("ERROR! Malloc failed!", vm);
+	if (!(new_champ = (t_champion *)malloc(sizeof(t_champion))))
+		vm_exit("ERROR! Malloc failed!", vm);
 	ft_bzero(new_champ, sizeof(t_champion));
 	if (!(new_champ->head = (t_header*)malloc(sizeof(t_header))))
 		vm_exit("ERROR! Malloc failed!", vm);
@@ -62,7 +63,7 @@ static t_champion	*init_each_champion(t_champion *champs, t_vm *vm, long id, cha
 		vm_exit("ERROR! File reading failed", vm);
 	if (!(check_byte_code(new_champ, fd)))
 		vm_exit("ERROR! Player contains invalid bytecode", vm);
-   	new_champion(&champs, new_champ);
+	new_champion(&champs, new_champ);
 	vm->amount_of_champs++;
 	return (champs);
 }
@@ -77,7 +78,8 @@ static long			init_id(t_champion *champs)
 	return (id);
 }
 
-void				get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs)
+void				get_champions(int *ac, char ***av, t_vm *vm,
+					t_champion **champs)
 {
 	long			id;
 

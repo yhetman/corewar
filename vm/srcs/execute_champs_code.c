@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 13:38:46 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:58:28 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ static void	check_numb_of_cycles(t_vm *vm, t_carriage *carr)
 	if (carr->cycle_live == 0)
 	{
 		carr->code = vm->arena[carr->next_op];
-		if (vm->arena[carr->next_op] >= 0x01 && vm->arena[carr->next_op] <= 0x10)
+		if (vm->arena[carr->next_op] >= 0x01
+				&& vm->arena[carr->next_op] <= 0x10)
 			carr->cycle_live = g_option[carr->code - 1].cycles;
 	}
 	if (carr->cycle_live > 0)
 		(carr->cycle_live)--;
 }
 
-static long	calculate_next_op(long	next_op_code)
+static long	calculate_next_op(long next_op_code)
 {
 	next_op_code %= MEM_SIZE;
 	if (next_op_code < 0)
@@ -72,7 +73,6 @@ static int	op_apply(t_vm *vm, t_carriage *carr)
 	return (0);
 }
 
-
 int			execute_champs_code(t_vm *vm)
 {
 	t_carriage	*ex_carr;
@@ -86,7 +86,8 @@ int			execute_champs_code(t_vm *vm)
 		ex_carr = vm->carriages;
 		while (ex_carr && !op_apply(vm, ex_carr))
 			ex_carr = ex_carr->next;
-		if (vm->cycles_to_die == vm->cycles_after_check || vm->cycles_to_die <= 0)
+		if (vm->cycles_to_die == vm->cycles_after_check
+				|| vm->cycles_to_die <= 0)
 			check_live_cycles(vm);
 	}
 	return (1);

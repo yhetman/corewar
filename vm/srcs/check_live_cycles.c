@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:25:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 17:40:33 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:22:30 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	define_corpse(t_vm *vm)
 	}
 }
 
-void	check_live_cycles(t_vm *vm)
+void		check_live_cycles(t_vm *vm)
 {
 	long	i;
 

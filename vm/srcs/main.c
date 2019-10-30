@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 16:50:49 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:24:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_champion	*check_champions_list(t_champion *all, long id)
 	return (NULL);
 }
 
-static t_vm	*malloc_vm(t_vm *vm)
+static t_vm			*malloc_vm(t_vm *vm)
 {
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
 		vm_exit("| HUI TEBE A NE PAMYAT |\n", NULL);
@@ -38,14 +38,13 @@ static t_vm	*malloc_vm(t_vm *vm)
 	return (vm);
 }
 
-static void	check_dump(int *ac, char ***av, t_vm *vm)
+static void			check_dump(int *ac, char ***av, t_vm *vm)
 {
 	if (!vm->dump_print_mode && *ac >= 2 && IS_INT(*(*av + 1)))
 	{
 		if ((vm->dump_cycle = ft_atoi(*(*av + 1))) < 0)
 			vm->dump_cycle = -1;
 		vm->dump_print_mode = 64;
-//		vm->dump_print_mode = ((!ft_strcmp(**av, "-d")) ? 64 : 32);
 		(*ac) -= 2;
 		(*av) += 2;
 	}
@@ -53,7 +52,7 @@ static void	check_dump(int *ac, char ***av, t_vm *vm)
 		usage();
 }
 
-static int	start_virtual_machine(t_vm *vm, t_champion *champs)
+static int			start_virtual_machine(t_vm *vm, t_champion *champs)
 {
 	long			id;
 	unsigned long	next_op;
@@ -77,7 +76,7 @@ static int	start_virtual_machine(t_vm *vm, t_champion *champs)
 	return (1);
 }
 
-int			main(int ac, char **av)
+int					main(int ac, char **av)
 {
 	t_vm		*vm;
 	t_champion	*champs;

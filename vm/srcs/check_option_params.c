@@ -6,13 +6,13 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:57:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 16:06:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:51:16 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
 
-long		next_op(long	next_op_code)
+long	next_op(long next_op_code)
 {
 	next_op_code %= MEM_SIZE;
 	if (next_op_code < 0)
@@ -20,8 +20,8 @@ long		next_op(long	next_op_code)
 	return (next_op_code);
 }
 
-void		long_into_bytes(unsigned char *arena, long bytes, long value,
-	   		long size)
+void	long_into_bytes(unsigned char *arena, long bytes, long value,
+		long size)
 {
 	short	b;
 
@@ -34,7 +34,7 @@ void		long_into_bytes(unsigned char *arena, long bytes, long value,
 	}
 }
 
-long		bytes_into_long(const unsigned char *arena, long bytes, long size)
+long	bytes_into_long(const unsigned char *arena, long bytes, long size)
 {
 	long	result;
 	int		i;
@@ -56,7 +56,8 @@ long		bytes_into_long(const unsigned char *arena, long bytes, long size)
 	return (result);
 }
 
-long		check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short i)
+long	check_option_params(t_vm *vm, t_carriage *car, bool turn,
+		unsigned short i)
 {
 	t_op	*option;
 	long	val;
@@ -64,14 +65,14 @@ long		check_option_params(t_vm *vm, t_carriage *car, bool turn,  unsigned short 
 
 	val = 0;
 	option = &g_option[car->code - 1];
-	if (car->args[ i - 1] & T_REG)
+	if (car->args[i - 1] & T_REG)
 		val = car->registers[vm->arena[next_op(car->next_op + car->step)] - 1];
 	else if (car->args[i - 1] & T_DIR)
 		val = bytes_into_long(vm->arena, car->next_op + car->step,
 								option->command_size);
 	else if (car->args[i - 1] & T_IND)
 	{
-		bytes = bytes_into_long(vm->arena,car->next_op + car->step, IND_SIZE);
+		bytes = bytes_into_long(vm->arena, car->next_op + car->step, IND_SIZE);
 		val = bytes_into_long(vm->arena,
 							car->next_op + (turn ? (bytes % IDX_MOD) : bytes),
 							DIR_SIZE);

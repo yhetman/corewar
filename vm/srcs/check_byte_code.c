@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:24:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 12:44:52 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:53:57 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static t_byte	*read_exec_code(t_header *head, int fd)
 {
-	t_read		result;
-	t_byte		*buff;
-	t_byte		byte;
+	t_read	result;
+	t_byte	*buff;
+	t_byte	byte;
 
 	if (!(buff = (t_byte*)malloc(head->prog_size)))
 		return (NULL);
 	if ((result = read(fd, buff, head->prog_size)) == -1
 			|| result < head->prog_size
 			|| read(fd, &byte, 1))
-		return(NULL);
-	return(buff);
+		return (NULL);
+	return (buff);
 }
 
-static long	read_bytes_convert_to_long(int fd, int bytes, long result)
+static long		read_bytes_convert_to_long(int fd, int bytes, long result)
 {
 	t_read	reads;
 	t_uchar	*buff;
@@ -45,19 +45,19 @@ static long	read_bytes_convert_to_long(int fd, int bytes, long result)
 	return (result);
 }
 
-static char	*read_bytes_convert_to_str(int fd, unsigned int length)
+static char		*read_bytes_convert_to_str(int fd, unsigned int length)
 {
 	t_read	res;
 	t_byte	*buff;
 
-	if (!(buff = (t_byte*)malloc(length *sizeof(t_byte))))
+	if (!(buff = (t_byte*)malloc(length * sizeof(t_byte))))
 		return (NULL);
 	if ((res = read(fd, buff, length)) == -1 || res < length)
 		return (NULL);
 	return (buff);
 }
 
-static int	check_header_bytecode(t_header *head, int fd)
+static int		check_header_bytecode(t_header *head, int fd)
 {
 	if (!(head->prog_name = read_bytes_convert_to_str(fd, PROG_NAME_LENGTH)))
 		return (0);
@@ -73,7 +73,7 @@ static int	check_header_bytecode(t_header *head, int fd)
 	return (1);
 }
 
-int			check_byte_code(t_champion	*champ, int fd)
+int				check_byte_code(t_champion *champ, int fd)
 {
 	long	value;
 
