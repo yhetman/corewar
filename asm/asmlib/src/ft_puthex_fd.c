@@ -6,13 +6,13 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:07:11 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 21:33:00 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:30:08 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asmlib.h"
 
-void ft_puthex_fd(long long hex, int fd)
+void	ft_puthex_fd(long long hex, int fd)
 {
 	if (hex >= 256)
 	{
@@ -23,7 +23,7 @@ void ft_puthex_fd(long long hex, int fd)
 		ft_putchar_fd(hex, fd);
 }
 
-void ft_puthex_n_fd(long long hex, int fd, int len)
+void	ft_puthex_n_fd(long long hex, int fd, int len)
 {
 	if (len)
 	{

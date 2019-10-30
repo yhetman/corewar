@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 02:41:27 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/07 02:52:46 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 22:00:34 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	count_lines_and_signs(char *content, int *signs, int *lines)
 		(*signs)++;
 	}
 }
-
