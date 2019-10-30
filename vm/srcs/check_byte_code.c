@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:24:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 21:42:47 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:44:52 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,29 @@ static t_byte	*read_exec_code(t_header *head, int fd)
 static long	read_bytes_convert_to_long(int fd, int bytes, long result)
 {
 	t_read	reads;
-	t_byte	*buff;
-	t_byte	sig_byte;
-	int		i;
+	t_uchar	*buff;
+	t_ulong	res;
 
-	i = 0;
-	buff = (t_byte *)malloc(sizeof(t_byte));
+	buff = (unsigned char *)malloc(bytes * sizeof(unsigned char));
 	if ((reads = read(fd, buff, bytes)) < 0 || reads < bytes)
-		return (ft_strdel(&buff));
-	sig_byte = (t_byte)(buff[0] & 0x80);
-	bytes = reads;
-	while (bytes--)
-		result += ((sig_byte) ? ((buff[bytes] ^ 0xFF) << (i++ * 8)) : (buff[bytes] << (i++ * 8)));
-	return ((sig_byte) ? result : (~result));
+		return ((long)ft_strdel((char **)&buff));
+	reads = 0;
+	res = 0;
+	while (reads < bytes)
+		res = (res << 8) | buff[reads++];
+	ft_strdel((char **)&buff);
+	result = *((long *)(&res));
+	return (result);
 }
 
 static char	*read_bytes_convert_to_str(int fd, unsigned int length)
 {
 	t_read	res;
 	t_byte	*buff;
-	t_byte	byte;
 
 	if (!(buff = (t_byte*)malloc(length *sizeof(t_byte))))
 		return (NULL);
-	if ((res = read(fd, buff, length)) == -1 
-			|| res < length || (read(fd, &byte, 1) != 0))
+	if ((res = read(fd, buff, length)) == -1 || res < length)
 		return (NULL);
 	return (buff);
 }

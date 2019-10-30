@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 14:13:43 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/29 16:52:35 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:11:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include "op.h"
+
+typedef unsigned long	t_ulong;
+
+typedef unsigned char	t_uchar;
 
 typedef char			t_byte;
 

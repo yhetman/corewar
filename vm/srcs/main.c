@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 14:20:59 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:52:43 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ static int	start_virtual_machine(t_vm *vm, t_champion *champs)
 
 	id = 0;
 	next_op = 0;
-	if (vm->amount_of_champs < 1
-			|| vm->amount_of_champs > MAX_PLAYERS)
+	if (vm->amount_of_champs < 1 || vm->amount_of_champs > MAX_PLAYERS)
 		return (0);
 	while (++id <= vm->amount_of_champs)
 	{

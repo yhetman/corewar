@@ -57,18 +57,20 @@ endif
 set shortmess=aoO
 badd +8 includes/op.h
 badd +19 includes/op_function.h
-badd +138 includes/corewar.h
-badd +17 Makefile
+badd +52 includes/corewar.h
+badd +4 Makefile
 badd +1 ~/Documents/projects/corewar/vm
 badd +79 srcs/check_option_params.c
 badd +18 srcs/tools.c
 badd +75 srcs/check_live_cycles.c
 badd +75 srcs/code_validation.c
-badd +0 srcs/op_functions/op_tools.c
+badd +30 srcs/op_functions/op_tools.c
+badd +38 srcs/check_byte_code.c
+badd +0 srcs/main.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
-edit srcs/op_functions/op_tools.c
+edit srcs/main.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -78,8 +80,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
+exe 'vert 1resize ' . ((&columns * 99 + 98) / 197)
+exe 'vert 2resize ' . ((&columns * 97 + 98) / 197)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -186,15 +188,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 38 - ((37 * winheight(0) + 35) / 71)
+let s:l = 92 - ((43 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-38
-normal! 0
+92
+normal! 036|
 wincmd w
 argglobal
-edit Makefile
+edit includes/op.h
 setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
@@ -203,13 +205,13 @@ setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
-setlocal nocindent
+setlocal cindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=sO:#\ -,mO:#\ \ ,b:#
-setlocal commentstring=#\ %s
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal nocopyindent
@@ -223,8 +225,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'make'
-setlocal filetype=make
+if &filetype != 'cpp'
+setlocal filetype=cpp
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -244,10 +246,10 @@ setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=0
-setlocal include=^\\s*include
+setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetMakeIndent()
-setlocal indentkeys=!^F,o,O,<:>,=else,=endif
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -264,7 +266,7 @@ setlocal nrformats=bin,hex
 set number
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=
+setlocal omnifunc=ccomplete#Complete
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -275,7 +277,7 @@ setlocal noscrollbind
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal signcolumn=auto
-setlocal nosmartindent
+setlocal smartindent
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -285,8 +287,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'make'
-setlocal syntax=make
+if &syntax != 'cpp'
+setlocal syntax=cpp
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -300,15 +302,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 35) / 71)
+let s:l = 66 - ((65 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
-normal! 074|
+66
+normal! 02|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 99 + 99) / 199)
+exe 'vert 1resize ' . ((&columns * 99 + 98) / 197)
+exe 'vert 2resize ' . ((&columns * 97 + 98) / 197)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
