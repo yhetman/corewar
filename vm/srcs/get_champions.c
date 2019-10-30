@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 03:12:35 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 18:59:06 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 13:11:41 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void			new_champion(t_champion **all, t_champion *new)
 		*all = new;
 }
 
-static void			init_each_champion(t_champion *champs, t_vm *vm, long id, char *file)
+static t_champion	*init_each_champion(t_champion *champs, t_vm *vm, long id, char *file)
 {
 	t_champion		*new_champ;
 	int				fd;
@@ -64,6 +64,7 @@ static void			init_each_champion(t_champion *champs, t_vm *vm, long id, char *fi
 		vm_exit("ERROR! Player contains invalid bytecode", vm);
    	new_champion(&champs, new_champ);
 	vm->amount_of_champs++;
+	return (champs);
 }
 
 void				get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs)
@@ -79,13 +80,13 @@ void				get_champions(int *ac, char ***av, t_vm *vm, t_champion **champs)
 		|| check_champions_list(*champs, id)
 		|| !is_cor(*(*av + 2)))
 			usage();
-		init_each_champion(*champs, vm, id, *(*av + 2));
+		*champs = init_each_champion(*champs, vm, id, *(*av + 2));
 		(*ac) -= 3;
 		(*av) += 3;
 	}
 	else if (is_cor(**av))
 	{
-		init_each_champion(*champs, vm, id, **av);
+		*champs = init_each_champion(*champs, vm, id, **av);
 		(*ac)--;
 		(*av)++;
 	}

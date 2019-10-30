@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:17:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 14:57:13 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 13:38:46 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	op_apply(t_vm *vm, t_carriage *carr)
 	{
 		option = NULL;
 		if (carr->code >= 0x01 && carr->code <= 0x10)
-			option = &g_option[carr->code - 1];
+			option = &g_option[carr->code];
 		if (option)
 			code_validation(vm, carr, option);
 		else

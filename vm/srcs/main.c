@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 12:52:43 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 13:22:13 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_champion	*check_champions_list(t_champion *all, long id)
 	t_champion		*champ;
 
 	champ = all;
-	if (id < 1 || id > MAX_PLAYERS)
+	if (id < 0 || id > MAX_PLAYERS)
 		return (NULL);
 	while (champ)
 	{
@@ -62,13 +62,14 @@ static int	start_virtual_machine(t_vm *vm, t_champion *champs)
 	next_op = 0;
 	if (vm->amount_of_champs < 1 || vm->amount_of_champs > MAX_PLAYERS)
 		return (0);
-	while (++id <= vm->amount_of_champs)
+	while (id < vm->amount_of_champs)
 	{
-		if (!(vm->champs[id - 1] = check_champions_list(champs, id)))
+		if (!(vm->champs[id] = check_champions_list(champs, id)))
 			usage();
-		ft_memcpy(&(vm->arena[next_op]), vm->champs[id - 1]->code,
-				(size_t)(vm->champs[id - 1]->head->prog_size));
+		ft_memcpy(&(vm->arena[next_op]), vm->champs[id]->code,
+				(size_t)(vm->champs[id]->head->prog_size));
 		next_op += MEM_SIZE / vm->amount_of_champs;
+		++id;
 	}
 	vm->alive = vm->champs[vm->amount_of_champs - 1];
 	if (!carriages_placement(vm))

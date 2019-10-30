@@ -55,9 +55,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +8 includes/op.h
+badd +34 includes/op.h
 badd +19 includes/op_function.h
-badd +52 includes/corewar.h
+badd +79 includes/corewar.h
 badd +4 Makefile
 badd +1 ~/Documents/projects/corewar/vm
 badd +79 srcs/check_option_params.c
@@ -66,11 +66,13 @@ badd +75 srcs/check_live_cycles.c
 badd +75 srcs/code_validation.c
 badd +30 srcs/op_functions/op_tools.c
 badd +38 srcs/check_byte_code.c
-badd +0 srcs/main.c
+badd +86 srcs/main.c
+badd +70 srcs/get_champions.c
+badd +0 srcs/execute_champs_code.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
-edit srcs/main.c
+edit srcs/execute_champs_code.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -80,8 +82,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 99 + 98) / 197)
-exe 'vert 2resize ' . ((&columns * 97 + 98) / 197)
+exe 'vert 1resize ' . ((&columns * 98 + 99) / 199)
+exe 'vert 2resize ' . ((&columns * 100 + 99) / 199)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -188,12 +190,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 92 - ((43 * winheight(0) + 35) / 71)
+let s:l = 63 - ((34 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-92
-normal! 036|
+63
+normal! 019|
 wincmd w
 argglobal
 edit includes/op.h
@@ -302,15 +304,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 66 - ((65 * winheight(0) + 35) / 71)
+let s:l = 82 - ((41 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-66
-normal! 02|
+82
+normal! 04|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 99 + 98) / 197)
-exe 'vert 2resize ' . ((&columns * 97 + 98) / 197)
+exe 'vert 1resize ' . ((&columns * 98 + 99) / 199)
+exe 'vert 2resize ' . ((&columns * 100 + 99) / 199)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
