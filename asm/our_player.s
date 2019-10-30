@@ -11,7 +11,7 @@ attack:	sti     r1,%:copier,%2
         sti     r2,%:start,%-4
         ldi     %:copier,%-1,r2
         sti     r2,%:copier,%-8
-		sti	r1,%:copier,%1
+		sti		r1,%:copier,%1
 
 copier:  ld      %1,r1
 

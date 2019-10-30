@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 22:34:22 by botkache         ###   ########.fr       */
+/*   Updated: 2019/10/30 22:55:09 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define BRACKET				"'()-+*&<>=/"
 # define LOWER					"abcdefghijklmnopqrstuvwxyz_0123456789"
-# define UPPER					"ABCDEFGHIJKLMNOPQRSTUWXYZ!"
+# define UPPER					"ABCDEFGHIJKLMNOPQRVSTUWXYZ!"
 # define LABEL_CHARS			LOWER UPPER BRACKET
 # define COMMENT_CHARS			LOWER UPPER BRACKET "{}[].,\t#$"
 # define COMMAND_CHARS			LOWER UPPER BRACKET " ,"
