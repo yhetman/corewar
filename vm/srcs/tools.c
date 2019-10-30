@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 16:07:56 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:56:15 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ unsigned long	count_step(t_carriage *carr, t_op *option)
 	return (step);
 }
 
-bool	is_cor(const char *file)
+bool			is_cor(const char *file)
 {
 	return ((file && ft_strlen(file) >= 4)
 			? (!ft_strcmp(ft_strchr(file, '\0') - 4, ".cor"))
-		 : (false));
+			: (false));
 }
 
-void	vm_exit(char *msg, t_vm *vm)
+void			vm_exit(char *msg, t_vm *vm)
 {
 	ft_putendl_fd(msg, 1);
 	if (vm)
@@ -50,7 +50,7 @@ void	vm_exit(char *msg, t_vm *vm)
 	exit(1);
 }
 
-void	usage()
+void			usage(void)
 {
 	ft_printf("Usage: \n");
 	ft_printf("\t{ ./corewar [-dump [nbr_cycles]]");

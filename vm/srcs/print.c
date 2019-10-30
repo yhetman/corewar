@@ -6,7 +6,7 @@
 /*   By: blukasho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:33:28 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/28 15:41:58 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:58:50 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		print_result(t_vm *vm)
 {
-	ft_printf("Player %ld (%s) won!\n", vm->alive->id, vm->alive->head->prog_name);
+	ft_printf("Player %ld (%s) won!\n", vm->alive->id,
+			vm->alive->head->prog_name);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:23:09 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/29 16:06:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:52:01 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,15 @@ static int	get_command_arguments(t_vm *vm, t_carriage *carr, t_op *option)
 		while (++args <= 3)
 			if (option->count_args >= args)
 				carr->args[args - 1] =
-					T_REG << ((char)(args_type & 0x300 / (4 * args) >> 6 / args) - 1);
+					T_REG << ((char)(args_type & 0x300 /
+								(4 * args) >> 6 / args) - 1);
 	}
 	else
 		carr->args[0] = option->args[0];
 	return (0);
 }
 
-void	code_validation(t_vm *vm, t_carriage *carr, t_op *option)
+void		code_validation(t_vm *vm, t_carriage *carr, t_op *option)
 {
 	get_command_arguments(vm, carr, option);
 	if (!validate_arguments(vm, carr, option))
