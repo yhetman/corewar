@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 16:18:59 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:36:54 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_champion	*check_champions_list(t_champion *all, long id)
 static t_vm	*malloc_vm(t_vm *vm)
 {
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
-		vm_exit("| MEMORY ALLOCAION FAILED |\n", NULL);
+		vm_exit("| HUI TEBE A NE PAMYAT |\n", NULL);
 	ft_bzero(vm, sizeof(t_vm));
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->dump_cycle = -1;

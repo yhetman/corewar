@@ -61,18 +61,19 @@ badd +79 includes/corewar.h
 badd +4 Makefile
 badd +1 ~/Documents/projects/corewar/vm
 badd +79 srcs/check_option_params.c
-badd +18 srcs/tools.c
+badd +22 srcs/tools.c
 badd +75 srcs/check_live_cycles.c
 badd +75 srcs/code_validation.c
 badd +30 srcs/op_functions/op_tools.c
 badd +38 srcs/check_byte_code.c
 badd +104 srcs/main.c
-badd +70 srcs/get_champions.c
+badd +92 srcs/get_champions.c
 badd +53 srcs/execute_champs_code.c
+badd +1 srcs/print.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
-edit srcs/get_champions.c
+edit srcs/main.c
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -184,12 +185,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 88 - ((65 * winheight(0) + 35) / 71)
+let s:l = 86 - ((51 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-88
-normal! 08|
+86
+normal! 016|
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
