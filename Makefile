@@ -78,6 +78,7 @@ clean:
 fclean: clean
 	make fclean -C $(LIBPATH)
 	make fclean -C $(ASMPATH)
+	rm -rvf asm
 	rm -rvf $(NAME)
 
 re: fclean all
