@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:25:22 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 18:22:30 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:42:15 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,4 @@ void		check_live_cycles(t_vm *vm)
 		vm->champs[i]->curr_live = 0;
 	}
 	vm->cycles_after_check = 0;
-//	vm->lives = 0;
 }
