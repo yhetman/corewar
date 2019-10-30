@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 03:12:35 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 17:02:44 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 18:24:16 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_champion	*check_champions_list(t_champion *all, long id)
 	t_champion		*champ;
 
 	champ = NULL;
-	if (id < 1 || id > MAX_PLAYERS)
+	if (id < 0 || id > MAX_PLAYERS)
 		return (NULL);
 	champ = all;
 	while (champ)
@@ -68,12 +68,22 @@ static t_champion	*init_each_champion(t_champion *champs, t_vm *vm,
 	return (champs);
 }
 
+static long			init_id(t_champion *champs)
+{
+	long			id;
+
+	id = 0;
+	while (champs && ++id)
+		champs = champs->next;
+	return (id);
+}
+
 void				get_champions(int *ac, char ***av, t_vm *vm,
 					t_champion **champs)
 {
 	long			id;
 
-	id = 0;
+	id = init_id(*champs);
 	if ((*ac) >= 3 && !ft_strcmp(**av, "-n"))
 	{
 		if (!IS_INT(*(*av + 1))

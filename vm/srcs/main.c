@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 17:00:21 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 18:24:42 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_champion	*check_champions_list(t_champion *all, long id)
 static t_vm			*malloc_vm(t_vm *vm)
 {
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
-		vm_exit("| MEMORY ALLOCAION FAILED |\n", NULL);
+		vm_exit("| HUI TEBE A NE PAMYAT |\n", NULL);
 	ft_bzero(vm, sizeof(t_vm));
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->dump_cycle = -1;
@@ -40,12 +40,11 @@ static t_vm			*malloc_vm(t_vm *vm)
 
 static void			check_dump(int *ac, char ***av, t_vm *vm)
 {
-	if (!vm->dump_print_mode && *ac >= 2
-			&& IS_INT(*(*av + 1)))
+	if (!vm->dump_print_mode && *ac >= 2 && IS_INT(*(*av + 1)))
 	{
 		if ((vm->dump_cycle = ft_atoi(*(*av + 1))) < 0)
 			vm->dump_cycle = -1;
-		vm->dump_print_mode = ((!ft_strcmp(**av, "-d")) ? 64 : 32);
+		vm->dump_print_mode = 64;
 		(*ac) -= 2;
 		(*av) += 2;
 	}

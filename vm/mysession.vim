@@ -55,35 +55,30 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +34 includes/op.h
+badd +75 includes/op.h
 badd +19 includes/op_function.h
 badd +79 includes/corewar.h
 badd +4 Makefile
 badd +1 ~/Documents/projects/corewar/vm
 badd +79 srcs/check_option_params.c
-badd +18 srcs/tools.c
+badd +22 srcs/tools.c
 badd +75 srcs/check_live_cycles.c
 badd +75 srcs/code_validation.c
 badd +30 srcs/op_functions/op_tools.c
 badd +38 srcs/check_byte_code.c
-badd +86 srcs/main.c
-badd +70 srcs/get_champions.c
-badd +0 srcs/execute_champs_code.c
+badd +104 srcs/main.c
+badd +92 srcs/get_champions.c
+badd +53 srcs/execute_champs_code.c
+badd +1 srcs/print.c
 argglobal
 silent! argdel *
 $argadd includes/op.h
-edit srcs/execute_champs_code.c
+edit srcs/main.c
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 98 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 100 + 99) / 199)
 argglobal
 setlocal noautoindent
 setlocal backupcopy=
@@ -190,129 +185,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 63 - ((34 * winheight(0) + 35) / 71)
+let s:l = 86 - ((51 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-63
-normal! 019|
-wincmd w
-argglobal
-edit includes/op.h
-setlocal noautoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal cindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'cpp'
-setlocal filetype=cpp
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'cpp'
-setlocal syntax=cpp
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 82 - ((41 * winheight(0) + 35) / 71)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-82
-normal! 04|
-wincmd w
-exe 'vert 1resize ' . ((&columns * 98 + 99) / 199)
-exe 'vert 2resize ' . ((&columns * 100 + 99) / 199)
+86
+normal! 016|
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
