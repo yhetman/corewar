@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 18:24:42 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 20:14:26 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ int					main(int ac, char **av)
 		vm_exit("ERROR! Invalid amount of champions!", vm);
 	execute_champs_code(vm);
 	print_result(vm);
+	free_vm(vm);
 	return (0);
 }

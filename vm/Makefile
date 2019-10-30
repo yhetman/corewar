@@ -6,7 +6,7 @@
 #*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2019/08/29 10:35:46 by blukasho          #+#    #+#             *#
-#*   Updated: 2019/10/27 10:14:54 by blukasho         ###   ########.fr       *#
+#*   Updated: 2019/10/30 20:09:46 by blukasho         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -26,7 +26,7 @@ vpath %.c srcs/ srcs/op_functions/
 
 NAME=corewar
 
-FLAGS=-Wall -Wextra -Werror
+FLAGS=-Wall -Wextra
 
 DEBUG=-g3 -fsanitize=address
 

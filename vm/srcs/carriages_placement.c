@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 01:00:03 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/27 17:01:37 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 20:28:22 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int					carriages_placement(t_vm *vm)
 
 	players = 0;
 	next_op = 0;
-	while (++players <= vm->amount_of_champs)
+	while (++players < vm->amount_of_champs)
 	{
 		if (!(new_carr = (t_carriage*)malloc(sizeof(t_carriage))))
 			return (0);
 		ft_bzero(new_carr, sizeof(t_carriage));
-		add_champ_info(new_carr, vm->champs[players - 1]);
+		add_champ_info(new_carr, vm->champs[players]);
 		new_carr->next_op = next_op;
 		carriage_cycle_list(&(vm->carriages), new_carr);
 		vm->amount_of_carr++;

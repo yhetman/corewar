@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:24:08 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 16:53:57 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 20:22:51 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char		*read_bytes_convert_to_str(int fd, unsigned int length)
 	if (!(buff = (t_byte*)malloc(length * sizeof(t_byte))))
 		return (NULL);
 	if ((res = read(fd, buff, length)) == -1 || res < length)
-		return (NULL);
+		return ((char *)ft_strdel(&buff));
 	return (buff);
 }
 
