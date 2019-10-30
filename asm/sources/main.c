@@ -55,6 +55,5 @@ int					main(int argc, char **argv)
 			go_to_assembler(argv[i]);
 		i++;
 	}
-	system("leaks asm");
 	return (0);
 }

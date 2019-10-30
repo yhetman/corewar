@@ -12,24 +12,24 @@
 
 #include "../includes/asm.h"
 
-static void		free_command(t_command *command, int line)
+static void		free_command(t_command *command, int line, int f)
 {
-	if (command->command)
+	if (command->command && f)
 	{
 		ft_putstr_fd("| Invalid command name at the line >> ", 2);
 		ft_putnbr_fd(line + 1, 2);
 		ft_putstr_fd(" |\n", 2);
-		free(command->command);
-		if (command->args)
-			free(command->args);
 	}
-	else if (command->args)
+	else if (command->args && f)
 	{
-		free(command->args);
 		ft_putstr_fd("| Invalid arguments at the line >> ", 2);
 		ft_putnbr_fd(line, 2);
 		ft_putstr_fd(" |\n", 2);
 	}
+	if (command->command)
+		free(command->command);
+	if (command->args)
+		free(command->args);
 }
 
 static int		check_info(t_command *command, t_assembler *ass)
@@ -112,14 +112,14 @@ int				get_command_info(t_assembler *ass, int count)
 	ft_bzero(&command, sizeof(t_command));
 	if (get_info(&command, ass->stored[count]) == 0)
 	{
-		free_command(&command, count);
+		free_command(&command, count, 1);
 		return (false);
 	}
 	if (!check_info(&command, ass) && command.command)
 	{
-		free_command(&command, count);
+		free_command(&command, count, 1);
 		return (false);
 	}
-	free_command(&command, 0);
+	free_command(&command, 0, 0);
 	return (1);
 }

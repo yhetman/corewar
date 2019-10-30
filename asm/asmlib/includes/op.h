@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:54:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 19:14:29 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 21:57:21 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@
 # define IND_SIZE				2
 # define REG_SIZE				4
 # define DIR_SIZE				REG_SIZE
-
-
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
-
 
 # define MAX_ARGS_NUMBER		4
 # define MAX_PLAYERS			4
@@ -36,8 +33,8 @@
 # define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
 
-# define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/"
-# define COMMENT_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/ {}[].,\t#$"
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/"
+# define COMMENT_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/{}[].,\t#$"
 # define COMMAND_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!'()-+*&<>=/ ,"
 
 # define NAME_CMD_STRING		".name"

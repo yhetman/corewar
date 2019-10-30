@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 20:49:16 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 19:40:26 by botkache         ###   ########.fr       */
+/*   Updated: 2019/10/30 21:49:44 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ static bool	init_each_word(char **words, char *line, int i, int nb_words)
 	char	*tmp;
 
 	w_nb = 0;
-	while (nb_words > 0 && line && line[i])
+	while (nb_words > 0 && line && line[i] && (w_len = miss_trash(&i, line)))
 	{
-		w_len = miss_trash(&i, line);
 		while (line[i + w_len] && line[i] == COMMENT_CHAR)
 			w_len++;
 		if (w_len > 0)
