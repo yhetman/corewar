@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 19:06:55 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/25 18:42:32 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 17:16:19 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int					main(int argc, char **argv)
 			go_to_assembler(argv[i]);
 		i++;
 	}
+	system("leaks asm");
 	return (0);
 }

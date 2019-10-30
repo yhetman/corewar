@@ -19,8 +19,7 @@ SRCS= main.c					\
 	  get_command_info.c		\
 	  get_command_arguments.c	\
 	  rewrite_file.c			\
-	  catch_tokens.c			\
-	  debug.c					\
+	  catch_tokens.c				\
 	  init.c					\
 	  clear.c					\
 	  writing_process.c 		\

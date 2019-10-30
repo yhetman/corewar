@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 19:29:44 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 15:21:26 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:43:08 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static int	find_number_of_token(t_token *tokens, int amount, int numb)
 	i = -1;
 	while (++i < amount)
 		if (tokens[i].count == numb)
-				return (i);
+			return (i);
 	return (i);
 }
 
 static int	no_command(t_assembler *ass, int *i, int *count, int *current)
-{   
-        int	token;
+{
+	int	token;
 
 	token = 0;
 	if (ass->stored[*i][0] && ass->stored[*i][0][0] &&
@@ -46,7 +46,7 @@ static int	no_command(t_assembler *ass, int *i, int *count, int *current)
 
 static bool	find_command(t_assembler *ass, int *i, int *count, int token)
 {
-    int		j;
+	int		j;
 	int		index;
 	int		args;
 
@@ -61,9 +61,7 @@ static bool	find_command(t_assembler *ass, int *i, int *count, int token)
 		if (ass->stored[*i][1 + token][j] == REG_CHAR)
 			(*count)++;
 		else if (ass->stored[*i][1 + token][j] == '%')
-			*count = ass->options[index].command_size
-			? *count + 2
-                        : *count + 4;
+			*count = ass->options[index].command_size ? *count + 2 : *count + 4;
 		else
 			*count += 2;
 		while (ass->stored[*i][1 + token][j] &&
@@ -74,7 +72,7 @@ static bool	find_command(t_assembler *ass, int *i, int *count, int token)
 	return (true);
 }
 
-int		catch_tokens(t_assembler *ass)
+int			catch_tokens(t_assembler *ass)
 {
 	int	count;
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 20:38:28 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/25 18:58:14 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 19:47:03 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void			counts_char_line(char *buff, t_reader *reader)
 			reader->line += 1;
 	reader->sign += i;
 }
-
 
 static int			reading_process(char *file, t_reader *reader)
 {
@@ -81,6 +80,7 @@ int					go_to_assembler(char *file)
 	t_assembler		*ass;
 	t_header		*header;
 	t_reader		*reader;
+	int				result;
 
 	ass = init_t_assembler();
 	reader = init_t_reader();
@@ -89,8 +89,11 @@ int					go_to_assembler(char *file)
 	store_all_token_details(ass);
 	header = init_t_header();
 	if (!file_checker(ass, header))
-		return (clear_t_assembler(ass)
-				+ clear_t_reader(reader) + clear_t_header(header));
+	{
+		result = clear_t_assembler(ass) +
+			clear_t_reader(reader) + clear_t_header(header);
+		return (result);
+	}
 	rewrite_file(ass, header, reader->line, file);
 	return (clear_t_assembler(ass) + clear_t_reader(reader) +
 			clear_t_header(header) + 1);

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:34:20 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/25 19:12:00 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 19:33:52 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		free_command(t_command *command, int line)
 	if (command->command)
 	{
 		ft_putstr_fd("| Invalid command name at the line >> ", 2);
-		ft_putnbr_fd(line, 2);
+		ft_putnbr_fd(line + 1, 2);
 		ft_putstr_fd(" |\n", 2);
 		free(command->command);
 		if (command->args)
@@ -40,11 +40,11 @@ static int		check_info(t_command *command, t_assembler *ass)
 	index = 0;
 	res = 0;
 	if (command->command)
-		index = define_index(ass->options, command->command);	
+		index = define_index(ass->options, command->command);
 	if (index < 1)
 		return (0);
 	if (command->args)
-		res = get_command_arguments(ass, command, index);
+		res = get_command_arguments(ass, command, index, 0);
 	return (res);
 }
 
@@ -53,7 +53,7 @@ static int		define_command_or_comment(char **line, int *i, int *j)
 	if (!line[0])
 		return (1);
 	if (line[0] && ft_strchr(line[0], LABEL_CHAR) &&
-		(validate_token(line[0]) == 1 || true))
+		(validate_token(line[0])))
 	{
 		(*i)++;
 		if (!line[1])
@@ -115,10 +115,11 @@ int				get_command_info(t_assembler *ass, int count)
 		free_command(&command, count);
 		return (false);
 	}
-	if (!check_info(&command, ass))
+	if (!check_info(&command, ass) && command.command)
 	{
 		free_command(&command, count);
 		return (false);
 	}
+	free_command(&command, 0);
 	return (1);
 }

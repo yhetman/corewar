@@ -6,11 +6,21 @@
 /*   By: blukasho <bodik1w@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 08:29:20 by blukasho          #+#    #+#             */
-/*   Updated: 2019/10/24 03:56:02 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 18:40:29 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+int				octet(long long numb)
+{
+	int i;
+
+	i = 1;
+	while (numb / 256 && i++)
+		numb /= 256;
+	return (i);
+}
 
 t_header		*init_t_header(void)
 {

@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:56:13 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/25 18:57:42 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 19:42:40 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static t_writer	*init_writer(void)
 {
 	t_writer	*writer;
 
-	writer = (t_writer *)malloc(sizeof (t_writer));
+	writer = (t_writer *)malloc(sizeof(t_writer));
 	ft_bzero(writer, sizeof(t_writer));
 	return (writer);
 }
 
-static int write_commands(t_assembler *ass, int fd, int lines)
+static int		write_commands(t_assembler *ass, int fd, int lines)
 {
 	int			i;
 	int			res;
@@ -39,13 +39,14 @@ static int write_commands(t_assembler *ass, int fd, int lines)
 		if (!buffer || !buffer[0] || !buffer[0][0]
 				|| buffer[0][0] == COMMENT_CHAR)
 			continue ;
-		else 
+		else
 			res = writing_process(ass, writer, buffer, fd);
 	}
+	free(writer);
 	return (res);
 }
 
-static int	change_extension(char	*file)
+static int		change_extension(char *file)
 {
 	int		fd;
 	int		i;
@@ -66,7 +67,7 @@ static int	change_extension(char	*file)
 	return (fd);
 }
 
-static int	check(t_header *head)
+static int		check(t_header *head)
 {
 	if (head->prog_name[0] == '\0')
 		return (ft_putstr_fd("| NO NAME OF PLAYER |\n", STD_ERR));
@@ -75,7 +76,8 @@ static int	check(t_header *head)
 	return (0);
 }
 
-int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
+int				rewrite_file(t_assembler *ass, t_header *head,
+				int lines, char *file)
 {
 	int	fd;
 	int	i;
@@ -87,7 +89,7 @@ int	rewrite_file(t_assembler *ass, t_header *head, int lines,  char *file)
 	ft_puthex_n_fd(COREWAR_EXEC_MAGIC, fd, 4);
 	ft_putstr_fd(head->prog_name, fd);
 	ft_puthex_n_fd(0x00, fd, (132 - ft_strlen(head->prog_name)));
-	if (!(i = catch_tokens(ass)) || i > CHAMP_MAX_SIZE)
+	if (!(i = catch_tokens(ass)))
 		return (0);
 	ft_puthex_n_fd(i, fd, 4);
 	ft_putstr_fd(head->comment, fd);

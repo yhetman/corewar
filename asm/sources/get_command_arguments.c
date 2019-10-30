@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 19:34:05 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 14:46:51 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:06:58 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static bool	argument_checker(char *args)
 	return (true);
 }
 
-static bool get_direct_indirect(char *args, int arg_type, t_assembler *ass, int def)
+static bool	get_direct_indirect(char *args,
+		int arg_type, t_assembler *ass, int def)
 {
 	int		i;
 	int		find;
@@ -42,11 +43,11 @@ static bool get_direct_indirect(char *args, int arg_type, t_assembler *ass, int 
 		i = -1;
 		find = 0;
 		token = ft_strchr(args, SEPARATOR_CHAR)
-			? ft_strsub(args, def, ft_strchr(args, SEPARATOR_CHAR) - (args + def))
-			: ft_strsub(args, def, ft_strlen(args));
+		? ft_strsub(args, def, ft_strchr(args, SEPARATOR_CHAR) - (args + def))
+		: ft_strsub(args, def, ft_strlen(args));
 		while (++i < ass->count && !find)
 			if (!ft_strcmp(ass->tokens[i].name, token))
-					find = 1;
+				find = 1;
 		free(token);
 		if (!find)
 			return (false);
@@ -56,7 +57,7 @@ static bool get_direct_indirect(char *args, int arg_type, t_assembler *ass, int 
 	return (true);
 }
 
-static bool get_register(char *args, t_op options, int index)
+static bool	get_register(char *args, t_op options, int index)
 {
 	int		i;
 
@@ -86,25 +87,29 @@ static bool	check_amount(char *args, t_op options)
 	return (true);
 }
 
-int		get_command_arguments(t_assembler *ass, t_command *command, int index)
+int			get_command_arguments(t_assembler *ass,
+		t_command *command, int index, int i)
 {
-	int	i;
 	int	arg;
 
-	i = 0;
 	arg = 0;
 	if (!check_amount(command->args, ass->options[index]))
 		return (0);
 	while (command->args[i] && arg < ass->options[index].count_args)
 	{
-		if (command->args[i] == 'r' && !(get_register(command->args + i, ass->options[index], arg)))
-			return (0);
-		else if (command->args[i] == DIRECT_CHAR && !(get_direct_indirect(command->args + i, ass->options[index].args_type[arg], ass, 2)))
-			return (0);
-		else if (command->args[i] != DIRECT_CHAR && command->args[i] != 'r' && !get_direct_indirect(command->args + i, ass->options[index].args_type[arg], ass, 1))
+		if (IS_TABUL(command->args[i]) && ++i)
+			continue ;
+		if ((command->args[i] == 'r' && !(get_register(command->args + i,
+		ass->options[index], arg))) || (command->args[i] == DIRECT_CHAR &&
+		!(get_direct_indirect(command->args + i,
+		ass->options[index].args_type[arg], ass, 2))) || (command->args[i]
+		!= DIRECT_CHAR && command->args[i] != 'r' &&
+		!get_direct_indirect(command->args + i,
+		ass->options[index].args_type[arg], ass, 1)))
 			return (0);
 		if (ft_strchr(command->args + i, SEPARATOR_CHAR))
-			i += ft_strchr(command->args + i, SEPARATOR_CHAR) - (command->args + i) +1;
+			i += ft_strchr(command->args + i, SEPARATOR_CHAR)
+				- (command->args + i) + 1;
 		else
 			i = ft_strlen(command->args);
 		arg++;

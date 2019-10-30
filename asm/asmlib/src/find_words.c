@@ -14,8 +14,16 @@
 
 static char	*skip_word(char *str)
 {
-	while (*str && !IS_TABUL(*str))
-		++str;
+	while (*str && (!IS_TABUL(*str)))
+    {
+        if (*str == SEPARATOR_CHAR)
+        {
+            str++;
+            while (*str && IS_TABUL(*str))
+                ++str;
+        }
+        str++;
+    }
 	return (str);
 }
 
@@ -30,7 +38,10 @@ int			find_words(char *str)
 	{
 		while (IS_TABUL(*tmp))
 			++tmp;
-		if (*tmp == COMMENT_CHAR)
+		if (*tmp == ',')
+            while (IS_TABUL(*tmp))
+                ++tmp;
+		else if (*tmp == COMMENT_CHAR)
 			tmp = skip_word(tmp);
 		else if (++words)
 			tmp = skip_word(tmp);

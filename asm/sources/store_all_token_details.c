@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 18:12:25 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 08:40:53 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:35:10 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static bool	init_tokens(t_assembler *ass)
 			if (!(ass->tokens[count].name = ft_strsub(ass->stored[line][0],
 						0, ft_strlen(ass->stored[line][0]) - 1)))
 				return (false);
-			//ft_bzero(&(ass->tokens[count].byte), sizeof(t_bytes));
 		}
 	}
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 00:21:51 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/24 14:47:21 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:07:54 by botkache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ int					great_freeing(t_assembler *ass, char *line);
 int					store_all_token_details(t_assembler *ass);
 int					file_checker(t_assembler *ass, t_header *head);
 int					get_command_info(t_assembler *ass, int count);
-int					get_command_arguments(t_assembler *ass, t_command *command, int index);
+int					get_command_arguments(t_assembler *ass, t_command *command, int index, int i);
 int					rewrite_file(t_assembler *ass, t_header *head, int lines, char *file);
 int					catch_tokens(t_assembler *ass);
 //debug
 void				print_t_assembler(t_assembler *ass);
 void				init_g_o(t_assembler *ass);
+int					octet(long long numb);
+char        		*del_space(char *str);
 
 t_header			*init_t_header(void);
 t_reader			*init_t_reader(void);
