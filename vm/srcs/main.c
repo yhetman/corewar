@@ -6,7 +6,7 @@
 /*   By: yhetman <yhetman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 02:37:30 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 16:36:54 by blukasho         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:50:49 by blukasho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static t_vm	*malloc_vm(t_vm *vm)
 
 static void	check_dump(int *ac, char ***av, t_vm *vm)
 {
-	if (!vm->dump_print_mode && *ac >= 2
-			&& IS_INT(*(*av + 1)))
+	if (!vm->dump_print_mode && *ac >= 2 && IS_INT(*(*av + 1)))
 	{
 		if ((vm->dump_cycle = ft_atoi(*(*av + 1))) < 0)
 			vm->dump_cycle = -1;
-		vm->dump_print_mode = ((!ft_strcmp(**av, "-d")) ? 64 : 32);
+		vm->dump_print_mode = 64;
+//		vm->dump_print_mode = ((!ft_strcmp(**av, "-d")) ? 64 : 32);
 		(*ac) -= 2;
 		(*av) += 2;
 	}
