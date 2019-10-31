@@ -14,7 +14,6 @@
 
 void		op_lldi(t_vm *vm, t_carriage *car)
 {
-<<<<<<< HEAD:vm/srcs/op_functions/op_lldi.c
 	long	val_1;
 	long	val_2;
 	long	reg;
@@ -26,39 +25,4 @@ void		op_lldi(t_vm *vm, t_carriage *car)
 	car->registers[reg - 1] = bytes_into_long(vm->arena,
 			car->next_op + (val_1 + val_2), DIR_SIZE);
 	car->step++;
-=======
-	while (*str && (!IS_TABUL(*str)))
-    {
-        if (*str == SEPARATOR_CHAR)
-        {
-            str++;
-            while (*str && IS_TABUL(*str))
-                ++str;
-        }
-        str++;
-    }
-	return (str);
-}
-
-int			find_words(char *str)
-{
-	char	*tmp;
-	int		words;
-
-	words = 0;
-	tmp = str;
-	while (*tmp)
-	{
-		while (IS_TABUL(*tmp))
-			++tmp;
-		if (*tmp == ',')
-            while (IS_TABUL(*tmp))
-                ++tmp;
-		else if (*tmp == COMMENT_CHAR)
-			tmp = skip_word(tmp);
-		else if (++words)
-			tmp = skip_word(tmp);
-	}
-	return (words);
->>>>>>> assembler:asm/asmlib/src/find_words.c
 }

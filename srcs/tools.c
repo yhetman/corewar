@@ -6,7 +6,7 @@
 /*   By: yhetman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 19:01:38 by yhetman           #+#    #+#             */
-/*   Updated: 2019/10/30 20:59:53 by yhetman          ###   ########.fr       */
+/*   Updated: 2019/10/30 16:56:15 by yhetman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void			vm_exit(char *msg, t_vm *vm)
 	ft_putendl_fd(msg, 1);
 	if (vm)
 		free_vm(vm);
-	system ("leaks corewar");
 	exit(1);
 }
 
@@ -56,6 +55,5 @@ void			usage(void)
 	ft_printf("Usage: \n");
 	ft_printf("\t{ ./corewar [-dump [nbr_cycles]]");
 	ft_printf("[-n [number]] champion1.cor] ... }\n");
-	system ("leaks corewar");
 	exit(SUCCESS);
 }
