@@ -7,17 +7,22 @@ Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in 
 At the beginning of a game, each battle program is loaded into memory at a random location, after which each program executes one instruction in turn. The goal of the game is to cause the processes of opposing programs to terminate (which happens if they execute an invalid instruction), leaving the victorious program in sole possession of the machine.
 
 The earliest published version of Redcode defined only eight instructions. The ICWS-86 standard increased the number to 10 while the ICWS-88 standard increased it to 11. The currently used ICWS-94 standard has 16 instructions. However, Redcode supports a number of different addressing modes and (from ICWS-94) instruction modifiers which increase the actual number of operations possible to 7168. The Redcode standard leaves the underlying instruction representation undefined and provides no means for programs to access it. Arithmetic operations may be done on the two address fields contained in each instruction, but the only operations supported on the instruction codes themselves are copying and comparing for equality.
+
 ### 1. Constant instruction length and time
-\tEach Redcode instruction occupies exactly one memory slot and takes exactly one cycle to execute. The rate at which a process executes instructions, however, depends on the number of other processes in the queue, as processing time is shared equally.
+--------
+Each Redcode instruction occupies exactly one memory slot and takes exactly one cycle to execute. The rate at which a process executes instructions, however, depends on the number of other processes in the queue, as processing time is shared equally.
 
 ### 2. Circular memory
-\tThe memory is addressed in units of one instruction. The memory space (or core) is of finite size, but only relative addressing is used, that is, address 0 always refers to the currently executing instruction, address 1 to the instruction after it, and so on. The maximum address value is set to equal one less than the number of memory locations, and will wrap around if necessary. As a result, there is a one-to-one correspondence between addresses and memory locations, but it is impossible for a Redcode program to determine any absolute address. A process that encounters no invalid or jump instructions will continue executing successive instructions endlessly, eventually returning to the instruction where it started.
+--------
+The memory is addressed in units of one instruction. The memory space (or core) is of finite size, but only relative addressing is used, that is, address 0 always refers to the currently executing instruction, address 1 to the instruction after it, and so on. The maximum address value is set to equal one less than the number of memory locations, and will wrap around if necessary. As a result, there is a one-to-one correspondence between addresses and memory locations, but it is impossible for a Redcode program to determine any absolute address. A process that encounters no invalid or jump instructions will continue executing successive instructions endlessly, eventually returning to the instruction where it started.
 
 ### 3. Low level multiprocessing
-\tInstead of a single instruction pointer a Redcode simulator has a process queue for each program containing a variable number of instruction pointers which the simulator cycles through. Each program starts with only one process, but new processes may be added to the queue using the SPL instruction. A process dies when it executes a DAT instruction or performs a division by zero. A program is considered dead when it has no more processes left.
+--------
+Instead of a single instruction pointer a Redcode simulator has a process queue for each program containing a variable number of instruction pointers which the simulator cycles through. Each program starts with only one process, but new processes may be added to the queue using the SPL instruction. A process dies when it executes a DAT instruction or performs a division by zero. A program is considered dead when it has no more processes left.
 
 ### 4. No external access
-\tRedcode and the MARS architecture provide no input or output functions. The simulator is a closed system, with the only input being the initial values of the memory and the process queues, and the only output being the outcome of the battle, i.e., which programs had surviving processes. Of course, the simulator may still allow external inspection and modification of the memory while the simulation is running.
+--------
+Redcode and the MARS architecture provide no input or output functions. The simulator is a closed system, with the only input being the initial values of the memory and the process queues, and the only output being the outcome of the battle, i.e., which programs had surviving processes. Of course, the simulator may still allow external inspection and modification of the memory while the simulation is running.
 
 ## Core War Programming
 --------
